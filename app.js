@@ -1,4 +1,4 @@
-// Firebase Config (replace with your own)
+// Firebase Config (replace with YOUR exact config)
 const firebaseConfig = {
     apiKey: "AIzaSyA2TdxuK8ShYEVF4yi1Fg8KOfoY7ymWzkU",
     authDomain: "lk-ets2-mods-hub-ca78e.firebaseapp.com",
@@ -14,24 +14,30 @@ firebase.auth().signInAnonymously().catch(console.warn);
 
 function loadMods(search = "") {
     const container = document.getElementById("modsContainer");
-    container.innerHTML = "<div style='text-align:center; padding:2rem;'>Loading mods...</div>";
+    container.innerHTML = "<div style='text-align:center; padding:2rem;'>Loading...</div>";
     db.collection("mods").orderBy("timestamp", "desc").get().then(snapshot => {
-        if(snapshot.empty) { container.innerHTML = "<div style='text-align:center; padding:2rem;'>No mods yet. Be the first to add!</div>"; return; }
+        if(snapshot.empty) {
+            container.innerHTML = "<div style='text-align:center; padding:2rem;'>✨ No mods yet. Be the first to add!</div>";
+            return;
+        }
         container.innerHTML = "";
         snapshot.forEach(doc => {
             const m = doc.data();
             if(search && !m.name.toLowerCase().includes(search) && !m.category.toLowerCase().includes(search)) return;
             container.innerHTML += `
                 <div class="mod-card">
-                    <img src="${m.imageUrl || 'https://via.placeholder.com/280x160?text=No+Image'}" onerror="this.src='https://via.placeholder.com/280x160?text=Image+Error'">
+                    <img src="${m.imageUrl || 'https://via.placeholder.com/280x150?text=No+Image'}" onerror="this.src='https://via.placeholder.com/280x150?text=No+Image'">
                     <h3>${escapeHtml(m.name)}</h3>
                     <div class="mod-meta">📁 ${escapeHtml(m.category)} | 🎮 v${escapeHtml(m.gameVersion)}<br>✍️ ${escapeHtml(m.author)}</div>
-                    <div class="mod-desc">${escapeHtml(m.description || 'No description')}</div>
-                    <a href="${m.downloadUrl}" target="_blank" class="download-btn">⬇️ Direct Download</a>
+                    <div class="mod-desc">${escapeHtml(m.description || '')}</div>
+                    <a href="${m.downloadUrl}" target="_blank" class="download-btn">⬇️ Download</a>
                 </div>
             `;
         });
-    }).catch(err => { console.error(err); container.innerHTML = "Error loading mods"; });
+    }).catch(err => {
+        console.error(err);
+        container.innerHTML = "Error loading mods";
+    });
 }
 
 function addMod() {
@@ -43,7 +49,7 @@ function addMod() {
     const imgUrl = document.getElementById("modImageUrl").value.trim();
     const desc = document.getElementById("modDesc").value.trim();
     if(!name || !category || !version || !author || !dlUrl) {
-        alert("Please fill: name, category, version, author, download link");
+        alert("Please fill all required fields.");
         return;
     }
     db.collection("mods").add({
@@ -59,13 +65,28 @@ function addMod() {
         document.getElementById("modDownloadUrl").value = "";
         document.getElementById("modImageUrl").value = "";
         document.getElementById("modDesc").value = "";
-    }).catch(err => alert("Error: "+err.message));
+        // Optionally close form
+        document.getElementById("addForm").style.display = "none";
+    }).catch(err => alert("Error: " + err.message));
 }
 
-function escapeHtml(str) { 
+function escapeHtml(str) {
     if(!str) return '';
-    return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); 
+    return str.replace(/[&<>]/g, function(m){
+        if(m === '&') return '&amp;';
+        if(m === '<') return '&lt;';
+        if(m === '>') return '&gt;';
+        return m;
+    });
 }
 
-document.getElementById("searchInput").addEventListener("keyup", (e) => loadMods(e.target.value.toLowerCase()));
+function toggleForm() {
+    const form = document.getElementById("addForm");
+    form.style.display = form.style.display === "none" ? "block" : "none";
+}
+
+document.getElementById("searchInput").addEventListener("keyup", (e) => {
+    loadMods(e.target.value.toLowerCase());
+});
+
 loadMods();
