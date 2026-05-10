@@ -2,9 +2,21 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const admin = require('firebase-admin');
 
-const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+// Parse the secret (it's already a JSON string)
+let serviceAccount;
+try {
+  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  console.log('✅ Service account parsed successfully');
+} catch (e) {
+  console.error('❌ Failed to parse service account:', e.message);
+  process.exit(1);
+}
+
 if (!admin.apps.length) {
-  admin.initializeApp({ credential: admin.credential.cert(serviceAccount) });
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+  });
+  console.log('✅ Firebase Admin initialized');
 }
 const db = admin.firestore();
 
@@ -47,7 +59,12 @@ async function syncMods() {
 async function extractModData(post) {
   const postUrl = post.link;
   console.log(`🔍 Fetching details from ${postUrl}`);
-  const pageRes = await axios.get(postUrl);
+  
+  const pageRes = await axios.get(postUrl, {
+    headers: {
+      'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    }
+  });
   const html = pageRes.data;
   const $ = cheerio.load(html);
 
