@@ -89,4 +89,27 @@ document.getElementById("searchInput").addEventListener("keyup", (e) => {
     loadMods(e.target.value.toLowerCase());
 });
 
+// Worker URL එක (ඔයාගේ deploy කරපු worker එකේ URL)
+const WORKER_URL = 'https://modsfile-bypass.your-subdomain.workers.dev';
+
+// Download click event handler
+async function downloadMod(modsfileUrl, buttonElement) {
+    buttonElement.innerText = 'Fetching link...';
+    buttonElement.disabled = true;
+    try {
+        const response = await fetch(`${WORKER_URL}?url=${encodeURIComponent(modsfileUrl)}`);
+        const data = await response.json();
+        if (data.success && data.directLink) {
+            window.open(data.directLink, '_blank');
+        } else {
+            alert('Direct link not available. Please try later.');
+        }
+    } catch (err) {
+        alert('Error: ' + err.message);
+    } finally {
+        buttonElement.innerText = 'Download';
+        buttonElement.disabled = false;
+    }
+}
+
 loadMods();
