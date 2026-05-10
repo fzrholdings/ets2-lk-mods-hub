@@ -8,9 +8,10 @@ const firebaseConfig = {
     appId: "1:784056421027:web:0e0c894e0b0eed17934d16"
 };
 
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-firebase.auth().signInAnonymously().catch(console.warn);
+firebase.auth().signInAnonymously().catch(error => console.warn("Auth error:", error));
 
 function loadMods(search = "") {
     const container = document.getElementById("modsContainer");
