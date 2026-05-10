@@ -1,0 +1,27 @@
+name: Sync Mods from ets2world.com
+
+on:
+  schedule:
+    # Daily at 10:00 AM Sri Lanka time (UTC+5:30) → UTC 4:30
+    - cron: '30 4 * * *'
+  workflow_dispatch:  # manual run also possible
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install axios cheerio firebase-admin
+
+      - name: Run sync script
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node .github/scripts/sync-mods.js
