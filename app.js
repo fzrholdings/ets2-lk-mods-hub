@@ -30,7 +30,7 @@ function loadMods(search = "") {
                     <h3>${escapeHtml(m.name)}</h3>
                     <div class="mod-meta">📁 ${escapeHtml(m.category)} | 🎮 v${escapeHtml(m.gameVersion)}<br>✍️ ${escapeHtml(m.author)}</div>
                     <div class="mod-desc">${escapeHtml(m.description || '')}</div>
-                    <a href="${m.downloadUrl}" target="_blank" class="download-btn">⬇️ Download</a>
+                    <button class="download-btn" onclick="downloadMod('${mod.modsfileUrl}', this)">Download</button>
                 </div>
             `;
         });
