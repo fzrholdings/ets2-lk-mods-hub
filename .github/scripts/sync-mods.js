@@ -2,7 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const admin = require('firebase-admin');
 
-parse
+JSON.parse
 
 if (!admin.apps.length) {
   admin.initializeApp({
