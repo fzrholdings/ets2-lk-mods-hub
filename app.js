@@ -113,4 +113,36 @@ async function downloadMod(modsfileUrl, buttonElement) {
     }
 }
 
+function loadMods() {
+    const container = document.getElementById("modsContainer");
+    container.innerHTML = "Loading mods...";
+    db.collection("mods").orderBy("timestamp", "desc").get()
+        .then(snapshot => {
+            if (snapshot.empty) {
+                container.innerHTML = "<p>No mods yet. Be the first to add!</p>";
+                return;
+            }
+            container.innerHTML = "";
+            snapshot.forEach(doc => {
+                const m = doc.data();
+                container.innerHTML += `
+                    <div class="mod-card">
+                        <img src="${m.imageUrl || 'https://via.placeholder.com/280x150'}" style="width:100%; height:150px; object-fit:cover; border-radius:10px;">
+                        <h3>${m.name}</h3>
+                        <p>${m.category} | v${m.gameVersion}<br>By: ${m.author}</p>
+                        <p>${m.description || ''}</p>
+                        <a href="${m.downloadUrl}" target="_blank" class="download-btn">⬇️ Download</a>
+                    </div>
+                `;
+            });
+        })
+        .catch(err => {
+            console.error(err);
+            container.innerHTML = "Error loading mods. Check console.";
+        });
+}
+
+// Call on page load
+document.addEventListener("DOMContentLoaded", loadMods);
+
 loadMods();
