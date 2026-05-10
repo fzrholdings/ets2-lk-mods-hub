@@ -27,51 +27,26 @@ function escapeHtml(str) {
     });
 }
 
-// ========== DOWNLOAD VIA WORKER (with fallback) ==========
-async function downloadMod(modsfileUrl, buttonElement) {
+// Open modal with modsfile.com link inside iframe
+function downloadMod(modsfileUrl, buttonElement) {
     if (!modsfileUrl) {
-        alert('No download link available for this mod.');
+        alert('No download link available.');
         return;
     }
+    const modal = document.getElementById('downloadModal');
+    const iframe = document.getElementById('modalIframe');
+    iframe.src = modsfileUrl;  // load the modsfile page inside modal
+    modal.style.display = 'block';
+    
+    // Optional: disable button temporarily to avoid double-click (not required)
+    // buttonElement.disabled = true; setTimeout(()=> buttonElement.disabled=false, 5000);
+}
 
-    // Save original button text for restoration
-    const originalText = buttonElement.innerText;
-    buttonElement.innerText = '⏳ Getting link...';
-    buttonElement.disabled = true;
-
-    try {
-        // 🔁 Call the Cloudflare Worker
-        const response = await fetch(`${WORKER_URL}?url=${encodeURIComponent(modsfileUrl)}`);
-        const data = await response.json();
-
-        // ✅ Worker returned a valid direct link
-        if (data && data.success === true && data.directLink) {
-            window.open(data.directLink, '_blank');
-            buttonElement.innerText = '⬇️ Download';
-            buttonElement.disabled = false;
-            return;
-        }
-
-        // ⚠️ Worker responded but no direct link – maybe the link is not a modsfile.com link
-        console.warn('Worker response:', data);
-        // Fallback: open the original modsfile.com page so user can try manually
-        if (confirm('Direct link not available. Do you want to open the original download page?')) {
-            window.open(modsfileUrl, '_blank');
-        } else {
-            alert('Direct link not available. Please try later.');
-        }
-    } catch (err) {
-        console.error('Worker error:', err);
-        // If Worker fails completely, fallback to original modsfile page
-        if (confirm('Download service temporarily unavailable. Open original page?')) {
-            window.open(modsfileUrl, '_blank');
-        } else {
-            alert('Error: ' + err.message);
-        }
-    } finally {
-        buttonElement.innerText = originalText;
-        buttonElement.disabled = false;
-    }
+function closeModal() {
+    const modal = document.getElementById('downloadModal');
+    const iframe = document.getElementById('modalIframe');
+    iframe.src = 'about:blank';  // stop loading
+    modal.style.display = 'none';
 }
 
 // ========== LOAD MODS FROM FIRESTORE ==========
@@ -177,5 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchInput) {
         searchInput.addEventListener("keyup", (e) => loadMods(e.target.value.toLowerCase()));
     }
+
+    window.onclick = function(event) {
+    const modal = document.getElementById('downloadModal');
+    if (event.target === modal) {
+        closeModal();
+    }
+};
     loadMods();
 });
