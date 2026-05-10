@@ -21,6 +21,17 @@ jobs:
       - name: Install dependencies
         run: npm install axios cheerio firebase-admin
 
+      - name: Check secret length (debug)
+        env:
+          SECRET: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE64 }}
+        run: |
+          if [ -z "$SECRET" ]; then
+            echo "❌ Secret is empty or not set"
+            exit 1
+          else
+            echo "✅ Secret length: ${#SECRET} characters"
+          fi
+
       - name: Run sync script
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
