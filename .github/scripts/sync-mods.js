@@ -2,15 +2,7 @@ const axios = require('axios');
 const cheerio = require('cheerio');
 const admin = require('firebase-admin');
 
-// Parse the secret (it's already a JSON string)
-let serviceAccount;
-try {
-  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-  console.log('✅ Service account parsed successfully');
-} catch (e) {
-  console.error('❌ Failed to parse service account:', e.message);
-  process.exit(1);
-}
+parse
 
 if (!admin.apps.length) {
   admin.initializeApp({
