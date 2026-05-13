@@ -2,7 +2,7 @@ import json
 import re
 import time
 import cloudscraper
-import xml.etree.ElementTree as ET   # 👈 THIS WAS MISSING
+import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
@@ -21,7 +21,7 @@ def extract_mod_page_data(page_url):
 
     soup = BeautifulSoup(html, 'html.parser')
 
-    # 1. modsfile.com link (unchanged)
+    # 1. modsfile.com link
     download_link = None
     match = re.search(r'href=["\'](https?://modsfile\.com/[^"\']+)["\']', html, re.IGNORECASE)
     if match:
@@ -31,18 +31,17 @@ def extract_mod_page_data(page_url):
         if match2:
             download_link = match2.group(0)
 
-    # 2. Image URL – prefer og:image, but ensure it ends with image extension
+    # 2. Image URL – prefer og:image, ensure it ends with image extension
     image_url = ''
     og_image = soup.find('meta', property='og:image')
     if og_image and og_image.get('content'):
         candidate = og_image['content'].strip()
-        # Check if it looks like an image URL (ends with .jpg, .png, .jpeg, .webp)
         if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
             image_url = candidate
             print(f"      🖼️ og:image found: {image_url[:80]}...")
         else:
             print(f"      ⚠️ og:image URL does not end with image extension: {candidate[:80]}...")
-    # Fallback to thumbnail1 if og:image not valid or missing
+    # Fallback to thumbnail1
     if not image_url:
         thumbnail = soup.find('div', class_='thumbnail1')
         if thumbnail:
@@ -54,7 +53,7 @@ def extract_mod_page_data(page_url):
                 if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
                     image_url = candidate
                     print(f"      🖼️ thumbnail found: {image_url[:80]}...")
-    # Last fallback: try to find any img tag with post-thumbnail class
+    # Last fallback: wp-post-image
     if not image_url:
         post_img = soup.find('img', class_='wp-post-image')
         if post_img and post_img.get('src'):
@@ -65,7 +64,7 @@ def extract_mod_page_data(page_url):
                 image_url = candidate
                 print(f"      🖼️ wp-post-image found: {image_url[:80]}...")
 
-    # 3. Description (unchanged)
+    # 3. Description
     description_parts = []
     entry_inner = soup.find('div', class_='entry-inner') or soup.find('div', class_='entry')
     if entry_inner:
@@ -99,7 +98,7 @@ def main():
             if response.status_code != 200:
                 print(f"❌ Failed to fetch page {page}: HTTP {response.status_code}")
                 break
-            root = ET.fromstring(response.content)   # ✅ now ET is defined
+            root = ET.fromstring(response.content)
             items = root.findall('.//item')
             if not items:
                 print(f"📭 No more items at page {page}. Stopping.")
@@ -133,7 +132,7 @@ def main():
                     'timestamp': '2026-05-14'
                 })
             page += 1
-            time.sleep(0.5)   # be nice to the server
+            time.sleep(0.5)
         except Exception as e:
             print(f"❌ Error on page {page}: {e}")
             break
