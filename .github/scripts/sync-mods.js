@@ -1,7 +1,7 @@
 const axios = require('axios');
+const cheerio = require('cheerio');
 const admin = require('firebase-admin');
 
-// Use the existing base64 secret parsing
 const base64Secret = process.env.FIREBASE_SERVICE_ACCOUNT_BASE64;
 if (!base64Secret) {
   console.error('❌ FIREBASE_SERVICE_ACCOUNT_BASE64 secret not found');
@@ -24,71 +24,95 @@ if (!admin.apps.length) {
 }
 const db = admin.firestore();
 
+// Fetch single mod page and extract modsfile.com link
+async function getDownloadLink(modPageUrl) {
+  try {
+    const response = await axios.get(modPageUrl, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Referer': 'https://www.ets2world.com/'
+      },
+      timeout: 15000
+    });
+    const html = response.data;
+    const $ = cheerio.load(html);
+    
+    // Look for any <a> tag where href attribute contains 'modsfile.com'
+    let downloadUrl = '';
+    $('a').each((_, el) => {
+      const href = $(el).attr('href');
+      if (href && href.includes('modsfile.com')) {
+        downloadUrl = href;
+        return false; // stop loop
+      }
+    });
+    return downloadUrl;
+  } catch (err) {
+    console.warn(`   ⚠️ Error fetching ${modPageUrl}: ${err.message}`);
+    return '';
+  }
+}
+
 async function syncMods() {
-  console.log('🟢 Sync started from ets2world.com...');
+  console.log('🟢 Starting sync from ets2world.com...');
   let page = 1;
   let hasMore = true;
   let total = 0;
 
   while (hasMore) {
     console.log(`📄 Fetching page ${page}...`);
-    const url = `https://www.ets2world.com/wp-json/wp/v2/posts?page=${page}&per_page=50`;
+    const apiUrl = `https://www.ets2world.com/wp-json/wp/v2/posts?page=${page}&per_page=50`;
     try {
-      const response = await axios.get(url);
+      const response = await axios.get(apiUrl);
       const posts = response.data;
-      if (posts.length === 0) { hasMore = false; break; }
+      if (posts.length === 0) {
+        hasMore = false;
+        break;
+      }
 
       for (const post of posts) {
-        try {
-          // --- Use a regular expression to find any modsfile.com link in the raw content ---
-          const content = post.content.rendered;
-          const regex = /https?:\/\/modsfile\.com\/[^\s"']+/i;
-          const match = content.match(regex);
-          const downloadUrl = match ? match[0] : '';
-
-          if (!downloadUrl) {
-            console.log(`⚠️ No modsfile link found for: ${post.title.rendered}`);
-            continue;
-          }
-
-          // Get the featured image
-          let imageUrl = '';
-          if (post.featured_media) {
-            try {
-              const mediaRes = await axios.get(`https://www.ets2world.com/wp-json/wp/v2/media/${post.featured_media}`);
-              imageUrl = mediaRes.data.source_url;
-            } catch (e) {
-              console.warn(`⚠️ Image fetch failed for ${post.title.rendered}`);
-            }
-          }
-
-          const modData = {
-            name: post.title.rendered,
-            category: 'ETS2 Mod',
-            gameVersion: '1.59',
-            author: post.author || 'ETS2World',
-            downloadUrl: downloadUrl,
-            modsfileUrl: downloadUrl,
-            imageUrl: imageUrl,
-            description: post.excerpt.rendered.replace(/<[^>]*>?/gm, '').substring(0, 300),
-            sourceUrl: post.link,
-            timestamp: admin.firestore.FieldValue.serverTimestamp()
-          };
-
-          await db.collection('mods').doc(`${post.id}`).set(modData, { merge: true });
-          total++;
-          console.log(`✅ ${modData.name} saved with link: ${downloadUrl}`);
-        } catch (err) {
-          console.error(`❌ Error on post ${post.id}:`, err.message);
+        const title = post.title.rendered;
+        console.log(`🔍 Processing: ${title}`);
+        
+        const downloadUrl = await getDownloadLink(post.link);
+        if (!downloadUrl) {
+          console.log(`⚠️ No modsfile.com link for: ${title}`);
+          continue;
         }
+
+        // Get image if available
+        let imageUrl = '';
+        if (post.featured_media) {
+          try {
+            const mediaRes = await axios.get(`https://www.ets2world.com/wp-json/wp/v2/media/${post.featured_media}`);
+            imageUrl = mediaRes.data.source_url;
+          } catch(e) { /* ignore */ }
+        }
+
+        const modData = {
+          name: title,
+          category: 'ETS2 Mod',
+          gameVersion: '1.59',
+          author: 'ETS2World',
+          downloadUrl: downloadUrl,
+          modsfileUrl: downloadUrl,
+          imageUrl: imageUrl,
+          description: post.excerpt.rendered.replace(/<[^>]*>/g, '').substring(0, 300),
+          sourceUrl: post.link,
+          timestamp: admin.firestore.FieldValue.serverTimestamp()
+        };
+
+        await db.collection('mods').doc(`${post.id}`).set(modData, { merge: true });
+        total++;
+        console.log(`✅ ${title} saved. Link: ${downloadUrl}`);
       }
       page++;
     } catch (err) {
-      console.error('Page fetch error:', err.message);
+      console.error('Error fetching posts:', err.message);
       hasMore = false;
     }
   }
-  console.log(`🟢 Sync completed. Total mods with valid links saved: ${total}`);
+  console.log(`🟢 Sync completed. Total mods with valid links: ${total}`);
 }
 
 syncMods().catch(console.error);
