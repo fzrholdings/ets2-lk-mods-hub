@@ -7,21 +7,21 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
 def extract_mod_page_data(page_url):
-    """Fetch mod page and extract download link, image URL, and full description."""
     scraper = cloudscraper.create_scraper()
     try:
         response = scraper.get(page_url, timeout=30, headers={
             'Referer': 'https://www.ets2world.com/'
         })
         if response.status_code != 200:
-            print(f"      ⚠️ HTTP {response.status_code}")
             return None, None, None
         html = response.text
     except Exception as e:
         print(f"      ⚠️ Request failed: {e}")
         return None, None, None
 
-    # 1. modsfile.com link (keep your existing method)
+    soup = BeautifulSoup(html, 'html.parser')
+
+    # 1. modsfile.com link (unchanged)
     download_link = None
     match = re.search(r'href=["\'](https?://modsfile\.com/[^"\']+)["\']', html, re.IGNORECASE)
     if match:
@@ -31,28 +31,41 @@ def extract_mod_page_data(page_url):
         if match2:
             download_link = match2.group(0)
 
-    # 2. Image URL – using BeautifulSoup
-    soup = BeautifulSoup(html, 'html.parser')
+    # 2. Image URL – prefer og:image, but ensure it ends with image extension
     image_url = ''
-
-    # Try og:image first (best option)
     og_image = soup.find('meta', property='og:image')
     if og_image and og_image.get('content'):
-        image_url = og_image['content']
-        print(f"      🖼️ og:image found: {image_url[:60]}...")
-    else:
-        # Fallback to thumbnail1 div
+        candidate = og_image['content'].strip()
+        # Check if it looks like an image URL (ends with .jpg, .png, .jpeg, .webp)
+        if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
+            image_url = candidate
+            print(f"      🖼️ og:image found: {image_url[:80]}...")
+        else:
+            print(f"      ⚠️ og:image URL does not end with image extension: {candidate[:80]}...")
+    # Fallback to thumbnail1 if og:image not valid or missing
+    if not image_url:
         thumbnail = soup.find('div', class_='thumbnail1')
         if thumbnail:
             img = thumbnail.find('img')
             if img and img.get('src'):
-                image_url = img['src']
-                # Make absolute URL if relative
-                if not image_url.startswith('http'):
-                    image_url = urljoin(page_url, image_url)
-                print(f"      🖼️ thumbnail found: {image_url[:60]}...")
+                candidate = img['src']
+                if not candidate.startswith('http'):
+                    candidate = urljoin(page_url, candidate)
+                if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
+                    image_url = candidate
+                    print(f"      🖼️ thumbnail found: {image_url[:80]}...")
+    # Last fallback: try to find any img tag with post-thumbnail class
+    if not image_url:
+        post_img = soup.find('img', class_='wp-post-image')
+        if post_img and post_img.get('src'):
+            candidate = post_img['src']
+            if not candidate.startswith('http'):
+                candidate = urljoin(page_url, candidate)
+            if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
+                image_url = candidate
+                print(f"      🖼️ wp-post-image found: {image_url[:80]}...")
 
-    # 3. Description – collect from <p> tags inside .entry-inner
+    # 3. Description (unchanged)
     description_parts = []
     entry_inner = soup.find('div', class_='entry-inner') or soup.find('div', class_='entry')
     if entry_inner:
