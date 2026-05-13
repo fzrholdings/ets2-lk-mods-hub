@@ -3,23 +3,22 @@ import re
 import time
 import cloudscraper
 from bs4 import BeautifulSoup
-from xml.etree import ElementTree as ET
-from urllib.parse import urljoin
+import re
 
 def extract_mod_page_data(page_url):
-    """Fetch mod page and extract download link, image URL, and full description."""
     scraper = cloudscraper.create_scraper()
     try:
         response = scraper.get(page_url, timeout=30, headers={
             'Referer': 'https://www.ets2world.com/'
         })
         if response.status_code != 200:
-            print(f"      ⚠️ HTTP {response.status_code}")
             return None, None, None
         html = response.text
     except Exception as e:
-        print(f"      ⚠️ Request failed: {e}")
+        print(f"Request failed: {e}")
         return None, None, None
+
+    soup = BeautifulSoup(html, 'html.parser')
 
     # 1. modsfile.com link
     download_link = None
@@ -31,41 +30,35 @@ def extract_mod_page_data(page_url):
         if match2:
             download_link = match2.group(0)
 
-    # 2. Image URL (from thumbnail1 div or og:image)
-    soup = BeautifulSoup(html, 'html.parser')
+    # 2. Image URL – Try og:image first, then fallback
     image_url = ''
-    # Try post thumbnail first
-    thumbnail = soup.find('div', class_='thumbnail1')
-    if thumbnail:
-        img = thumbnail.find('img')
-        if img and img.get('src'):
-            image_url = img['src']
-    if not image_url:
-        # Fallback to og:image
-        og_img = soup.find('meta', property='og:image')
-        if og_img and og_img.get('content'):
-            image_url = og_img['content']
+    og_image = soup.find('meta', property='og:image')
+    if og_image and og_image.get('content'):
+        image_url = og_image['content']
+    else:
+        thumbnail = soup.find('div', class_='thumbnail1')
+        if thumbnail:
+            img = thumbnail.find('img')
+            if img and img.get('src'):
+                image_url = img['src']
+    
     # Make absolute URL if relative
     if image_url and not image_url.startswith('http'):
-        image_url = urljoin(page_url, image_url)
+        image_url = 'https://www.ets2world.com' + image_url
 
-    # 3. Description: collect all text from <p> tags inside .entry-inner or .entry
+    # 3. Description
     description_parts = []
-    entry_inner = soup.find('div', class_='entry-inner')
-    if not entry_inner:
-        entry_inner = soup.find('div', class_='entry')
+    entry_inner = soup.find('div', class_='entry-inner') or soup.find('div', class_='entry')
     if entry_inner:
         for p in entry_inner.find_all('p'):
             text = p.get_text(strip=True)
-            if text and len(text) > 20:  # filter very short lines
+            if text and len(text) > 20:
                 description_parts.append(text)
     if not description_parts:
-        # Fallback to meta description
         meta_desc = soup.find('meta', attrs={'name': 'description'})
         if meta_desc and meta_desc.get('content'):
             description_parts = [meta_desc['content']]
-    description = '\n\n'.join(description_parts[:5])  # first 5 paragraphs
-    # Remove excessive newlines and truncate
+    description = '\n\n'.join(description_parts[:5])
     description = re.sub(r'\n{3,}', '\n\n', description)
     if len(description) > 800:
         description = description[:797] + '...'
