@@ -28,7 +28,7 @@ def extract_modsfile_link(page_url):
 
 def main():
     print("🟢 Syncing mods from ets2world.com RSS feed...")
-    feed_url = "https://www.ets2world.com/feed/"
+    feed_url = "https://ets2.lt/feed/"
     scraper = cloudscraper.create_scraper()
     response = scraper.get(feed_url, timeout=30)
     if response.status_code != 200:
