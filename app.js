@@ -3,6 +3,7 @@ let allMods = [];
 let currentPage = 1;
 const modsPerPage = 50;   // එක පිටුවකට mods 50 බැගින්
 let totalPages = 0;
+let currentSearchTerm = "";
 
 // ========== HELPER ==========
 function escapeHtml(str) {
@@ -34,7 +35,7 @@ function closeModal() {
     modal.style.display = 'none';
 }
 
-// ========== RENDER MODS FOR CURRENT PAGE ==========
+// ========== RENDER CURRENT PAGE ==========
 function renderMods() {
     const container = document.getElementById("modsContainer");
     if (!container) return;
@@ -44,6 +45,13 @@ function renderMods() {
     
     if (pageMods.length === 0) {
         container.innerHTML = "<div style='text-align:center; padding:2rem;'>✨ No mods found.</div>";
+        // Update pagination buttons state
+        const prevBtn = document.getElementById('prevPageBtn');
+        const nextBtn = document.getElementById('nextPageBtn');
+        const pageInfo = document.getElementById('pageInfo');
+        if (prevBtn) prevBtn.disabled = true;
+        if (nextBtn) nextBtn.disabled = true;
+        if (pageInfo) pageInfo.innerText = `Page 0 of 0`;
         return;
     }
     
@@ -53,12 +61,21 @@ function renderMods() {
         const category = mod.category || 'ETS2 Mod';
         const gameVersion = mod.gameVersion || '1.59';
         const author = mod.author || 'ETS2World';
+        // Use imageUrl if available, else placeholder
+        let imageHtml = '';
+        if (mod.imageUrl && mod.imageUrl.trim() !== '') {
+            imageHtml = `<img src="${escapeHtml(mod.imageUrl)}" 
+                               referrerpolicy="unsafe-url"
+                               onerror="this.src='https://via.placeholder.com/280x150?text=No+Image'"
+                               style="width:100%; height:150px; object-fit:cover; border-radius:10px;">`;
+        } else {
+            imageHtml = `<img src="https://via.placeholder.com/280x150?text=No+Image"
+                               style="width:100%; height:150px; object-fit:cover; border-radius:10px;">`;
+        }
         
         container.innerHTML += `
             <div class="mod-card">
-                <img src="${mod.imageUrl || 'https://via.placeholder.com/280x150?text=No+Image'}"
-                     onerror="this.src='https://via.placeholder.com/280x150?text=No+Image'"
-                     style="width:100%; height:150px; object-fit:cover; border-radius:10px;">
+                ${imageHtml}
                 <h3>${escapeHtml(mod.name)}</h3>
                 <div class="mod-meta">📁 ${escapeHtml(category)} | 🎮 v${escapeHtml(gameVersion)}<br>✍️ ${escapeHtml(author)}</div>
                 <div class="mod-desc">${escapeHtml(mod.description || '')}</div>
@@ -87,10 +104,11 @@ async function loadMods(search = "") {
         if (!response.ok) throw new Error('Failed to load mods.json');
         let mods = await response.json();
         
-        if (search) {
+        if (search && search.trim() !== "") {
+            const term = search.toLowerCase();
             mods = mods.filter(mod => 
-                mod.name.toLowerCase().includes(search) || 
-                (mod.category && mod.category.toLowerCase().includes(search))
+                mod.name.toLowerCase().includes(term) || 
+                (mod.category && mod.category.toLowerCase().includes(term))
             );
         }
         
@@ -100,7 +118,6 @@ async function loadMods(search = "") {
         currentPage = 1;
         renderMods();
         
-        // Show pagination controls if more than one page
         const paginationDiv = document.getElementById('paginationControls');
         if (paginationDiv) {
             paginationDiv.style.display = totalPages > 1 ? 'flex' : 'none';
@@ -133,15 +150,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchInput = document.getElementById("searchInput");
     if (searchInput) {
         searchInput.addEventListener("keyup", (e) => {
-            // When searching, reset to page 1 and filter allMods
-            const term = e.target.value.toLowerCase();
-            // Reload from original JSON? Better to re-fetch and filter? 
-            // For simplicity, we re-fetch and filter.
-            loadMods(term);
+            currentSearchTerm = e.target.value.toLowerCase();
+            loadMods(currentSearchTerm);
         });
     }
     
-    // Close modal when clicking outside
     window.onclick = function(event) {
         const modal = document.getElementById('downloadModal');
         if (event.target === modal) {

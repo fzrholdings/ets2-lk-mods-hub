@@ -2,20 +2,17 @@ import json
 import re
 import time
 import cloudscraper
+from bs4 import BeautifulSoup
 from xml.etree import ElementTree as ET
 from urllib.parse import urljoin
 
 def extract_mod_page_data(page_url):
-    """
-    Fetches the mod page and extracts:
-    - modsfile.com download link
-    - image URL (og:image or first img)
-    - description (og:description or meta description)
-    Returns tuple (download_link, image_url, description)
-    """
+    """Fetch mod page and extract download link, image URL, and full description."""
     scraper = cloudscraper.create_scraper()
     try:
-        response = scraper.get(page_url, timeout=30)
+        response = scraper.get(page_url, timeout=30, headers={
+            'Referer': 'https://www.ets2world.com/'
+        })
         if response.status_code != 200:
             print(f"      ⚠️ HTTP {response.status_code}")
             return None, None, None
@@ -24,7 +21,7 @@ def extract_mod_page_data(page_url):
         print(f"      ⚠️ Request failed: {e}")
         return None, None, None
 
-    # 1. Extract modsfile.com link
+    # 1. modsfile.com link
     download_link = None
     match = re.search(r'href=["\'](https?://modsfile\.com/[^"\']+)["\']', html, re.IGNORECASE)
     if match:
@@ -34,43 +31,49 @@ def extract_mod_page_data(page_url):
         if match2:
             download_link = match2.group(0)
 
-    # 2. Extract image URL
+    # 2. Image URL (from thumbnail1 div or og:image)
+    soup = BeautifulSoup(html, 'html.parser')
     image_url = ''
-    # Try og:image
-    og_match = re.search(r'<meta[^>]+property=["\']og:image["\'][^>]+content=["\']([^"\']+)["\']', html, re.IGNORECASE)
-    if og_match:
-        image_url = og_match.group(1)
-    else:
-        # Try first img tag
-        img_match = re.search(r'<img[^>]+src=["\']([^"\']+)["\']', html, re.IGNORECASE)
-        if img_match:
-            img_src = img_match.group(1)
-            if img_src.startswith('http'):
-                image_url = img_src
-            else:
-                image_url = urljoin(page_url, img_src)
+    # Try post thumbnail first
+    thumbnail = soup.find('div', class_='thumbnail1')
+    if thumbnail:
+        img = thumbnail.find('img')
+        if img and img.get('src'):
+            image_url = img['src']
+    if not image_url:
+        # Fallback to og:image
+        og_img = soup.find('meta', property='og:image')
+        if og_img and og_img.get('content'):
+            image_url = og_img['content']
+    # Make absolute URL if relative
+    if image_url and not image_url.startswith('http'):
+        image_url = urljoin(page_url, image_url)
 
-    # 3. Extract description
-    description = ''
-    # Try og:description
-    og_desc = re.search(r'<meta[^>]+property=["\']og:description["\'][^>]+content=["\']([^"\']+)["\']', html, re.IGNORECASE)
-    if og_desc:
-        description = og_desc.group(1)
-    else:
-        # Try meta name="description"
-        meta_desc = re.search(r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']+)["\']', html, re.IGNORECASE)
-        if meta_desc:
-            description = meta_desc.group(1)
-    # Clean HTML tags if any remain
-    description = re.sub(r'<[^>]+>', '', description).strip()
-    # Truncate to 500 chars
-    if len(description) > 500:
-        description = description[:497] + '...'
+    # 3. Description: collect all text from <p> tags inside .entry-inner or .entry
+    description_parts = []
+    entry_inner = soup.find('div', class_='entry-inner')
+    if not entry_inner:
+        entry_inner = soup.find('div', class_='entry')
+    if entry_inner:
+        for p in entry_inner.find_all('p'):
+            text = p.get_text(strip=True)
+            if text and len(text) > 20:  # filter very short lines
+                description_parts.append(text)
+    if not description_parts:
+        # Fallback to meta description
+        meta_desc = soup.find('meta', attrs={'name': 'description'})
+        if meta_desc and meta_desc.get('content'):
+            description_parts = [meta_desc['content']]
+    description = '\n\n'.join(description_parts[:5])  # first 5 paragraphs
+    # Remove excessive newlines and truncate
+    description = re.sub(r'\n{3,}', '\n\n', description)
+    if len(description) > 800:
+        description = description[:797] + '...'
 
     return download_link, image_url, description
 
 def main():
-    print("🟢 Syncing mods from ets2world.com RSS feed with images & descriptions...")
+    print("🟢 Syncing mods from ets2world.com RSS feed (BeautifulSoup version)...")
     base_feed_url = "https://www.ets2world.com/feed/"
     page = 1
     all_mods = []
@@ -102,7 +105,7 @@ def main():
                 if image_url:
                     print(f"   🖼️ Image: {image_url[:80]}...")
                 if description:
-                    print(f"   📝 Description: {description[:60]}...")
+                    print(f"   📝 Description: {description[:80]}...")
                 doc_id = re.sub(r'[^a-zA-Z0-9]', '_', link)[:100]
                 all_mods.append({
                     'id': doc_id,
@@ -118,14 +121,14 @@ def main():
                     'timestamp': '2026-05-14'
                 })
             page += 1
-            time.sleep(0.5)  # Small delay to be polite
+            time.sleep(0.5)
         except Exception as e:
             print(f"❌ Error on page {page}: {e}")
             break
     
     with open('mods.json', 'w', encoding='utf-8') as f:
         json.dump(all_mods, f, indent=2, ensure_ascii=False)
-    print(f"🎉 Total saved {len(all_mods)} mods with images and descriptions to mods.json")
+    print(f"🎉 Total saved {len(all_mods)} mods with rich descriptions and images to mods.json")
 
 if __name__ == "__main__":
     main()
