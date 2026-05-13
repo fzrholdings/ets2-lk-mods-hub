@@ -24,26 +24,27 @@ if (!admin.apps.length) {
 }
 const db = admin.firestore();
 
+// Common headers to mimic a real browser
+const headers = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'Accept-Language': 'en-US,en;q=0.5',
+  'Referer': 'https://www.ets2world.com/'
+};
+
 // Fetch single mod page and extract modsfile.com link
 async function getDownloadLink(modPageUrl) {
   try {
-    const response = await axios.get(modPageUrl, {
-      headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Referer': 'https://www.ets2world.com/'
-      },
-      timeout: 15000
-    });
+    const response = await axios.get(modPageUrl, { headers, timeout: 15000 });
     const html = response.data;
     const $ = cheerio.load(html);
     
-    // Look for any <a> tag where href attribute contains 'modsfile.com'
     let downloadUrl = '';
     $('a').each((_, el) => {
       const href = $(el).attr('href');
       if (href && href.includes('modsfile.com')) {
         downloadUrl = href;
-        return false; // stop loop
+        return false;
       }
     });
     return downloadUrl;
@@ -63,7 +64,8 @@ async function syncMods() {
     console.log(`📄 Fetching page ${page}...`);
     const apiUrl = `https://www.ets2world.com/wp-json/wp/v2/posts?page=${page}&per_page=50`;
     try {
-      const response = await axios.get(apiUrl);
+      // Add headers to the API request as well
+      const response = await axios.get(apiUrl, { headers, timeout: 10000 });
       const posts = response.data;
       if (posts.length === 0) {
         hasMore = false;
@@ -80,11 +82,10 @@ async function syncMods() {
           continue;
         }
 
-        // Get image if available
         let imageUrl = '';
         if (post.featured_media) {
           try {
-            const mediaRes = await axios.get(`https://www.ets2world.com/wp-json/wp/v2/media/${post.featured_media}`);
+            const mediaRes = await axios.get(`https://www.ets2world.com/wp-json/wp/v2/media/${post.featured_media}`, { headers });
             imageUrl = mediaRes.data.source_url;
           } catch(e) { /* ignore */ }
         }
@@ -93,7 +94,7 @@ async function syncMods() {
           name: title,
           category: 'ETS2 Mod',
           gameVersion: '1.59',
-          author: 'ETS2World',
+          author: post.author || 'ETS2World',
           downloadUrl: downloadUrl,
           modsfileUrl: downloadUrl,
           imageUrl: imageUrl,
