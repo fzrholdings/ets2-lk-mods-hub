@@ -31,40 +31,24 @@ def extract_mod_page_data(page_url):
         if match2:
             download_link = match2.group(0)
 
-    # 2. Image URL – prefer og:image, ensure it ends with image extension
+    # 2. Image URL – ONLY use og:image (most reliable, avoids truncated URLs)
     image_url = ''
     og_image = soup.find('meta', property='og:image')
     if og_image and og_image.get('content'):
         candidate = og_image['content'].strip()
+        # Make absolute if needed
+        if not candidate.startswith('http'):
+            candidate = urljoin(page_url, candidate)
+        # Only accept if it ends with image extension
         if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
             image_url = candidate
             print(f"      🖼️ og:image found: {image_url[:80]}...")
         else:
-            print(f"      ⚠️ og:image URL does not end with image extension: {candidate[:80]}...")
-    # Fallback to thumbnail1
-    if not image_url:
-        thumbnail = soup.find('div', class_='thumbnail1')
-        if thumbnail:
-            img = thumbnail.find('img')
-            if img and img.get('src'):
-                candidate = img['src']
-                if not candidate.startswith('http'):
-                    candidate = urljoin(page_url, candidate)
-                if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
-                    image_url = candidate
-                    print(f"      🖼️ thumbnail found: {image_url[:80]}...")
-    # Last fallback: wp-post-image
-    if not image_url:
-        post_img = soup.find('img', class_='wp-post-image')
-        if post_img and post_img.get('src'):
-            candidate = post_img['src']
-            if not candidate.startswith('http'):
-                candidate = urljoin(page_url, candidate)
-            if re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', candidate, re.IGNORECASE):
-                image_url = candidate
-                print(f"      🖼️ wp-post-image found: {image_url[:80]}...")
+            print(f"      ⚠️ og:image URL missing extension: {candidate[:80]}...")
+    else:
+        print(f"      ⚠️ No og:image tag found")
 
-    # 3. Description
+    # 3. Description – from entry-inner paragraphs or meta description
     description_parts = []
     entry_inner = soup.find('div', class_='entry-inner') or soup.find('div', class_='entry')
     if entry_inner:
