@@ -28,48 +28,59 @@ def extract_modsfile_link(page_url):
 
 def main():
     print("🟢 Syncing mods from ets2world.com RSS feed...")
-    feed_url = "https://ets2.lt/feed/"
-    scraper = cloudscraper.create_scraper()
-    response = scraper.get(feed_url, timeout=30)
-    if response.status_code != 200:
-        print(f"❌ Failed to fetch RSS: {response.status_code}")
-        return
-    print("✅ RSS feed fetched successfully")
-    root = ET.fromstring(response.content)
-    items = root.findall('.//item')
-    print(f"📄 Found {len(items)} mods")
-    mods_list = []
-    for item in items:
-        title = item.find('title').text if item.find('title') is not None else "No title"
-        link = item.find('link').text if item.find('link') is not None else ""
-        print(f"🔍 Processing: {title}")
-        print(f"   Page URL: {link}")
-        download_link = extract_modsfile_link(link)
-        if not download_link:
-            print(f"   ❌ No modsfile.com link found")
-            continue
-        print(f"   ✅ Found: {download_link}")
-        # Clean description
-        description = item.find('description').text if item.find('description') is not None else ""
-        description_clean = re.sub(r'<[^>]+>', '', description)[:300]
-        # Create ID from link
-        doc_id = re.sub(r'[^a-zA-Z0-9]', '_', link)[:100]
-        mods_list.append({
-            'id': doc_id,
-            'name': title,
-            'category': 'ETS2 Mod',
-            'gameVersion': '1.59',
-            'author': 'ETS2World',
-            'downloadUrl': download_link,       # direct modsfile.com link
-            'modsfileUrl': download_link,       # same for frontend
-            'imageUrl': '',
-            'description': description_clean,
-            'sourceUrl': link,
-            'timestamp': '2026-05-13'
-        })
+    base_feed_url = "https://www.ets2world.com/feed/"
+    page = 1
+    total_mods = 0
+    all_mods_list = []
+
+    while True:
+        feed_url = f"{base_feed_url}?paged={page}"
+        print(f"📄 Fetching page {page}: {feed_url}")
+        scraper = cloudscraper.create_scraper()
+        response = scraper.get(feed_url, timeout=30)
+        if response.status_code != 200:
+            print(f"❌ Failed to fetch page {page}: HTTP {response.status_code}")
+            break
+        root = ET.fromstring(response.content)
+        items = root.findall('.//item')
+        if not items:
+            print(f"📭 No more items at page {page}. Stopping.")
+            break
+        print(f"📄 Found {len(items)} mods on page {page}")
+        for item in items:
+            title = item.find('title').text if item.find('title') is not None else "No title"
+            link = item.find('link').text if item.find('link') is not None else ""
+            print(f"🔍 Processing: {title}")
+            download_link = extract_modsfile_link(link)
+            if not download_link:
+                print(f"   ❌ No modsfile.com link found")
+                continue
+            print(f"   ✅ Found: {download_link}")
+            description = item.find('description').text if item.find('description') is not None else ""
+            description_clean = re.sub(r'<[^>]+>', '', description)[:300]
+            doc_id = re.sub(r'[^a-zA-Z0-9]', '_', link)[:100]
+            all_mods_list.append({
+                'id': doc_id,
+                'name': title,
+                'category': 'ETS2 Mod',
+                'gameVersion': '1.59',
+                'author': 'ETS2World',
+                'downloadUrl': download_link,
+                'modsfileUrl': download_link,
+                'imageUrl': '',
+                'description': description_clean,
+                'sourceUrl': link,
+                'timestamp': '2026-05-13'
+            })
+            total_mods += 1
+        page += 1
+        # ඉතා ඉක්මනින් requests යැවීමෙන් block වීම වළක්වා ගැනීමට
+        import time
+        time.sleep(1)
+
     with open('mods.json', 'w', encoding='utf-8') as f:
-        json.dump(mods_list, f, indent=2, ensure_ascii=False)
-    print(f"🎉 Saved {len(mods_list)} mods to mods.json")
+        json.dump(all_mods_list, f, indent=2, ensure_ascii=False)
+    print(f"🎉 Total saved {total_mods} mods from {page-1} pages to mods.json")
 
 if __name__ == "__main__":
     main()
