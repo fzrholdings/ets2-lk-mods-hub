@@ -31,41 +31,22 @@ def extract_mod_page_data(page_url):
         if match2:
             download_link = match2.group(0)
 
-    # 2. Image URL – priority: thumbnail1 > og:image > wp-post-image
+    # 2. Image URL – ONLY from og:image meta tag (most reliable)
     image_url = ''
+    og_image = soup.find('meta', property='og:image')
+    if og_image and og_image.get('content'):
+        image_url = og_image['content'].strip()
+        if not image_url.startswith('http'):
+            image_url = urljoin(page_url, image_url)
+        # Ensure it ends with image extension (optional check)
+        if not re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', image_url, re.IGNORECASE):
+            print(f"      ⚠️ og:image URL missing extension: {image_url}")
+        else:
+            print(f"      🖼️ og:image found: {image_url[:80]}...")
+    else:
+        print(f"      ⚠️ No og:image tag found")
 
-    # First try thumbnail1 div (most reliable from your HTML)
-    thumbnail = soup.find('div', class_='thumbnail1')
-    if thumbnail:
-        img = thumbnail.find('img')
-        if img and img.get('src'):
-            candidate = img['src'].strip()
-            if not candidate.startswith('http'):
-                candidate = urljoin(page_url, candidate)
-            # Accept even without extension check (but usually .jpg)
-            image_url = candidate
-            print(f"      🖼️ thumbnail1 found: {image_url[:80]}...")
-    # Fallback to og:image
-    if not image_url:
-        og_image = soup.find('meta', property='og:image')
-        if og_image and og_image.get('content'):
-            candidate = og_image['content'].strip()
-            if not candidate.startswith('http'):
-                candidate = urljoin(page_url, candidate)
-            # Accept if it ends with image extension or just take it
-            image_url = candidate
-            print(f"      🖼️ og:image fallback: {image_url[:80]}...")
-    # Last fallback: wp-post-image
-    if not image_url:
-        post_img = soup.find('img', class_='wp-post-image')
-        if post_img and post_img.get('src'):
-            candidate = post_img['src'].strip()
-            if not candidate.startswith('http'):
-                candidate = urljoin(page_url, candidate)
-            image_url = candidate
-            print(f"      🖼️ wp-post-image fallback: {image_url[:80]}...")
-
-    # 3. Description – from entry-inner paragraphs or meta description
+    # 3. Description (unchanged)
     description_parts = []
     entry_inner = soup.find('div', class_='entry-inner') or soup.find('div', class_='entry')
     if entry_inner:
@@ -115,7 +96,9 @@ def main():
                     continue
                 print(f"   ✅ Found download link: {download_link[:80]}...")
                 if image_url:
-                    print(f"   🖼️ Image saved")
+                    print(f"   🖼️ Image URL: {image_url}")
+                else:
+                    print(f"   ⚠️ No image URL found")
                 if description:
                     print(f"   📝 Description saved")
                 doc_id = re.sub(r'[^a-zA-Z0-9]', '_', link)[:100]
