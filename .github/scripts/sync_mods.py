@@ -2,9 +2,10 @@ import json
 import re
 import time
 import cloudscraper
-import xml.etree.ElementTree as ET
+import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
+from xml.etree import ElementTree as ET
 
 def extract_mod_page_data(page_url):
     scraper = cloudscraper.create_scraper()
@@ -31,22 +32,18 @@ def extract_mod_page_data(page_url):
         if match2:
             download_link = match2.group(0)
 
-    # 2. Image URL – ONLY from og:image meta tag (most reliable)
+    # 2. Image URL – from og:image
     image_url = ''
     og_image = soup.find('meta', property='og:image')
     if og_image and og_image.get('content'):
         image_url = og_image['content'].strip()
         if not image_url.startswith('http'):
             image_url = urljoin(page_url, image_url)
-        # Ensure it ends with image extension (optional check)
-        if not re.search(r'\.(jpg|jpeg|png|webp)(\?|$)', image_url, re.IGNORECASE):
-            print(f"      ⚠️ og:image URL missing extension: {image_url}")
-        else:
-            print(f"      🖼️ og:image found: {image_url[:80]}...")
+        print(f"      🖼️ Image: {image_url[:80]}...")
     else:
-        print(f"      ⚠️ No og:image tag found")
+        print(f"      ⚠️ No og:image")
 
-    # 3. Description (unchanged)
+    # 3. Description
     description_parts = []
     entry_inner = soup.find('div', class_='entry-inner') or soup.find('div', class_='entry')
     if entry_inner:
@@ -65,65 +62,79 @@ def extract_mod_page_data(page_url):
 
     return download_link, image_url, description
 
-def main():
-    print("🟢 Syncing mods from ets2world.com RSS feed...")
-    base_feed_url = "https://www.ets2world.com/feed/"
-    page = 1
-    all_mods = []
+def get_all_mod_urls_from_sitemap():
+    """Fetch all post URLs from sitemap.xml (or sitemap-posts.xml)"""
+    base_sitemap = "https://www.ets2world.com/sitemap.xml"
     scraper = cloudscraper.create_scraper()
+    try:
+        resp = scraper.get(base_sitemap, timeout=30)
+        if resp.status_code != 200:
+            print(f"❌ Failed to fetch sitemap: {resp.status_code}")
+            return []
+        root = ET.fromstring(resp.content)
+        # Namespace handling
+        ns = {'s': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+        # Look for sitemap index first
+        sitemaps = root.findall('s:sitemap', ns)
+        if sitemaps:
+            # It's an index, get all sitemap URLs
+            all_urls = []
+            for sitemap in sitemaps:
+                loc = sitemap.find('s:loc', ns).text
+                print(f"📄 Processing sitemap: {loc}")
+                sitemap_resp = scraper.get(loc, timeout=30)
+                if sitemap_resp.status_code == 200:
+                    sitemap_root = ET.fromstring(sitemap_resp.content)
+                    urls = [url.text for url in sitemap_root.findall('s:url/s:loc', ns)]
+                    all_urls.extend(urls)
+                time.sleep(0.5)
+            return all_urls
+        else:
+            # Direct sitemap with urls
+            urls = [url.text for url in root.findall('s:url/s:loc', ns)]
+            return urls
+    except Exception as e:
+        print(f"❌ Sitemap error: {e}")
+        return []
 
-    while True:
-        feed_url = f"{base_feed_url}?paged={page}"
-        print(f"📄 Fetching page {page}: {feed_url}")
-        try:
-            response = scraper.get(feed_url, timeout=30)
-            if response.status_code != 200:
-                print(f"❌ Failed to fetch page {page}: HTTP {response.status_code}")
-                break
-            root = ET.fromstring(response.content)
-            items = root.findall('.//item')
-            if not items:
-                print(f"📭 No more items at page {page}. Stopping.")
-                break
-            print(f"📄 Found {len(items)} mods on page {page}")
-            for item in items:
-                title = item.find('title').text if item.find('title') is not None else "No title"
-                link = item.find('link').text if item.find('link') is not None else ""
-                print(f"🔍 Processing: {title}")
-                download_link, image_url, description = extract_mod_page_data(link)
-                if not download_link:
-                    print(f"   ❌ No modsfile.com link found")
-                    continue
-                print(f"   ✅ Found download link: {download_link[:80]}...")
-                if image_url:
-                    print(f"   🖼️ Image URL: {image_url}")
-                else:
-                    print(f"   ⚠️ No image URL found")
-                if description:
-                    print(f"   📝 Description saved")
-                doc_id = re.sub(r'[^a-zA-Z0-9]', '_', link)[:100]
-                all_mods.append({
-                    'id': doc_id,
-                    'name': title,
-                    'category': 'ETS2 Mod',
-                    'gameVersion': '1.59',
-                    'author': 'ETS2World',
-                    'downloadUrl': download_link,
-                    'modsfileUrl': download_link,
-                    'imageUrl': image_url,
-                    'description': description,
-                    'sourceUrl': link,
-                    'timestamp': '2026-05-14'
-                })
-            page += 1
-            time.sleep(0.5)
-        except Exception as e:
-            print(f"❌ Error on page {page}: {e}")
-            break
+def main():
+    print("🟢 Syncing mods from ets2world.com using sitemap...")
+    mod_urls = get_all_mod_urls_from_sitemap()
+    print(f"📄 Found {len(mod_urls)} mod pages in sitemap")
+    all_mods = []
+    # Filter only URLs that look like mod posts (optional)
+    mod_urls = [url for url in mod_urls if '/ets2/' in url or '/ats/' in url]
+    print(f"🔍 Filtered to {len(mod_urls)} mod pages")
+    for idx, url in enumerate(mod_urls, 1):
+        print(f"\n🔍 [{idx}/{len(mod_urls)}] Processing: {url}")
+        download_link, image_url, description = extract_mod_page_data(url)
+        if not download_link:
+            print(f"   ❌ No modsfile.com link found")
+            continue
+        # Extract title from URL or page
+        title = url.split('/')[-2].replace('-', ' ').title()
+        doc_id = re.sub(r'[^a-zA-Z0-9]', '_', url)[:100]
+        all_mods.append({
+            'id': doc_id,
+            'name': title,
+            'category': 'ETS2 Mod',
+            'gameVersion': '1.59',
+            'author': 'ETS2World',
+            'downloadUrl': download_link,
+            'modsfileUrl': download_link,
+            'imageUrl': image_url,
+            'description': description,
+            'sourceUrl': url,
+            'timestamp': '2026-05-14'
+        })
+        print(f"   ✅ Saved: {title}")
+        time.sleep(0.5)  # be polite
+        # Optional: limit for testing, remove for full run
+        # if idx >= 500: break
 
     with open('mods.json', 'w', encoding='utf-8') as f:
         json.dump(all_mods, f, indent=2, ensure_ascii=False)
-    print(f"🎉 Total saved {len(all_mods)} mods to mods.json")
+    print(f"\n🎉 Total saved {len(all_mods)} mods to mods.json")
 
 if __name__ == "__main__":
     main()
