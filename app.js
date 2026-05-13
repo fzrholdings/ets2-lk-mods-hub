@@ -1,163 +1,61 @@
-// ========== FIREBASE CONFIG ==========
-const firebaseConfig = {
-    apiKey: "AIzaSyA2TdxuK8ShYEVF4yi1Fg8KOfoY7ymWzkU",
-    authDomain: "lk-ets2-mods-hub-ca78e.firebaseapp.com",
-    projectId: "lk-ets2-mods-hub-ca78e",
-    storageBucket: "lk-ets2-mods-hub-ca78e.firebasestorage.app",
-    messagingSenderId: "784056421027",
-    appId: "1:784056421027:web:0e0c894e0b0eed17934d16"
-};
-
-// ========== INIT FIREBASE ==========
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
-firebase.auth().signInAnonymously().catch(error => console.warn("Auth error:", error));
-
-// ========== WORKER URL (NO trailing slash issues) ==========
-const WORKER_URL = 'https://modsfile-bypass.slherotech3.workers.dev';
-
-// ========== HELPER ==========
-function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/[&<>]/g, function(m) {
-        if (m === '&') return '&amp;';
-        if (m === '<') return '&lt;';
-        if (m === '>') return '&gt;';
-        return m;
-    });
-}
-
-// Open modal with modsfile.com link inside iframe
-function downloadMod(modsfileUrl, buttonElement) {
-    if (!modsfileUrl) {
-        alert('No download link available.');
-        return;
-    }
-    const modal = document.getElementById('downloadModal');
-    const iframe = document.getElementById('modalIframe');
-    iframe.src = modsfileUrl;  // load the modsfile page inside modal
-    modal.style.display = 'block';
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LK ETS2 / ATS Mods Hub</title>
     
-    // Optional: disable button temporarily to avoid double-click (not required)
-    // buttonElement.disabled = true; setTimeout(()=> buttonElement.disabled=false, 5000);
-}
+    <!-- Firebase SDKs (compat version – once only) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Main title -->
+    <h1>🚛 ETS2 / ATS Mods Hub</h1>
+    
+    <!-- Search bar -->
+    <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search mods... (bus, truck, map)">
+    </div>
 
-function closeModal() {
-    const modal = document.getElementById('downloadModal');
-    const iframe = document.getElementById('modalIframe');
-    iframe.src = 'about:blank';  // stop loading
-    modal.style.display = 'none';
-}
+    <!-- Mods grid -->
+    <div id="modsContainer" class="mod-grid"></div>
 
-// ========== LOAD MODS FROM FIRESTORE ==========
-function loadMods(search = "") {
-    const container = document.getElementById("modsContainer");
-    if (!container) return;
-    container.innerHTML = "<div style='text-align:center; padding:2rem;'>Loading mods...</div>";
+    <!-- Compact Add Mod Section -->
+    <div class="add-section">
+        <div class="add-toggle" onclick="toggleForm()">
+            <span>+ Add new mod</span>
+        </div>
+        <div id="addForm" class="add-form" style="display: none;">
+            <input type="text" id="modName" placeholder="Mod name">
+            <input type="text" id="modCategory" placeholder="Category (Buses/Trucks/Maps)">
+            <input type="text" id="modVersion" placeholder="Game version (1.53)">
+            <input type="text" id="modAuthor" placeholder="Author">
+            <input type="text" id="modDownloadUrl" placeholder="modsfile.com link or direct link">
+            <input type="text" id="modImageUrl" placeholder="Image URL (optional)">
+            <textarea id="modDesc" rows="2" placeholder="Short description"></textarea>
+            <button onclick="addMod()">➕ Add mod</button>
+        </div>
+    </div>
+    <footer>© LK Truckers Community</footer>
+</div>
 
-    db.collection("mods").orderBy("timestamp", "desc").get()
-        .then(snapshot => {
-            if (snapshot.empty) {
-                container.innerHTML = "<div style='text-align:center; padding:2rem;'>✨ No mods yet. Be the first to add!</div>";
-                return;
-            }
-            container.innerHTML = "";
-            snapshot.forEach(doc => {
-                const m = doc.data();
-                // Apply search filter
-                if (search && !m.name.toLowerCase().includes(search) && !m.category.toLowerCase().includes(search)) return;
-
-                // Decide which download UI to show
-                let downloadHtml = '';
-                if (m.modsfileUrl && m.modsfileUrl.includes('modsfile.com')) {
-                    // ✅ Use Worker bypass
-                    downloadHtml = `<button class="download-btn" onclick="downloadMod('${escapeHtml(m.modsfileUrl)}', this)">⬇️ Download</button>`;
-                } else if (m.downloadUrl) {
-                    // ⚠️ Fallback: direct link or other host (no bypass)
-                    downloadHtml = `<a href="${escapeHtml(m.downloadUrl)}" target="_blank" class="download-btn">⬇️ Download</a>`;
-                } else {
-                    downloadHtml = '<span class="no-link">No link available</span>';
-                }
-
-                container.innerHTML += `
-                    <div class="mod-card">
-                        <img src="${m.imageUrl || 'https://via.placeholder.com/280x150?text=No+Image'}"
-                             onerror="this.src='https://via.placeholder.com/280x150?text=No+Image'"
-                             style="width:100%; height:150px; object-fit:cover; border-radius:10px;">
-                        <h3>${escapeHtml(m.name)}</h3>
-                        <div class="mod-meta">📁 ${escapeHtml(m.category)} | 🎮 v${escapeHtml(m.gameVersion)}<br>✍️ ${escapeHtml(m.author)}</div>
-                        <div class="mod-desc">${escapeHtml(m.description || '')}</div>
-                        ${downloadHtml}
-                    </div>
-                `;
-            });
-        })
-        .catch(err => {
-            console.error("Firestore error:", err);
-            container.innerHTML = "Error loading mods. Check console.";
-        });
-}
-
-// ========== ADD A NEW MOD (MANUAL) ==========
-function addMod() {
-    const name = document.getElementById("modName")?.value.trim();
-    const category = document.getElementById("modCategory")?.value.trim();
-    const version = document.getElementById("modVersion")?.value.trim();
-    const author = document.getElementById("modAuthor")?.value.trim();
-    const dlUrl = document.getElementById("modDownloadUrl")?.value.trim();
-    const imgUrl = document.getElementById("modImageUrl")?.value.trim();
-    const desc = document.getElementById("modDesc")?.value.trim();
-
-    if (!name || !category || !version || !author || !dlUrl) {
-        alert("Please fill all required fields.");
-        return;
-    }
-
-    db.collection("mods").add({
-        name,
-        category,
-        gameVersion: version,
-        author,
-        downloadUrl: dlUrl,       // fallback
-        modsfileUrl: dlUrl,       // if dlUrl is a modsfile.com link → Worker will be used
-        imageUrl: imgUrl,
-        description: desc,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    }).then(() => {
-        alert("Mod added successfully!");
-        loadMods();
-        // Clear the form
-        document.getElementById("modName").value = "";
-        document.getElementById("modCategory").value = "";
-        document.getElementById("modVersion").value = "";
-        document.getElementById("modAuthor").value = "";
-        document.getElementById("modDownloadUrl").value = "";
-        document.getElementById("modImageUrl").value = "";
-        document.getElementById("modDesc").value = "";
-        // Optionally hide the form
-        const form = document.getElementById("addForm");
-        if (form) form.style.display = "none";
-    }).catch(err => alert("Error adding mod: " + err.message));
-}
-
-// ========== TOGGLE ADD MOD FORM ==========
-function toggleForm() {
-    const form = document.getElementById("addForm");
-    if (form) form.style.display = form.style.display === "none" ? "block" : "none";
-}
-
-// ========== SEARCH & INIT ==========
-document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-        searchInput.addEventListener("keyup", (e) => loadMods(e.target.value.toLowerCase()));
-    }
-
-    window.onclick = function(event) {
-    const modal = document.getElementById('downloadModal');
-    if (event.target === modal) {
-        closeModal();
-    }
-};
-    loadMods();
-});
+<!-- Custom JavaScript -->
+<script src="app.js"></script>
+    <!-- Modal for manual bypass -->
+<div id="downloadModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <iframe id="modalIframe" src="about:blank" style="width:100%; height:80vh; border:none;"></iframe>
+    </div>
+</div>
+</body>
+</html>

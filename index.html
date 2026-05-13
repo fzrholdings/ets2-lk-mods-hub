@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LK ETS2 / ATS Mods Hub</title>
     
-    <!-- Firebase SDKs (compat version – once only) -->
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <!-- No Firebase SDKs – mods are loaded from mods.json -->
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
@@ -29,33 +26,20 @@
     <!-- Mods grid -->
     <div id="modsContainer" class="mod-grid"></div>
 
-    <!-- Compact Add Mod Section -->
-    <div class="add-section">
-        <div class="add-toggle" onclick="toggleForm()">
-            <span>+ Add new mod</span>
-        </div>
-        <div id="addForm" class="add-form" style="display: none;">
-            <input type="text" id="modName" placeholder="Mod name">
-            <input type="text" id="modCategory" placeholder="Category (Buses/Trucks/Maps)">
-            <input type="text" id="modVersion" placeholder="Game version (1.53)">
-            <input type="text" id="modAuthor" placeholder="Author">
-            <input type="text" id="modDownloadUrl" placeholder="modsfile.com link or direct link">
-            <input type="text" id="modImageUrl" placeholder="Image URL (optional)">
-            <textarea id="modDesc" rows="2" placeholder="Short description"></textarea>
-            <button onclick="addMod()">➕ Add mod</button>
-        </div>
-    </div>
+    <!-- Add mod section removed – mods are auto-synced via GitHub Actions -->
+    
     <footer>© LK Truckers Community</footer>
 </div>
 
-<!-- Custom JavaScript -->
-<script src="app.js"></script>
-    <!-- Modal for manual bypass -->
+<!-- Modal for manual download bypass (iframe) -->
 <div id="downloadModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
         <iframe id="modalIframe" src="about:blank" style="width:100%; height:80vh; border:none;"></iframe>
     </div>
 </div>
+
+<!-- Custom JavaScript (JSON version, no Firebase) -->
+<script src="app.js"></script>
 </body>
 </html>
