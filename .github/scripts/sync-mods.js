@@ -29,18 +29,20 @@ if (!admin.apps.length) {
 }
 const db = admin.firestore();
 
+// Helper to fetch a mod page and extract the first modsfile.com link
 async function getDownloadLink(modPageUrl) {
   try {
     const response = await axios.get(modPageUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Referer': 'https://www.ets2world.com/'
+        'Referer': 'https://ets2.lt/'
       },
       timeout: 15000
     });
     const html = response.data;
     const $ = cheerio.load(html);
     let downloadUrl = '';
+    // Look for any link containing 'modsfile.com'
     $('a').each((_, el) => {
       const href = $(el).attr('href');
       if (href && href.includes('modsfile.com')) {
@@ -56,13 +58,14 @@ async function getDownloadLink(modPageUrl) {
 }
 
 async function syncModsFromRss() {
-  const feedUrl = 'https://www.ets2world.com/feed/';
-  console.log(`🟢 Fetching RSS feed: ${feedUrl}`);
+  const feedUrl = 'https://ets2.lt/feed/';
+  console.log(`🟢 Fetching RSS feed from: ${feedUrl}`);
   try {
     const response = await axios.get(feedUrl, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-      }
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+      },
+      timeout: 10000
     });
     const xml = response.data;
     const result = await parseXml(xml);
@@ -81,20 +84,20 @@ async function syncModsFromRss() {
         console.log(`⚠️ No modsfile.com link for: ${title}`);
         continue;
       }
-      // Extract image from description
+      // Extract image from description (if any)
       let imageUrl = '';
       const description = item.description ? item.description[0] : '';
       const $ = cheerio.load(description);
       const img = $('img').first();
       if (img.length) imageUrl = img.attr('src');
-      // Use post ID from link (optional)
+      // Create a document ID from the link (or use title hash)
       const idMatch = link.match(/\/(\d+)\//);
       const postId = idMatch ? idMatch[1] : Buffer.from(link).toString('base64').slice(0, 20);
       const modData = {
         name: title,
         category: 'ETS2 Mod',
         gameVersion: '1.59',
-        author: 'ETS2World',
+        author: 'ETS2.lt',
         downloadUrl: downloadUrl,
         modsfileUrl: downloadUrl,
         imageUrl: imageUrl,
