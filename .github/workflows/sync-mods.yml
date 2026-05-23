@@ -29,3 +29,7 @@ jobs:
           git add mods.json
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto update mods.json [skip ci]"
           git push
+
+      - name: Trigger Cloudflare Pages Deploy
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/1e2fee64-fef5-45fa-a7ae-5b622dd4e6cb"
