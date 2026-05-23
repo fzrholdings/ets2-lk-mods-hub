@@ -1,18 +1,19 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="si">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LK ETS2 / ATS Mods Hub</title>
+    <title>LK ETS2 / ATS Mods Hub | Pitch Black & White</title>
     
-    <!-- No Firebase SDKs – mods are loaded from mods.json -->
+    <!-- Google Fonts: Lato -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-    <!-- Main title -->
     <h1>🚛 ETS2 / ATS Mods Hub</h1>
     
     <!-- Search bar -->
@@ -26,19 +27,17 @@
     <!-- Mods grid -->
     <div id="modsContainer" class="mod-grid"></div>
 
-    <!-- Add mod section removed – mods are auto-synced via GitHub Actions -->
-
     <!-- Pagination controls -->
-    <div id="paginationControls" style="display: flex; justify-content: center; gap: 20px; margin: 30px 0; align-items: center;">
-        <button id="prevPageBtn" onclick="prevPage()" style="padding: 8px 16px; background: #2ecc71; color: black; border: none; border-radius: 8px; cursor: pointer;">⬅️ පෙර පිටුව</button>
-        <span id="pageInfo" style="color: white;">Page 1 of 1</span>
-        <button id="nextPageBtn" onclick="nextPage()" style="padding: 8px 16px; background: #2ecc71; color: black; border: none; border-radius: 8px; cursor: pointer;">ඊළඟ පිටුව ➡️</button>
+    <div id="paginationControls">
+        <button id="prevPageBtn" onclick="prevPage()">⬅️ පෙර පිටුව</button>
+        <span id="pageInfo">Page 1 of 1</span>
+        <button id="nextPageBtn" onclick="nextPage()">ඊළඟ පිටුව ➡️</button>
     </div>
     
-    <footer>© LK Truckers Community</footer>
+    <footer>© LK Truckers Community | pitch black & white edition</footer>
 </div>
 
-<!-- Modal for manual download bypass (iframe) -->
+<!-- Modal for download bypass -->
 <div id="downloadModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -46,7 +45,157 @@
     </div>
 </div>
 
-<!-- Custom JavaScript (JSON version, no Firebase) -->
-<script src="app.js"></script>
+<script>
+    // Global variables
+    let allMods = [];
+    let currentPage = 1;
+    const modsPerPage = 24;
+    let filteredMods = [];
+
+    const modsContainer = document.getElementById('modsContainer');
+    const searchInput = document.getElementById('searchInput');
+    const pageInfoSpan = document.getElementById('pageInfo');
+    const prevBtn = document.getElementById('prevPageBtn');
+    const nextBtn = document.getElementById('nextPageBtn');
+
+    async function loadMods() {
+        try {
+            const response = await fetch('/mods.json');
+            if (!response.ok) throw new Error('Failed to load mods.json');
+            const data = await response.json();
+            allMods = Array.isArray(data) ? data : [];
+            filteredMods = [...allMods];
+            currentPage = 1;
+            renderCurrentPage();
+        } catch (error) {
+            console.error('Error loading mods:', error);
+            modsContainer.innerHTML = '<div style="text-align:center; margin: 2rem;">⚠️ Could not load mods. Please try again later.</div>';
+        }
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function renderCurrentPage() {
+        if (!filteredMods.length) {
+            modsContainer.innerHTML = '<div style="text-align:center; margin: 2rem;">🔍 No mods found. Try a different search.</div>';
+            updatePaginationInfo();
+            return;
+        }
+
+        const start = (currentPage - 1) * modsPerPage;
+        const end = start + modsPerPage;
+        const pageMods = filteredMods.slice(start, end);
+
+        modsContainer.innerHTML = '';
+        pageMods.forEach(mod => {
+            const card = document.createElement('div');
+            card.className = 'mod-card';
+
+            const imgUrl = mod.imageUrl && mod.imageUrl.trim() !== '' ? mod.imageUrl : 'https://via.placeholder.com/300x150?text=No+Image';
+            const description = mod.description ? (mod.description.length > 100 ? mod.description.substring(0, 100) + '…' : mod.description) : 'No description available.';
+            const gameVer = mod.gameVersion || 'N/A';
+            const author = mod.author || 'ETS2 Mods';
+
+            card.innerHTML = `
+                <img src="${imgUrl}" alt="${escapeHtml(mod.name)}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Image+Error'">
+                <h3>${escapeHtml(mod.name)}</h3>
+                <div class="mod-meta">📌 ${escapeHtml(gameVer)} | ✍️ ${escapeHtml(author)}</div>
+                <div class="mod-desc">${escapeHtml(description)}</div>
+                <a href="#" class="download-btn" data-url="${escapeHtml(mod.downloadUrl || '')}">📥 Download</a>
+            `;
+            modsContainer.appendChild(card);
+        });
+
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = btn.getAttribute('data-url');
+                if (url && url !== '') {
+                    openModalWithUrl(url);
+                } else {
+                    alert('Download link not available.');
+                }
+            });
+        });
+
+        updatePaginationInfo();
+    }
+
+    function updatePaginationInfo() {
+        const totalPages = Math.ceil(filteredMods.length / modsPerPage);
+        pageInfoSpan.innerText = `Page ${currentPage} of ${totalPages === 0 ? 1 : totalPages}`;
+        if (prevBtn) prevBtn.disabled = (currentPage <= 1);
+        if (nextBtn) nextBtn.disabled = (currentPage >= totalPages);
+    }
+
+    window.prevPage = function() {
+        if (currentPage > 1) {
+            currentPage--;
+            renderCurrentPage();
+        }
+    };
+
+    window.nextPage = function() {
+        const totalPages = Math.ceil(filteredMods.length / modsPerPage);
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderCurrentPage();
+        }
+    };
+
+    function setupSearch() {
+        if (!searchInput) return;
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            if (term === '') {
+                filteredMods = [...allMods];
+            } else {
+                filteredMods = allMods.filter(mod => 
+                    (mod.name && mod.name.toLowerCase().includes(term)) ||
+                    (mod.author && mod.author.toLowerCase().includes(term)) ||
+                    (mod.gameVersion && mod.gameVersion.toLowerCase().includes(term)) ||
+                    (mod.category && mod.category.toLowerCase().includes(term))
+                );
+            }
+            currentPage = 1;
+            renderCurrentPage();
+        });
+    }
+
+    function openModalWithUrl(url) {
+        const modal = document.getElementById('downloadModal');
+        const iframe = document.getElementById('modalIframe');
+        if (modal && iframe) {
+            iframe.src = url;
+            modal.style.display = 'block';
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    window.closeModal = function() {
+        const modal = document.getElementById('downloadModal');
+        const iframe = document.getElementById('modalIframe');
+        if (modal) modal.style.display = 'none';
+        if (iframe) iframe.src = 'about:blank';
+    };
+
+    window.onclick = function(event) {
+        const modal = document.getElementById('downloadModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+
+    loadMods().then(() => setupSearch());
+</script>
 </body>
 </html>
