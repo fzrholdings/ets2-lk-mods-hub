@@ -1,91 +1,111 @@
 <!-- index.html -->
 <!DOCTYPE html>
-<html lang="si">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LK ETS2 / ATS Mods Hub | Pitch Black & White</title>
-    
-    <!-- Google Fonts: Lato -->
+    <title>ETS2 / ATS Mods Hub | Black & White</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
-    <h1>🚛 ETS2 / ATS Mods Hub</h1>
-    
-    <!-- Search bar -->
-    <div class="search-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24">
-            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-        </svg>
-        <input type="text" id="searchInput" class="search-input" placeholder="Search mods... (bus, truck, map)">
+    <header>
+        <h1>ETS2 / ATS Mods Hub</h1>
+    </header>
+
+    <!-- Filter bar -->
+    <div class="filter-bar">
+        <div class="search-group">
+            <input type="text" id="searchInput" class="filter-input" placeholder="Search mods...">
+        </div>
+        <div class="filter-group">
+            <select id="gameTypeFilter" class="filter-select">
+                <option value="all">All Games</option>
+                <option value="ETS2">ETS2</option>
+                <option value="ATS">ATS</option>
+            </select>
+            <select id="versionFilter" class="filter-select">
+                <option value="all">All Versions</option>
+                <option value="1.59">1.59</option>
+                <option value="1.58">1.58</option>
+                <option value="1.57">1.57</option>
+                <option value="1.50">1.50</option>
+            </select>
+        </div>
     </div>
 
     <!-- Mods grid -->
     <div id="modsContainer" class="mod-grid"></div>
 
-    <!-- Pagination controls -->
-    <div id="paginationControls">
-        <button id="prevPageBtn" onclick="prevPage()">⬅️ පෙර පිටුව</button>
+    <!-- Pagination -->
+    <div class="pagination">
+        <button id="prevPageBtn">Previous</button>
         <span id="pageInfo">Page 1 of 1</span>
-        <button id="nextPageBtn" onclick="nextPage()">ඊළඟ පිටුව ➡️</button>
+        <button id="nextPageBtn">Next</button>
     </div>
-    
-    <footer>© LK Truckers Community | pitch black & white edition</footer>
 </div>
 
-<!-- Modal for download bypass -->
+<!-- Download modal -->
 <div id="downloadModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn" onclick="closeModal()">&times;</span>
-        <iframe id="modalIframe" src="about:blank" style="width:100%; height:80vh; border:none;"></iframe>
+        <span class="close-btn">&times;</span>
+        <iframe id="modalIframe" src="about:blank"></iframe>
     </div>
 </div>
 
 <script>
-    // Global variables
     let allMods = [];
+    let filteredMods = [];
     let currentPage = 1;
     const modsPerPage = 24;
-    let filteredMods = [];
 
     const modsContainer = document.getElementById('modsContainer');
     const searchInput = document.getElementById('searchInput');
-    const pageInfoSpan = document.getElementById('pageInfo');
+    const gameTypeFilter = document.getElementById('gameTypeFilter');
+    const versionFilter = document.getElementById('versionFilter');
     const prevBtn = document.getElementById('prevPageBtn');
     const nextBtn = document.getElementById('nextPageBtn');
+    const pageInfoSpan = document.getElementById('pageInfo');
 
-    async function loadMods() {
-        try {
-            const response = await fetch('/mods.json');
-            if (!response.ok) throw new Error('Failed to load mods.json');
-            const data = await response.json();
-            allMods = Array.isArray(data) ? data : [];
-            filteredMods = [...allMods];
-            currentPage = 1;
-            renderCurrentPage();
-        } catch (error) {
-            console.error('Error loading mods:', error);
-            modsContainer.innerHTML = '<div style="text-align:center; margin: 2rem;">⚠️ Could not load mods. Please try again later.</div>';
-        }
+    // Helper: detect game type from mod data
+    function getGameType(mod) {
+        const name = (mod.name || '').toUpperCase();
+        const category = (mod.category || '').toUpperCase();
+        if (name.includes('ATS') || category.includes('ATS')) return 'ATS';
+        return 'ETS2';
     }
 
-    function escapeHtml(str) {
-        if (!str) return '';
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
+    // Apply all filters
+    function applyFilters() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        const gameType = gameTypeFilter.value;
+        const version = versionFilter.value;
+
+        filteredMods = allMods.filter(mod => {
+            // search by name, author, description
+            const matchesSearch = searchTerm === '' ||
+                (mod.name && mod.name.toLowerCase().includes(searchTerm)) ||
+                (mod.author && mod.author.toLowerCase().includes(searchTerm)) ||
+                (mod.description && mod.description.toLowerCase().includes(searchTerm));
+
+            // game type filter
+            const matchesGameType = gameType === 'all' || getGameType(mod) === gameType;
+
+            // version filter
+            let modVersion = mod.gameVersion || '';
+            const matchesVersion = version === 'all' || modVersion.includes(version);
+
+            return matchesSearch && matchesGameType && matchesVersion;
         });
+
+        currentPage = 1;
+        renderCurrentPage();
     }
 
     function renderCurrentPage() {
         if (!filteredMods.length) {
-            modsContainer.innerHTML = '<div style="text-align:center; margin: 2rem;">🔍 No mods found. Try a different search.</div>';
+            modsContainer.innerHTML = '<div class="no-mods">No mods found. Try different filters.</div>';
             updatePaginationInfo();
             return;
         }
@@ -99,30 +119,33 @@
             const card = document.createElement('div');
             card.className = 'mod-card';
 
-            const imgUrl = mod.imageUrl && mod.imageUrl.trim() !== '' ? mod.imageUrl : 'https://via.placeholder.com/300x150?text=No+Image';
-            const description = mod.description ? (mod.description.length > 100 ? mod.description.substring(0, 100) + '…' : mod.description) : 'No description available.';
-            const gameVer = mod.gameVersion || 'N/A';
-            const author = mod.author || 'ETS2 Mods';
+            const imgUrl = mod.imageUrl && mod.imageUrl.trim() ? mod.imageUrl : 'https://via.placeholder.com/300x150?text=No+Image';
+            const gameTypeLabel = getGameType(mod);
+            const versionLabel = mod.gameVersion || 'N/A';
+            const authorLabel = mod.author || 'Unknown';
+            const desc = mod.description ? (mod.description.length > 100 ? mod.description.substring(0, 100) + '…' : mod.description) : 'No description';
 
             card.innerHTML = `
                 <img src="${imgUrl}" alt="${escapeHtml(mod.name)}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Image+Error'">
                 <h3>${escapeHtml(mod.name)}</h3>
-                <div class="mod-meta">📌 ${escapeHtml(gameVer)} | ✍️ ${escapeHtml(author)}</div>
-                <div class="mod-desc">${escapeHtml(description)}</div>
-                <a href="#" class="download-btn" data-url="${escapeHtml(mod.downloadUrl || '')}">📥 Download</a>
+                <div class="mod-badges">
+                    <span class="badge game-badge">${escapeHtml(gameTypeLabel)}</span>
+                    <span class="badge version-badge">v${escapeHtml(versionLabel)}</span>
+                </div>
+                <div class="mod-meta">✍️ ${escapeHtml(authorLabel)}</div>
+                <div class="mod-desc">${escapeHtml(desc)}</div>
+                <a href="#" class="download-btn" data-url="${escapeHtml(mod.downloadUrl || '')}">Download</a>
             `;
             modsContainer.appendChild(card);
         });
 
+        // attach download events
         document.querySelectorAll('.download-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 const url = btn.getAttribute('data-url');
-                if (url && url !== '') {
-                    openModalWithUrl(url);
-                } else {
-                    alert('Download link not available.');
-                }
+                if (url) openModal(url);
+                else alert('Download link not available');
             });
         });
 
@@ -131,71 +154,81 @@
 
     function updatePaginationInfo() {
         const totalPages = Math.ceil(filteredMods.length / modsPerPage);
-        pageInfoSpan.innerText = `Page ${currentPage} of ${totalPages === 0 ? 1 : totalPages}`;
-        if (prevBtn) prevBtn.disabled = (currentPage <= 1);
-        if (nextBtn) nextBtn.disabled = (currentPage >= totalPages);
+        pageInfoSpan.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+        prevBtn.disabled = currentPage <= 1;
+        nextBtn.disabled = currentPage >= totalPages;
     }
 
-    window.prevPage = function() {
+    function prevPage() {
         if (currentPage > 1) {
             currentPage--;
             renderCurrentPage();
         }
-    };
+    }
 
-    window.nextPage = function() {
+    function nextPage() {
         const totalPages = Math.ceil(filteredMods.length / modsPerPage);
         if (currentPage < totalPages) {
             currentPage++;
             renderCurrentPage();
         }
-    };
-
-    function setupSearch() {
-        if (!searchInput) return;
-        searchInput.addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase().trim();
-            if (term === '') {
-                filteredMods = [...allMods];
-            } else {
-                filteredMods = allMods.filter(mod => 
-                    (mod.name && mod.name.toLowerCase().includes(term)) ||
-                    (mod.author && mod.author.toLowerCase().includes(term)) ||
-                    (mod.gameVersion && mod.gameVersion.toLowerCase().includes(term)) ||
-                    (mod.category && mod.category.toLowerCase().includes(term))
-                );
-            }
-            currentPage = 1;
-            renderCurrentPage();
-        });
     }
 
-    function openModalWithUrl(url) {
+    function openModal(url) {
         const modal = document.getElementById('downloadModal');
         const iframe = document.getElementById('modalIframe');
         if (modal && iframe) {
             iframe.src = url;
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
         } else {
             window.open(url, '_blank');
         }
     }
 
-    window.closeModal = function() {
+    function closeModal() {
         const modal = document.getElementById('downloadModal');
         const iframe = document.getElementById('modalIframe');
         if (modal) modal.style.display = 'none';
         if (iframe) iframe.src = 'about:blank';
-    };
+    }
 
-    window.onclick = function(event) {
-        const modal = document.getElementById('downloadModal');
-        if (event.target === modal) {
-            closeModal();
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    async function loadMods() {
+        try {
+            const res = await fetch('/mods.json');
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            allMods = Array.isArray(data) ? data : [];
+            applyFilters();
+        } catch (err) {
+            modsContainer.innerHTML = '<div class="error">Failed to load mods. Please try again later.</div>';
         }
-    };
+    }
 
-    loadMods().then(() => setupSearch());
+    // Event listeners
+    searchInput.addEventListener('input', applyFilters);
+    gameTypeFilter.addEventListener('change', applyFilters);
+    versionFilter.addEventListener('change', applyFilters);
+    prevBtn.addEventListener('click', prevPage);
+    nextBtn.addEventListener('click', nextPage);
+
+    // Modal close
+    document.querySelector('.close-btn').addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => {
+        const modal = document.getElementById('downloadModal');
+        if (e.target === modal) closeModal();
+    });
+
+    loadMods();
 </script>
 </body>
 </html>
