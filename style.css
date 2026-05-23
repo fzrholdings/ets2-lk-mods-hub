@@ -160,7 +160,7 @@ h1 {
     overflow: hidden;
 }
 
-.details-btn {
+.download-btn {
     display: inline-block;
     background: #ffffff;
     color: #000000;
@@ -176,7 +176,7 @@ h1 {
     font-family: 'Lato', sans-serif;
 }
 
-.details-btn:hover {
+.download-btn:hover {
     background: transparent;
     color: #ffffff;
 }
@@ -249,6 +249,21 @@ h1 {
     max-width: 650px;
 }
 
+/* Iframe modal has no padding, full iframe */
+.iframe-modal {
+    padding: 0;
+    max-width: 90%;
+    width: 90%;
+    height: 85%;
+    overflow: hidden;
+}
+
+.iframe-modal iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 .close-btn {
     position: absolute;
     right: 20px;
@@ -319,25 +334,12 @@ h1 {
     cursor: pointer;
     margin-top: 0.5rem;
     transition: 0.2s;
+    font-family: 'Lato', sans-serif;
 }
 
 .download-details-btn:hover {
     background: #333;
     color: #fff;
-}
-
-/* Iframe modal */
-#downloadModal .modal-content {
-    width: 90%;
-    height: 85%;
-    padding: 0;
-    background: #000;
-}
-
-#downloadModal iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
 }
 
 .no-mods, .error {
