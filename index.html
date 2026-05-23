@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ETS2 / ATS Mods Hub | Black & White</title>
+    <title>ETSCFM Mods Hub | ETS2 & ATS Mods</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="container">
     <header>
-        <h1>ETS2 / ATS Mods Hub</h1>
+        <h1>ETSCFM Mods Hub</h1>
     </header>
 
     <!-- Filter bar -->
@@ -46,10 +46,18 @@
     </div>
 </div>
 
-<!-- Download modal -->
+<!-- Mod Details Modal -->
+<div id="detailsModal" class="modal">
+    <div class="modal-content details-modal">
+        <span class="close-btn details-close">&times;</span>
+        <div id="detailsContent" class="details-container"></div>
+    </div>
+</div>
+
+<!-- Download Iframe Modal (for adfly etc) -->
 <div id="downloadModal" class="modal">
     <div class="modal-content">
-        <span class="close-btn">&times;</span>
+        <span class="close-btn download-close">&times;</span>
         <iframe id="modalIframe" src="about:blank"></iframe>
     </div>
 </div>
@@ -68,7 +76,7 @@
     const nextBtn = document.getElementById('nextPageBtn');
     const pageInfoSpan = document.getElementById('pageInfo');
 
-    // Helper: detect game type from mod data
+    // Helper: detect game type
     function getGameType(mod) {
         const name = (mod.name || '').toUpperCase();
         const category = (mod.category || '').toUpperCase();
@@ -76,24 +84,20 @@
         return 'ETS2';
     }
 
-    // Apply all filters
+    // Apply filters
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase().trim();
         const gameType = gameTypeFilter.value;
         const version = versionFilter.value;
 
         filteredMods = allMods.filter(mod => {
-            // search by name, author, description
             const matchesSearch = searchTerm === '' ||
                 (mod.name && mod.name.toLowerCase().includes(searchTerm)) ||
                 (mod.author && mod.author.toLowerCase().includes(searchTerm)) ||
                 (mod.description && mod.description.toLowerCase().includes(searchTerm));
 
-            // game type filter
             const matchesGameType = gameType === 'all' || getGameType(mod) === gameType;
-
-            // version filter
-            let modVersion = mod.gameVersion || '';
+            const modVersion = mod.gameVersion || '';
             const matchesVersion = version === 'all' || modVersion.includes(version);
 
             return matchesSearch && matchesGameType && matchesVersion;
@@ -103,6 +107,7 @@
         renderCurrentPage();
     }
 
+    // Render mod cards
     function renderCurrentPage() {
         if (!filteredMods.length) {
             modsContainer.innerHTML = '<div class="no-mods">No mods found. Try different filters.</div>';
@@ -118,6 +123,7 @@
         pageMods.forEach(mod => {
             const card = document.createElement('div');
             card.className = 'mod-card';
+            card.setAttribute('data-mod-index', allMods.indexOf(mod));
 
             const imgUrl = mod.imageUrl && mod.imageUrl.trim() ? mod.imageUrl : 'https://via.placeholder.com/300x150?text=No+Image';
             const gameTypeLabel = getGameType(mod);
@@ -132,24 +138,84 @@
                     <span class="badge game-badge">${escapeHtml(gameTypeLabel)}</span>
                     <span class="badge version-badge">v${escapeHtml(versionLabel)}</span>
                 </div>
-                <div class="mod-meta">✍️ ${escapeHtml(authorLabel)}</div>
+                <div class="mod-meta">${escapeHtml(authorLabel)}</div>
                 <div class="mod-desc">${escapeHtml(desc)}</div>
-                <a href="#" class="download-btn" data-url="${escapeHtml(mod.downloadUrl || '')}">Download</a>
+                <button class="details-btn">View Details</button>
             `;
             modsContainer.appendChild(card);
         });
 
-        // attach download events
-        document.querySelectorAll('.download-btn').forEach(btn => {
+        // Attach details button event
+        document.querySelectorAll('.details-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const url = btn.getAttribute('data-url');
-                if (url) openModal(url);
-                else alert('Download link not available');
+                const card = btn.closest('.mod-card');
+                const index = parseInt(card.getAttribute('data-mod-index'));
+                const mod = allMods[index];
+                if (mod) openDetailsModal(mod);
             });
         });
 
         updatePaginationInfo();
+    }
+
+    // Open details modal
+    function openDetailsModal(mod) {
+        const modal = document.getElementById('detailsModal');
+        const container = document.getElementById('detailsContent');
+        const gameType = getGameType(mod);
+        const downloadUrl = mod.downloadUrl || '#';
+        
+        container.innerHTML = `
+            <div class="details-image">
+                <img src="${mod.imageUrl && mod.imageUrl.trim() ? mod.imageUrl : 'https://via.placeholder.com/400x200?text=No+Image'}" alt="${escapeHtml(mod.name)}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
+            </div>
+            <h2>${escapeHtml(mod.name)}</h2>
+            <div class="details-meta">
+                <span class="badge game-badge">${gameType}</span>
+                <span class="badge version-badge">Version: ${mod.gameVersion || 'N/A'}</span>
+            </div>
+            <p class="details-author"><strong>Author:</strong> ${escapeHtml(mod.author || 'Unknown')}</p>
+            <p class="details-category"><strong>Category:</strong> ${escapeHtml(mod.category || 'General')}</p>
+            <div class="details-description">
+                <strong>Description:</strong>
+                <p>${escapeHtml(mod.description || 'No description available.')}</p>
+            </div>
+            <button class="download-details-btn" data-url="${escapeHtml(downloadUrl)}">Download Mod</button>
+        `;
+        
+        modal.style.display = 'flex';
+        
+        // Attach download button inside details modal
+        const downloadBtn = container.querySelector('.download-details-btn');
+        if (downloadBtn) {
+            downloadBtn.addEventListener('click', (e) => {
+                const url = downloadBtn.getAttribute('data-url');
+                if (url && url !== '#') {
+                    openDownloadModal(url);
+                } else {
+                    alert('Download link not available');
+                }
+            });
+        }
+    }
+
+    // Open iframe download modal
+    function openDownloadModal(url) {
+        const modal = document.getElementById('downloadModal');
+        const iframe = document.getElementById('modalIframe');
+        if (modal && iframe) {
+            iframe.src = url;
+            modal.style.display = 'flex';
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function closeModals() {
+        document.getElementById('detailsModal').style.display = 'none';
+        document.getElementById('downloadModal').style.display = 'none';
+        const iframe = document.getElementById('modalIframe');
+        if (iframe) iframe.src = 'about:blank';
     }
 
     function updatePaginationInfo() {
@@ -172,24 +238,6 @@
             currentPage++;
             renderCurrentPage();
         }
-    }
-
-    function openModal(url) {
-        const modal = document.getElementById('downloadModal');
-        const iframe = document.getElementById('modalIframe');
-        if (modal && iframe) {
-            iframe.src = url;
-            modal.style.display = 'flex';
-        } else {
-            window.open(url, '_blank');
-        }
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('downloadModal');
-        const iframe = document.getElementById('modalIframe');
-        if (modal) modal.style.display = 'none';
-        if (iframe) iframe.src = 'about:blank';
     }
 
     function escapeHtml(str) {
@@ -221,11 +269,12 @@
     prevBtn.addEventListener('click', prevPage);
     nextBtn.addEventListener('click', nextPage);
 
-    // Modal close
-    document.querySelector('.close-btn').addEventListener('click', closeModal);
+    // Close modals
+    document.querySelectorAll('.close-btn').forEach(btn => {
+        btn.addEventListener('click', closeModals);
+    });
     window.addEventListener('click', (e) => {
-        const modal = document.getElementById('downloadModal');
-        if (e.target === modal) closeModal();
+        if (e.target.classList.contains('modal')) closeModals();
     });
 
     loadMods();
