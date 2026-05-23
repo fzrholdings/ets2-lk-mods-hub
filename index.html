@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ETSCFM Mods Hub | ETS2 & ATS Mods</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -46,7 +46,7 @@
     </div>
 </div>
 
-<!-- Mod Details Modal -->
+<!-- Mod Details Modal (scrollable) -->
 <div id="detailsModal" class="modal">
     <div class="modal-content details-modal">
         <span class="close-btn details-close">&times;</span>
@@ -56,7 +56,7 @@
 
 <!-- Download Iframe Modal (for adfly etc) -->
 <div id="downloadModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content iframe-modal">
         <span class="close-btn download-close">&times;</span>
         <iframe id="modalIframe" src="about:blank"></iframe>
     </div>
@@ -76,7 +76,7 @@
     const nextBtn = document.getElementById('nextPageBtn');
     const pageInfoSpan = document.getElementById('pageInfo');
 
-    // Helper: detect game type
+    // Detect game type (ETS2 / ATS)
     function getGameType(mod) {
         const name = (mod.name || '').toUpperCase();
         const category = (mod.category || '').toUpperCase();
@@ -84,7 +84,7 @@
         return 'ETS2';
     }
 
-    // Apply filters
+    // Apply all filters
     function applyFilters() {
         const searchTerm = searchInput.value.toLowerCase().trim();
         const gameType = gameTypeFilter.value;
@@ -120,10 +120,12 @@
         const pageMods = filteredMods.slice(start, end);
 
         modsContainer.innerHTML = '';
-        pageMods.forEach(mod => {
+        pageMods.forEach((mod, idx) => {
+            const originalIndex = allMods.indexOf(mod);
             const card = document.createElement('div');
             card.className = 'mod-card';
-            card.setAttribute('data-mod-index', allMods.indexOf(mod));
+            card.setAttribute('data-mod-index', originalIndex);
+            card.setAttribute('data-mod-name', mod.name || '');
 
             const imgUrl = mod.imageUrl && mod.imageUrl.trim() ? mod.imageUrl : 'https://via.placeholder.com/300x150?text=No+Image';
             const gameTypeLabel = getGameType(mod);
@@ -140,15 +142,29 @@
                 </div>
                 <div class="mod-meta">${escapeHtml(authorLabel)}</div>
                 <div class="mod-desc">${escapeHtml(desc)}</div>
-                <button class="details-btn">View Details</button>
+                <button class="download-btn" data-url="${escapeHtml(mod.downloadUrl || '')}">Download</button>
             `;
             modsContainer.appendChild(card);
         });
 
-        // Attach details button event
-        document.querySelectorAll('.details-btn').forEach(btn => {
+        // Attach download button events (stop propagation so card click doesn't fire)
+        document.querySelectorAll('.download-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
-                const card = btn.closest('.mod-card');
+                e.stopPropagation();
+                const url = btn.getAttribute('data-url');
+                if (url && url !== '') {
+                    openDownloadModal(url);
+                } else {
+                    alert('Download link not available');
+                }
+            });
+        });
+
+        // Attach card click events to open details modal
+        document.querySelectorAll('.mod-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                // Prevent if click originated from download button (already stopped propagation)
+                if (e.target.classList.contains('download-btn')) return;
                 const index = parseInt(card.getAttribute('data-mod-index'));
                 const mod = allMods[index];
                 if (mod) openDetailsModal(mod);
@@ -158,13 +174,13 @@
         updatePaginationInfo();
     }
 
-    // Open details modal
+    // Open details modal (scrollable)
     function openDetailsModal(mod) {
         const modal = document.getElementById('detailsModal');
         const container = document.getElementById('detailsContent');
         const gameType = getGameType(mod);
         const downloadUrl = mod.downloadUrl || '#';
-        
+
         container.innerHTML = `
             <div class="details-image">
                 <img src="${mod.imageUrl && mod.imageUrl.trim() ? mod.imageUrl : 'https://via.placeholder.com/400x200?text=No+Image'}" alt="${escapeHtml(mod.name)}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
@@ -182,14 +198,14 @@
             </div>
             <button class="download-details-btn" data-url="${escapeHtml(downloadUrl)}">Download Mod</button>
         `;
-        
+
         modal.style.display = 'flex';
-        
+
         // Attach download button inside details modal
-        const downloadBtn = container.querySelector('.download-details-btn');
-        if (downloadBtn) {
-            downloadBtn.addEventListener('click', (e) => {
-                const url = downloadBtn.getAttribute('data-url');
+        const detailsDownloadBtn = container.querySelector('.download-details-btn');
+        if (detailsDownloadBtn) {
+            detailsDownloadBtn.addEventListener('click', (e) => {
+                const url = detailsDownloadBtn.getAttribute('data-url');
                 if (url && url !== '#') {
                     openDownloadModal(url);
                 } else {
@@ -211,6 +227,7 @@
         }
     }
 
+    // Close all modals
     function closeModals() {
         document.getElementById('detailsModal').style.display = 'none';
         document.getElementById('downloadModal').style.display = 'none';
@@ -269,7 +286,7 @@
     prevBtn.addEventListener('click', prevPage);
     nextBtn.addEventListener('click', nextPage);
 
-    // Close modals
+    // Close modals on X or background click
     document.querySelectorAll('.close-btn').forEach(btn => {
         btn.addEventListener('click', closeModals);
     });
