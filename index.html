@@ -150,7 +150,7 @@
             modsContainer.appendChild(card);
         });
 
-        // Download button on card - opens iframe modal (popup)
+        // Download button on card - opens iframe modal
         document.querySelectorAll('.download-btn').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
@@ -163,7 +163,7 @@
             });
         });
 
-        // Card click opens details modal (larger)
+        // Card click opens details modal
         document.querySelectorAll('.mod-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.classList.contains('download-btn')) return;
@@ -176,7 +176,6 @@
         updatePaginationInfo();
     }
 
-    // Larger details modal with scroll
     function openDetailsModal(mod) {
         const modal = document.getElementById('detailsModal');
         const container = document.getElementById('detailsContent');
@@ -278,7 +277,6 @@
         }
     }
 
-    // Event listeners
     searchInput.addEventListener('input', applyFilters);
     gameTypeFilter.addEventListener('change', applyFilters);
     versionFilter.addEventListener('change', applyFilters);
