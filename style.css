@@ -19,19 +19,20 @@ body {
     margin: 0 auto;
 }
 
-/* Header */
-h1 {
+/* Header - heading centered */
+header {
     text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
     font-size: 2.2rem;
     font-weight: 700;
     letter-spacing: -0.5px;
-    margin-bottom: 2rem;
+    color: #ffffff;
     border-bottom: 1px solid #2a2a2a;
     display: inline-block;
-    width: auto;
     padding-bottom: 0.5rem;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 /* Filter bar */
@@ -245,14 +246,12 @@ h1 {
     padding: 2rem;
 }
 
-/* Larger modal for details */
 .details-modal {
     max-width: 750px;
     width: 90%;
     padding: 2rem;
 }
 
-/* Iframe modal (download popup) */
 .iframe-modal {
     padding: 0;
     max-width: 90%;
@@ -283,7 +282,7 @@ h1 {
     color: #ffffff;
 }
 
-/* Details content - larger text & spacing */
+/* Details content */
 .details-container {
     display: flex;
     flex-direction: column;
