@@ -258,6 +258,7 @@ h1 {
     width: 100%;
     height: 100%;
     border: none;
+    background: #ffffff;
 }
 
 .close-btn {
@@ -345,49 +346,61 @@ h1 {
     font-size: 1rem;
 }
 
-/* ========== LOADING SPINNER - CIRCLE ROTATING ========== */
+/* ========== LOADING TEXT ONLY - CENTERED ========== */
 .loading-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 4rem 2rem;
-    min-height: 400px;
-}
-
-/* කරකැවෙන circle එක - මේක හරියට වැඩ කරයි */
-.loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 3px solid #2a2a2a;
-    border-top: 3px solid #ffffff;
-    border-radius: 50%;
-    animation: rotateSpinner 0.8s linear infinite;
-    display: inline-block;
-}
-
-@keyframes rotateSpinner {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    min-height: 60vh;
+    text-align: center;
 }
 
 .loading-text {
-    margin-top: 1.2rem;
     color: #ffffff;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     letter-spacing: 1px;
+    margin-bottom: 0.5rem;
 }
 
 .loading-subtext {
-    margin-top: 0.4rem;
     color: #888888;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 400;
+}
+
+/* ========== IFRAME LOADING INDICATOR ========== */
+.iframe-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    background: rgba(0,0,0,0.8);
+    padding: 1rem 2rem;
+    border-radius: 40px;
+}
+
+.iframe-loading .spinner-small {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #2a2a2a;
+    border-top: 2px solid #ffffff;
+    border-radius: 50%;
+    animation: spinSmall 0.6s linear infinite;
+    margin: 0 auto 0.5rem;
+}
+
+@keyframes spinSmall {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.iframe-loading p {
+    color: #ffffff;
+    font-size: 0.8rem;
 }
 
 @media (max-width: 640px) {
