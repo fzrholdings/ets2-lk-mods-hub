@@ -1,5 +1,4 @@
 // ETSCFM MODS HUB - app.js
-// කලින් තිබ්බ හැම දෙයක්ම යන්තම්, loading screen එක විතරක් එකතු කළා
 
 let allMods = [];
 let filteredMods = [];
@@ -31,21 +30,12 @@ function escapeHtml(str) {
     });
 }
 
-// ========== MODERN LOADING SCREEN (CIRCLE + DOTS) ==========
+// Simple modern loading screen
 function showLoadingScreen() {
     modsContainer.innerHTML = `
         <div class="loading-container">
-            <div class="loading-circle">
-                <svg viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="45" />
-                </svg>
-            </div>
-            <div class="loading-text">LOADING MODS</div>
-            <div class="loading-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading mods...</div>
         </div>
     `;
     prevBtn.disabled = true;
@@ -218,7 +208,6 @@ function nextPage() {
     }
 }
 
-// Fallback demo mods (mods.json නැත්නම් මේවා පෙන්නයි)
 function getFallbackMods() {
     return [
         { id: 1, name: "Scania NextGen Rework v2.0", author: "SCS Modding", category: "Truck", gameVersion: "1.59", description: "Complete rework of Scania NextGen with custom interior, sounds and chassis options.", imageUrl: "https://via.placeholder.com/300x150?text=Scania+NextGen", downloadUrl: "#" },
