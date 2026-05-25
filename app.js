@@ -30,11 +30,10 @@ function escapeHtml(str) {
     });
 }
 
-// Loading screen with spinning circle
+// Loading screen with text only (centered)
 function showLoadingScreen() {
     modsContainer.innerHTML = `
         <div class="loading-container">
-            <div class="loading-spinner"></div>
             <div class="loading-text">Loading mods...</div>
             <div class="loading-subtext">Please wait while we fetch the latest mods</div>
         </div>
@@ -170,8 +169,46 @@ function openDetailsModal(mod) {
 function openDownloadModal(url) {
     const modal = document.getElementById('downloadModal');
     const iframe = document.getElementById('modalIframe');
+    const modalContent = modal.querySelector('.modal-content');
+    
     if (modal && iframe) {
+        // Show loading indicator inside modal
+        const loadingDiv = document.createElement('div');
+        loadingDiv.className = 'iframe-loading';
+        loadingDiv.id = 'iframeLoading';
+        loadingDiv.innerHTML = `
+            <div class="spinner-small"></div>
+            <p>Loading page...</p>
+        `;
+        modalContent.style.position = 'relative';
+        modalContent.appendChild(loadingDiv);
+        
+        // Hide iframe initially
+        iframe.style.opacity = '0';
+        
+        // Set iframe source
         iframe.src = url;
+        
+        // When iframe loads, remove loading indicator
+        iframe.onload = function() {
+            const loadingElem = document.getElementById('iframeLoading');
+            if (loadingElem) loadingElem.remove();
+            iframe.style.opacity = '1';
+        };
+        
+        // Timeout fallback (if iframe takes too long)
+        setTimeout(function() {
+            const loadingElem = document.getElementById('iframeLoading');
+            if (loadingElem) {
+                loadingElem.innerHTML = '<p style="color:#ff8888">Taking too long? Try opening in new tab.</p>';
+                setTimeout(function() {
+                    const loadingElem2 = document.getElementById('iframeLoading');
+                    if (loadingElem2) loadingElem2.remove();
+                    iframe.style.opacity = '1';
+                }, 3000);
+            }
+        }, 8000);
+        
         modal.style.display = 'flex';
     } else {
         window.open(url, '_blank');
@@ -179,10 +216,17 @@ function openDownloadModal(url) {
 }
 
 function closeModals() {
+    const modal = document.getElementById('downloadModal');
+    const iframe = document.getElementById('modalIframe');
+    const loadingElem = document.getElementById('iframeLoading');
+    if (loadingElem) loadingElem.remove();
+    if (iframe) {
+        iframe.src = 'about:blank';
+        iframe.onload = null;
+        iframe.style.opacity = '1';
+    }
     document.getElementById('detailsModal').style.display = 'none';
     document.getElementById('downloadModal').style.display = 'none';
-    const iframe = document.getElementById('modalIframe');
-    if (iframe) iframe.src = 'about:blank';
 }
 
 function updatePaginationInfo() {
