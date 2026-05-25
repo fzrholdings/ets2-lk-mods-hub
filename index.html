@@ -3,66 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>ETSCFM Mods Hub | ETS2 & ATS Mods</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>ETSCFM Mods Hub | Premium Mods for ETS2 & ATS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="container">
-    <header>
-        <h1>ETSCFM Mods Hub</h1>
-    </header>
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
+    
+    <div class="container">
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-truck-fast"></i>
+                <span>ETSCFM</span>
+                <span class="badge-pro">MODS HUB</span>
+            </div>
+            <div class="nav-stats">
+                <div class="stat-item">
+                    <i class="fas fa-database"></i>
+                    <span id="modCount">0</span>
+                    <span>Mods</span>
+                </div>
+            </div>
+        </nav>
 
-    <div class="filter-bar">
-        <div class="search-group">
-            <input type="text" id="searchInput" class="filter-input" placeholder="Search mods...">
+        <header class="hero">
+            <div class="hero-badge">
+                <i class="fas fa-gamepad"></i> Euro Truck Simulator 2 & American Truck Simulator
+            </div>
+            <h1 class="hero-title">
+                Premium <span class="gradient-text">Mods</span>
+                <br>For Your Journey
+            </h1>
+            <p class="hero-desc">Discover and download the finest mods for ETS2 & ATS. Enhanced graphics, realistic trucks, immersive maps and more.</p>
+        </header>
+
+        <div class="filter-section">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" class="search-input" placeholder="Search mods by name, author or category...">
+            </div>
+            <div class="filter-group">
+                <div class="filter-item">
+                    <i class="fas fa-gamepad"></i>
+                    <select id="gameTypeFilter" class="filter-select">
+                        <option value="all">All Games</option>
+                        <option value="ETS2">ETS2</option>
+                        <option value="ATS">ATS</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <i class="fas fa-tag"></i>
+                    <select id="versionFilter" class="filter-select">
+                        <option value="all">All Versions</option>
+                        <option value="1.59">Version 1.59</option>
+                        <option value="1.58">Version 1.58</option>
+                        <option value="1.57">Version 1.57</option>
+                        <option value="1.56">Version 1.56</option>
+                        <option value="1.55">Version 1.55</option>
+                        <option value="1.54">Version 1.54</option>
+                        <option value="1.53">Version 1.53</option>
+                        <option value="1.52">Version 1.52</option>
+                        <option value="1.51">Version 1.51</option>
+                        <option value="1.50">Version 1.50</option>
+                        <option value="1.49">Version 1.49</option>
+                    </select>
+                </div>
+            </div>
         </div>
-        <div class="filter-group">
-            <select id="gameTypeFilter" class="filter-select">
-                <option value="all">All Games</option>
-                <option value="ETS2">ETS2</option>
-                <option value="ATS">ATS</option>
-            </select>
-            <select id="versionFilter" class="filter-select">
-                <option value="all">All Versions</option>
-                <option value="1.59">1.59</option>
-                <option value="1.58">1.58</option>
-                <option value="1.57">1.57</option>
-                <option value="1.56">1.56</option>
-                <option value="1.55">1.55</option>
-                <option value="1.54">1.54</option>
-                <option value="1.53">1.53</option>
-                <option value="1.52">1.52</option>
-                <option value="1.51">1.51</option>
-                <option value="1.50">1.50</option>
-                <option value="1.49">1.49</option>
-            </select>
+
+        <div id="modsContainer" class="mod-grid"></div>
+
+        <div class="pagination">
+            <button id="prevPageBtn" class="page-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Previous</span>
+            </button>
+            <span id="pageInfo" class="page-info">Page 1 of 1</span>
+            <button id="nextPageBtn" class="page-btn">
+                <span>Next</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
         </div>
     </div>
 
-    <div id="modsContainer" class="mod-grid"></div>
-
-    <div class="pagination">
-        <button id="prevPageBtn">Previous</button>
-        <span id="pageInfo">Page 1 of 1</span>
-        <button id="nextPageBtn">Next</button>
+    <!-- Mod Details Modal -->
+    <div id="detailsModal" class="modal">
+        <div class="modal-content glass-modal">
+            <button class="modal-close" id="closeDetailsBtn">&times;</button>
+            <div id="detailsContent" class="details-container"></div>
+        </div>
     </div>
-</div>
 
-<div id="detailsModal" class="modal">
-    <div class="modal-content details-modal">
-        <span class="close-btn details-close">&times;</span>
-        <div id="detailsContent" class="details-container"></div>
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content download-modal">
+            <button class="modal-close" id="closeDownloadBtn">&times;</button>
+            <div class="download-header">
+                <i class="fas fa-download"></i>
+                <h3>Download Portal</h3>
+                <p>Please wait while we redirect you...</p>
+            </div>
+            <iframe id="modalIframe" src="about:blank"></iframe>
+        </div>
     </div>
-</div>
 
-<div id="downloadModal" class="modal">
-    <div class="modal-content iframe-modal">
-        <span class="close-btn download-close">&times;</span>
-        <iframe id="modalIframe" src="about:blank"></iframe>
-    </div>
-</div>
-
-<script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
