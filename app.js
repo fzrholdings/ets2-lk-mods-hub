@@ -209,17 +209,14 @@ function nextPage() {
     }
 }
 
-// Fallback demo mods (in case mods.json is missing)
 function getFallbackMods() {
     return [
-        { id: 1, name: "Scania NextGen Rework v2.0", author: "SCS Modding", category: "Truck", gameVersion: "1.59", description: "Complete rework of Scania NextGen with custom interior, sounds and chassis options. High quality 4K textures.", imageUrl: "https://via.placeholder.com/300x150?text=Scania+NextGen", downloadUrl: "#" },
-        { id: 2, name: "Realistic Rain & Thunder", author: "Darkcaptain", category: "Weather", gameVersion: "1.58", description: "Enhanced rain effects, thunder sounds, and improved water spray from tires.", imageUrl: "https://via.placeholder.com/300x150?text=Realistic+Rain", downloadUrl: "#" },
-        { id: 3, name: "Western Star 5700XE", author: "Jon Ruda", category: "Truck", gameVersion: "1.57", description: "Detailed Western Star 5700XE with custom animations, tuning parts, and multiple cabins.", imageUrl: "https://via.placeholder.com/300x150?text=Western+Star", downloadUrl: "#" },
-        { id: 4, name: "Promods Canada Expansion", author: "Promods Team", category: "Map", gameVersion: "1.59", description: "Massive map expansion adding British Columbia and Yukon. Over 20 new cities.", imageUrl: "https://via.placeholder.com/300x150?text=Promods+Canada", downloadUrl: "#" },
-        { id: 5, name: "Jazzycat Trailers Pack", author: "Jazzycat", category: "Trailer", gameVersion: "1.56", description: "Over 300 new real company trailers including refrigerated, curtain siders and tankers.", imageUrl: "https://via.placeholder.com/300x150?text=Trailers+Pack", downloadUrl: "#" },
-        { id: 6, name: "Sound Fixes Pack", author: "Drive Safely", category: "Sound", gameVersion: "1.59", description: "Over 1000 realistic sound effects for AI traffic, weather, interiors and environment.", imageUrl: "https://via.placeholder.com/300x150?text=Sound+Fixes", downloadUrl: "#" },
-        { id: 7, name: "Kenworth W900 Tuning Pack", author: "Outlaw Gaming", category: "Tuning", gameVersion: "1.58", description: "Custom grilles, lightbars, bullbars, and interior accessories for Kenworth W900.", imageUrl: "https://via.placeholder.com/300x150?text=Kenworth+Tuning", downloadUrl: "#" },
-        { id: 8, name: "Realistic Graphics Mod", author: "DamianSV", category: "Graphics", gameVersion: "1.59", description: "Complete graphics overhaul with reshade, better skies, and improved lighting.", imageUrl: "https://via.placeholder.com/300x150?text=Realistic+Graphics", downloadUrl: "#" }
+        { id: 1, name: "Scania NextGen Rework v2.0", author: "SCS Modding", category: "Truck", gameVersion: "1.59", description: "Complete rework of Scania NextGen with custom interior, sounds and chassis options.", imageUrl: "https://via.placeholder.com/300x150?text=Scania+NextGen", downloadUrl: "#" },
+        { id: 2, name: "Realistic Rain & Thunder", author: "Darkcaptain", category: "Weather", gameVersion: "1.58", description: "Enhanced rain effects, thunder sounds, and improved water spray.", imageUrl: "https://via.placeholder.com/300x150?text=Realistic+Rain", downloadUrl: "#" },
+        { id: 3, name: "Western Star 5700XE", author: "Jon Ruda", category: "Truck", gameVersion: "1.57", description: "Detailed Western Star 5700XE with custom animations and tuning.", imageUrl: "https://via.placeholder.com/300x150?text=Western+Star", downloadUrl: "#" },
+        { id: 4, name: "Promods Canada Expansion", author: "Promods Team", category: "Map", gameVersion: "1.59", description: "Massive map expansion adding British Columbia and Yukon.", imageUrl: "https://via.placeholder.com/300x150?text=Promods+Canada", downloadUrl: "#" },
+        { id: 5, name: "Jazzycat Trailers Pack", author: "Jazzycat", category: "Trailer", gameVersion: "1.56", description: "Over 300 new real company trailers.", imageUrl: "https://via.placeholder.com/300x150?text=Trailers+Pack", downloadUrl: "#" },
+        { id: 6, name: "Sound Fixes Pack", author: "Drive Safely", category: "Sound", gameVersion: "1.59", description: "Over 1000 realistic sound effects.", imageUrl: "https://via.placeholder.com/300x150?text=Sound+Fixes", downloadUrl: "#" }
     ];
 }
 
@@ -230,21 +227,17 @@ async function loadMods() {
         const timestamp = Date.now();
         const response = await fetch(`/mods.json?t=${timestamp}`);
         
-        if (!response.ok) {
-            throw new Error(`HTTP ${response.status}`);
-        }
-        
+        if (!response.ok) throw new Error();
         const data = await response.json();
         allMods = Array.isArray(data) && data.length ? data : getFallbackMods();
     } catch (err) {
-        console.warn("mods.json not found or error, using fallback demo mods");
+        console.warn("mods.json not found, using demo mods");
         allMods = getFallbackMods();
     }
     
     applyFilters();
 }
 
-// Event listeners
 searchInput.addEventListener('input', applyFilters);
 gameTypeFilter.addEventListener('change', applyFilters);
 versionFilter.addEventListener('change', applyFilters);
@@ -254,10 +247,8 @@ nextBtn.addEventListener('click', nextPage);
 document.querySelectorAll('.close-btn').forEach(btn => {
     btn.addEventListener('click', closeModals);
 });
-
 window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) closeModals();
 });
 
-// Start the app
 loadMods();
