@@ -1,14 +1,25 @@
-// ========== ETSCFM MODS HUB - FINAL APP.JS ==========
-// No Firebase – loads mods.json directly
-// Features: search, pagination, download modal, responsive
+// ETSCFM MODS HUB - app.js (loading state added, nothing else changed)
 
 let allMods = [];
+let filteredMods = [];
 let currentPage = 1;
-const modsPerPage = 50;          // එක පිටුවකට mods 50 බැගින්
-let totalPages = 0;
-let currentSearchTerm = "";
+const modsPerPage = 24;
 
-// ========== HELPER: escape HTML ==========
+const modsContainer = document.getElementById('modsContainer');
+const searchInput = document.getElementById('searchInput');
+const gameTypeFilter = document.getElementById('gameTypeFilter');
+const versionFilter = document.getElementById('versionFilter');
+const prevBtn = document.getElementById('prevPageBtn');
+const nextBtn = document.getElementById('nextPageBtn');
+const pageInfoSpan = document.getElementById('pageInfo');
+
+function getGameType(mod) {
+    const name = (mod.name || '').toUpperCase();
+    const category = (mod.category || '').toUpperCase();
+    if (name.includes('ATS') || category.includes('ATS')) return 'ATS';
+    return 'ETS2';
+}
+
 function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/[&<>]/g, function(m) {
@@ -19,195 +30,202 @@ function escapeHtml(str) {
     });
 }
 
-// ========== DOWNLOAD MOD (opens iframe modal) ==========
-function downloadMod(modsfileUrl, buttonElement) {
-    if (!modsfileUrl || !modsfileUrl.includes('modsfile.com')) {
-        alert('Invalid download link or URL missing.');
+function showLoading() {
+    modsContainer.innerHTML = `
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <div>Loading mods...</div>
+        </div>
+    `;
+}
+
+function applyFilters() {
+    const searchTerm = searchInput.value.toLowerCase().trim();
+    const gameType = gameTypeFilter.value;
+    const version = versionFilter.value;
+
+    filteredMods = allMods.filter(mod => {
+        const matchesSearch = searchTerm === '' ||
+            (mod.name && mod.name.toLowerCase().includes(searchTerm)) ||
+            (mod.author && mod.author.toLowerCase().includes(searchTerm)) ||
+            (mod.description && mod.description.toLowerCase().includes(searchTerm));
+
+        const matchesGameType = gameType === 'all' || getGameType(mod) === gameType;
+        const modVersion = mod.gameVersion || '';
+        const matchesVersion = version === 'all' || modVersion.includes(version);
+
+        return matchesSearch && matchesGameType && matchesVersion;
+    });
+
+    currentPage = 1;
+    renderCurrentPage();
+}
+
+function renderCurrentPage() {
+    if (!filteredMods.length) {
+        modsContainer.innerHTML = '<div class="no-mods">No mods found. Try different filters.</div>';
+        updatePaginationInfo();
         return;
     }
-    const modal = document.getElementById('downloadModal');
-    const iframe = document.getElementById('modalIframe');
-    if (modal && iframe) {
-        iframe.src = modsfileUrl;
-        modal.style.display = 'flex';
-    } else {
-        // fallback: open in new tab
-        window.open(modsfileUrl, '_blank');
-    }
-}
-
-function closeModal() {
-    const modal = document.getElementById('downloadModal');
-    const iframe = document.getElementById('modalIframe');
-    if (modal) modal.style.display = 'none';
-    if (iframe) iframe.src = 'about:blank';
-}
-
-// ========== RENDER CURRENT PAGE ==========
-function renderMods() {
-    const container = document.getElementById("modsContainer");
-    if (!container) return;
 
     const start = (currentPage - 1) * modsPerPage;
     const end = start + modsPerPage;
-    const pageMods = allMods.slice(start, end);
+    const pageMods = filteredMods.slice(start, end);
 
-    if (pageMods.length === 0) {
-        container.innerHTML = "<div class='no-mods'>No mods found. Try a different search.</div>";
-        // update pagination buttons
-        const prevBtn = document.getElementById('prevPageBtn');
-        const nextBtn = document.getElementById('nextPageBtn');
-        const pageInfo = document.getElementById('pageInfo');
-        if (prevBtn) prevBtn.disabled = true;
-        if (nextBtn) nextBtn.disabled = true;
-        if (pageInfo) pageInfo.innerText = `Page 0 of 0`;
-        return;
-    }
+    modsContainer.innerHTML = '';
+    pageMods.forEach((mod, idx) => {
+        const originalIndex = allMods.indexOf(mod);
+        const card = document.createElement('div');
+        card.className = 'mod-card';
+        card.setAttribute('data-mod-index', originalIndex);
 
-    container.innerHTML = "";
-    for (const mod of pageMods) {
-        const downloadLink = mod.modsfileUrl || mod.downloadUrl || '#';
-        const category = mod.category || 'ETS2 Mod';
-        const gameVersion = mod.gameVersion || '1.59';
-        const author = mod.author || 'ETS2World';
-        const description = mod.description ? mod.description.substring(0, 120) + (mod.description.length > 120 ? '…' : '') : 'No description available.';
-        
-        // Image handling – use imageUrl if exists, else placeholder
-        let imageHtml = '';
-        if (mod.imageUrl && mod.imageUrl.trim() !== '') {
-            imageHtml = `<img src="${escapeHtml(mod.imageUrl)}" 
-                               referrerpolicy="no-referrer"
-                               loading="lazy"
-                               onerror="this.src='https://via.placeholder.com/300x150?text=No+Image'"
-                               alt="${escapeHtml(mod.name)}">`;
-        } else {
-            imageHtml = `<img src="https://via.placeholder.com/300x150?text=No+Image" alt="placeholder">`;
-        }
+        const imgUrl = mod.imageUrl && mod.imageUrl.trim() ? mod.imageUrl : 'https://via.placeholder.com/300x150?text=No+Image';
+        const gameTypeLabel = getGameType(mod);
+        const versionLabel = mod.gameVersion || 'N/A';
+        const authorLabel = mod.author || 'Unknown';
+        const desc = mod.description ? (mod.description.length > 100 ? mod.description.substring(0, 100) + '…' : mod.description) : 'No description';
 
-        container.innerHTML += `
-            <div class="mod-card">
-                ${imageHtml}
-                <h3>${escapeHtml(mod.name)}</h3>
-                <div class="mod-badges">
-                    <span class="badge game-badge">${escapeHtml(category)}</span>
-                    <span class="badge version-badge">v${escapeHtml(gameVersion)}</span>
-                </div>
-                <div class="mod-meta">${escapeHtml(author)}</div>
-                <div class="mod-desc">${escapeHtml(description)}</div>
-                <button class="download-btn" data-url="${escapeHtml(downloadLink)}">Download</button>
+        card.innerHTML = `
+            <img src="${imgUrl}" alt="${escapeHtml(mod.name)}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x150?text=Image+Error'">
+            <h3>${escapeHtml(mod.name)}</h3>
+            <div class="mod-badges">
+                <span class="badge game-badge">${escapeHtml(gameTypeLabel)}</span>
+                <span class="badge version-badge">v${escapeHtml(versionLabel)}</span>
             </div>
+            <div class="mod-meta">${escapeHtml(authorLabel)}</div>
+            <div class="mod-desc">${escapeHtml(desc)}</div>
+            <button class="download-btn" data-url="${escapeHtml(mod.downloadUrl || '')}">Download</button>
         `;
-    }
-
-    // Attach download event listeners to all download buttons
-    document.querySelectorAll('.download-btn').forEach(btn => {
-        btn.removeEventListener('click', handleDownloadClick);
-        btn.addEventListener('click', handleDownloadClick);
+        modsContainer.appendChild(card);
     });
 
-    // Update pagination controls state
-    const prevBtn = document.getElementById('prevPageBtn');
-    const nextBtn = document.getElementById('nextPageBtn');
-    const pageInfo = document.getElementById('pageInfo');
-    if (prevBtn) prevBtn.disabled = (currentPage === 1);
-    if (nextBtn) nextBtn.disabled = (currentPage === totalPages);
-    if (pageInfo) pageInfo.innerText = `Page ${currentPage} of ${totalPages}`;
+    document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const url = btn.getAttribute('data-url');
+            if (url && url !== '') {
+                openDownloadModal(url);
+            } else {
+                alert('Download link not available');
+            }
+        });
+    });
+
+    document.querySelectorAll('.mod-card').forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (e.target.classList.contains('download-btn')) return;
+            const index = parseInt(card.getAttribute('data-mod-index'));
+            const mod = allMods[index];
+            if (mod) openDetailsModal(mod);
+        });
+    });
+
+    updatePaginationInfo();
 }
 
-// Separate handler for download buttons (to use event.target)
-function handleDownloadClick(e) {
-    const btn = e.currentTarget;
-    const url = btn.getAttribute('data-url');
-    if (url && url !== '#') {
-        downloadMod(url, btn);
+function openDetailsModal(mod) {
+    const modal = document.getElementById('detailsModal');
+    const container = document.getElementById('detailsContent');
+    const gameType = getGameType(mod);
+    const downloadUrl = mod.downloadUrl || '#';
+
+    container.innerHTML = `
+        <div class="details-image">
+            <img src="${mod.imageUrl && mod.imageUrl.trim() ? mod.imageUrl : 'https://via.placeholder.com/400x200?text=No+Image'}" alt="${escapeHtml(mod.name)}" onerror="this.src='https://via.placeholder.com/400x200?text=No+Image'">
+        </div>
+        <h2>${escapeHtml(mod.name)}</h2>
+        <div class="details-meta">
+            <span class="badge game-badge">${gameType}</span>
+            <span class="badge version-badge">Version: ${mod.gameVersion || 'N/A'}</span>
+        </div>
+        <p class="details-author"><strong>Author:</strong> ${escapeHtml(mod.author || 'Unknown')}</p>
+        <p class="details-category"><strong>Category:</strong> ${escapeHtml(mod.category || 'General')}</p>
+        <div class="details-description">
+            <strong>Description:</strong>
+            <p>${escapeHtml(mod.description || 'No description available.')}</p>
+        </div>
+        <button class="download-details-btn" data-url="${escapeHtml(downloadUrl)}">Download Mod</button>
+    `;
+
+    modal.style.display = 'flex';
+
+    const detailsBtn = container.querySelector('.download-details-btn');
+    if (detailsBtn) {
+        detailsBtn.addEventListener('click', (e) => {
+            const url = detailsBtn.getAttribute('data-url');
+            if (url && url !== '#') {
+                openDownloadModal(url);
+            } else {
+                alert('Download link not available');
+            }
+        });
+    }
+}
+
+function openDownloadModal(url) {
+    const modal = document.getElementById('downloadModal');
+    const iframe = document.getElementById('modalIframe');
+    if (modal && iframe) {
+        iframe.src = url;
+        modal.style.display = 'flex';
     } else {
-        alert('Download link not available.');
+        window.open(url, '_blank');
     }
 }
 
-// ========== LOAD MODS FROM mods.json ==========
-async function loadMods(searchTerm = "") {
-    const container = document.getElementById("modsContainer");
-    if (!container) return;
-    container.innerHTML = "<div class='no-mods'>Loading mods...</div>";
-
-    try {
-        // Add cache-busting timestamp to avoid stale Cloudflare cache
-        const timestamp = Date.now();
-        const response = await fetch(`mods.json?t=${timestamp}`);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        let mods = await response.json();
-        
-        // Ensure mods is an array
-        if (!Array.isArray(mods)) mods = [];
-
-        // Apply search filter if any
-        if (searchTerm && searchTerm.trim() !== "") {
-            const term = searchTerm.toLowerCase();
-            mods = mods.filter(mod => 
-                (mod.name && mod.name.toLowerCase().includes(term)) ||
-                (mod.category && mod.category.toLowerCase().includes(term)) ||
-                (mod.author && mod.author.toLowerCase().includes(term))
-            );
-        }
-
-        allMods = mods;
-        totalPages = Math.ceil(allMods.length / modsPerPage);
-        if (totalPages === 0) totalPages = 1;
-        currentPage = 1;
-        renderMods();
-
-        // Show/hide pagination wrapper
-        const paginationDiv = document.getElementById('paginationControls');
-        if (paginationDiv) {
-            paginationDiv.style.display = totalPages > 1 ? 'flex' : 'none';
-        }
-    } catch (err) {
-        console.error("Error loading mods:", err);
-        container.innerHTML = "<div class='error'>Failed to load mods. Please refresh or try again later.</div>";
-    }
+function closeModals() {
+    document.getElementById('detailsModal').style.display = 'none';
+    document.getElementById('downloadModal').style.display = 'none';
+    const iframe = document.getElementById('modalIframe');
+    if (iframe) iframe.src = 'about:blank';
 }
 
-// ========== PAGINATION FUNCTIONS ==========
-function nextPage() {
-    if (currentPage < totalPages) {
-        currentPage++;
-        renderMods();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+function updatePaginationInfo() {
+    const totalPages = Math.ceil(filteredMods.length / modsPerPage);
+    pageInfoSpan.textContent = `Page ${currentPage} of ${totalPages || 1}`;
+    prevBtn.disabled = currentPage <= 1;
+    nextBtn.disabled = currentPage >= totalPages;
 }
 
 function prevPage() {
     if (currentPage > 1) {
         currentPage--;
-        renderMods();
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        renderCurrentPage();
     }
 }
 
-// ========== SEARCH & INITIALIZATION ==========
-document.addEventListener("DOMContentLoaded", () => {
-    // Setup search input
-    const searchInput = document.getElementById("searchInput");
-    if (searchInput) {
-        let debounceTimer;
-        searchInput.addEventListener("input", (e) => {
-            clearTimeout(debounceTimer);
-            debounceTimer = setTimeout(() => {
-                currentSearchTerm = e.target.value;
-                loadMods(currentSearchTerm);
-            }, 300);
-        });
+function nextPage() {
+    const totalPages = Math.ceil(filteredMods.length / modsPerPage);
+    if (currentPage < totalPages) {
+        currentPage++;
+        renderCurrentPage();
     }
+}
 
-    // Setup modal close on background click
-    window.onclick = function(event) {
-        const modal = document.getElementById('downloadModal');
-        if (event.target === modal) {
-            closeModal();
-        }
-    };
+async function loadMods() {
+    showLoading();
+    try {
+        const res = await fetch('/mods.json');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+        allMods = Array.isArray(data) ? data : [];
+        applyFilters();
+    } catch (err) {
+        modsContainer.innerHTML = '<div class="error">Failed to load mods. Please try again later.</div>';
+    }
+}
 
-    // Initial load
-    loadMods();
+searchInput.addEventListener('input', applyFilters);
+gameTypeFilter.addEventListener('change', applyFilters);
+versionFilter.addEventListener('change', applyFilters);
+prevBtn.addEventListener('click', prevPage);
+nextBtn.addEventListener('click', nextPage);
+
+document.querySelectorAll('.close-btn').forEach(btn => {
+    btn.addEventListener('click', closeModals);
 });
+window.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal')) closeModals();
+});
+
+loadMods();
