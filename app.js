@@ -1,4 +1,4 @@
-// ETSCFM MODS HUB - app.js (loading state added, nothing else changed)
+// ETSCFM MODS HUB - app.js
 
 let allMods = [];
 let filteredMods = [];
@@ -30,13 +30,18 @@ function escapeHtml(str) {
     });
 }
 
-function showLoading() {
+// Show loading screen
+function showLoadingScreen() {
     modsContainer.innerHTML = `
-        <div class="loading-spinner">
-            <div class="spinner"></div>
-            <div>Loading mods...</div>
+        <div class="loading-container">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Loading mods...</div>
+            <div class="loading-subtext">Please wait while we fetch the latest mods</div>
         </div>
     `;
+    prevBtn.disabled = true;
+    nextBtn.disabled = true;
+    pageInfoSpan.textContent = "Loading...";
 }
 
 function applyFilters() {
@@ -63,7 +68,7 @@ function applyFilters() {
 
 function renderCurrentPage() {
     if (!filteredMods.length) {
-        modsContainer.innerHTML = '<div class="no-mods">No mods found. Try different filters.</div>';
+        modsContainer.innerHTML = '<div class="no-mods">🔍 No mods found. Try different filters.</div>';
         updatePaginationInfo();
         return;
     }
@@ -191,6 +196,7 @@ function prevPage() {
     if (currentPage > 1) {
         currentPage--;
         renderCurrentPage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
@@ -199,22 +205,53 @@ function nextPage() {
     if (currentPage < totalPages) {
         currentPage++;
         renderCurrentPage();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 }
 
+// Fallback demo mods
+function getFallbackMods() {
+    return [
+        { id: 1, name: "Scania NextGen Rework v2.0", author: "SCS Modding", category: "Truck", gameVersion: "1.59", description: "Complete rework of Scania NextGen with custom interior, sounds and chassis options.", imageUrl: "https://via.placeholder.com/300x150?text=Scania+NextGen", downloadUrl: "#" },
+        { id: 2, name: "Realistic Rain & Thunder", author: "Darkcaptain", category: "Weather", gameVersion: "1.58", description: "Enhanced rain effects, thunder sounds, and improved water spray.", imageUrl: "https://via.placeholder.com/300x150?text=Realistic+Rain", downloadUrl: "#" },
+        { id: 3, name: "Western Star 5700XE", author: "Jon Ruda", category: "Truck", gameVersion: "1.57", description: "Detailed Western Star 5700XE with custom animations and tuning.", imageUrl: "https://via.placeholder.com/300x150?text=Western+Star", downloadUrl: "#" },
+        { id: 4, name: "Promods Canada Expansion", author: "Promods Team", category: "Map", gameVersion: "1.59", description: "Massive map expansion adding British Columbia and Yukon.", imageUrl: "https://via.placeholder.com/300x150?text=Promods+Canada", downloadUrl: "#" },
+        { id: 5, name: "Jazzycat Trailers Pack", author: "Jazzycat", category: "Trailer", gameVersion: "1.56", description: "Over 300 new real company trailers.", imageUrl: "https://via.placeholder.com/300x150?text=Trailers+Pack", downloadUrl: "#" },
+        { id: 6, name: "Sound Fixes Pack", author: "Drive Safely", category: "Sound", gameVersion: "1.59", description: "Over 1000 realistic sound effects.", imageUrl: "https://via.placeholder.com/300x150?text=Sound+Fixes", downloadUrl: "#" },
+        { id: 7, name: "Kenworth W900 Tuning", author: "Outlaw Gaming", category: "Tuning", gameVersion: "1.58", description: "Custom grilles, lightbars and accessories.", imageUrl: "https://via.placeholder.com/300x150?text=Kenworth+Tuning", downloadUrl: "#" },
+        { id: 8, name: "Volvo FH 2022", author: "Loman", category: "Truck", gameVersion: "1.57", description: "Next generation Volvo FH with digital dashboard.", imageUrl: "https://via.placeholder.com/300x150?text=Volvo+FH", downloadUrl: "#" }
+    ];
+}
+
+// Load mods from mods.json
 async function loadMods() {
-    showLoading();
+    showLoadingScreen();
+    
     try {
-        const res = await fetch('/mods.json');
-        if (!res.ok) throw new Error();
-        const data = await res.json();
+        const timestamp = Date.now();
+        const response = await fetch(`/mods.json?t=${timestamp}`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
         allMods = Array.isArray(data) ? data : [];
+        
+        if (allMods.length === 0) {
+            allMods = getFallbackMods();
+        }
+        
         applyFilters();
+        
     } catch (err) {
-        modsContainer.innerHTML = '<div class="error">Failed to load mods. Please try again later.</div>';
+        console.error("Error loading mods:", err);
+        allMods = getFallbackMods();
+        applyFilters();
     }
 }
 
+// Event listeners
 searchInput.addEventListener('input', applyFilters);
 gameTypeFilter.addEventListener('change', applyFilters);
 versionFilter.addEventListener('change', applyFilters);
@@ -228,4 +265,5 @@ window.addEventListener('click', (e) => {
     if (e.target.classList.contains('modal')) closeModals();
 });
 
+// Start
 loadMods();
