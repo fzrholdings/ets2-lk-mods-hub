@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_kenworth_w900b_v1_60_ats_",
+    "name": "Kenworth W900B V1 60 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/q07pa4ywi7ri/unzip_Kenworth_W900b.zip.html",
+    "modsfileUrl": "https://modsfile.com/q07pa4ywi7ri/unzip_Kenworth_W900b.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/kenworth-w900b-v1.60-ats-1.jpg",
+    "description": "Kenworth W900b v1.60 ATS\n\nFeatures:Day cab cabinExclusive CabinStandard CabinMultiple ChassisExhaust pipesMudguard3 different capo styles2 styles of led unitsCustomizable grill4 styles Parasolamong more additionsNote: Gtm code base and interior, spoiler and certain skins were usedCompatible with sisl mega pack addons",
+    "sourceUrl": "https://www.ets2world.com/kenworth-w900b-v1-60-ats/",
+    "timestamp": "2026-07-03T03:33:28Z"
+  },
+  {
+    "id": "https___www_ets2world_com_scania_rt_2016_v1_60_ets2_",
+    "name": "Scania Rt 2016 V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/myu6f2ry2um8/unzip_cania_RT_2016.zip.html",
+    "modsfileUrl": "https://modsfile.com/myu6f2ry2um8/unzip_cania_RT_2016.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/scania-rt-2016-v1.60-ets2-1.jpg",
+    "description": "Scania RT 2016 v1.60 ETS2\n\nChangelog 1.60Fixed crash to desktopUpdated and fixed pink textures and materialsFixed table not appearingFixed accessoriesCompatibility for 1.60\n\nFeatures:8 Chassis variants 6×2 and 6×2 Taglift and low chassis etc.High an Normal CabinLHD version.4 Engines9 TransmissionsLots of interior optionsLots of Tuning optionsfull skinableStandaloneCompatible with 1.60.x",
+    "sourceUrl": "https://www.ets2world.com/scania-rt-2016-v1-60-ets2/",
+    "timestamp": "2026-07-03T03:33:29Z"
+  },
+  {
+    "id": "https___www_ets2world_com_scania_trucks_v1_2_1_60_ats_",
+    "name": "Scania Trucks V1 2 1 60 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/e3zhij4a6mpm/Pack_Scania_for_ATS161.rar.html",
+    "modsfileUrl": "https://modsfile.com/e3zhij4a6mpm/Pack_Scania_for_ATS161.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/scania-trucks-v1.2-1.60-ats-1.jpg",
+    "description": "Scania trucks v1.2 1.60 ATS\n\nScania trucks (from ETS 2) to ATS.\n\nScania R (2009)Scania R (2016)Scania S (2016)Scania Stremline\n\nadBlue disabledonly ATS wheels\n\nChange log: 1.1added more visual optionsadded missing texturescompatilibity v1.61fixed other errors",
+    "sourceUrl": "https://www.ets2world.com/scania-trucks-v1-2-1-60-ats/",
+    "timestamp": "2026-07-03T03:33:31Z"
+  },
+  {
+    "id": "https___www_ets2world_com_volkswagen_meteor_ws_mods_v1_3_ets2_",
+    "name": "Volkswagen Meteor Ws Mods V1 3 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/420rwrjqfbau/VOLKSWAGEN_METEOR_v1.3_WS_MODS__1.60_.zip.html",
+    "modsfileUrl": "https://modsfile.com/420rwrjqfbau/VOLKSWAGEN_METEOR_v1.3_WS_MODS__1.60_.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/volkswagen-meteor-ws-mods-v1.3-ets2-1.jpg",
+    "description": "VOLKSWAGEN METEOR WS MODS v1.3 ETS2\n\n– 1 cabin– 2 chassis– 2 engine– 3 transmission– Own interior– Own sound– Lots of tuning– Standalone",
+    "sourceUrl": "https://www.ets2world.com/volkswagen-meteor-ws-mods-v1-3-ets2/",
+    "timestamp": "2026-07-03T03:33:35Z"
+  },
+  {
     "id": "https___www_ets2world_com_metalsur_starbus_3_405_v1_0_ets2_",
     "name": "Metalsur Starbus 3 405 V1 0 Ets2",
     "category": "ETS2 Mod",
