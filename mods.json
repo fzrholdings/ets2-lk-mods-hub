@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_house_south_of_ostersund_v3_1_1_60_ets2_",
+    "name": "House South Of Ostersund V3 1 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/jk1ywe8eba7m/ostersund.scs.html",
+    "modsfileUrl": "https://modsfile.com/jk1ywe8eba7m/ostersund.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/house-south-of-Ostersund-v3.1-1.60-ets2-1.jpg",
+    "description": "House south of Östersund v3.1 1.60 ETS2\n\nHouse south of Östersund. At this house you can rest. Its a very luxerious house with a road leading up to it that also fully made by me. This is a Standalone Scs Addon. Because the house is surrounded by lakes its perfect for pictures!\n\nChangelog 3.1Fixed invisble wallUpdated for 1.60",
+    "sourceUrl": "https://www.ets2world.com/house-south-of-ostersund-v3-1-1-60-ets2/",
+    "timestamp": "2026-07-09T15:20:34Z"
+  },
+  {
+    "id": "https___www_ets2world_com_more_european_cities_v1_0_1_60_ets2_",
+    "name": "More European Cities V1 0 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/hna7wima6za3/More_European_Cities__v1.0_.scs.html",
+    "modsfileUrl": "https://modsfile.com/hna7wima6za3/More_European_Cities__v1.0_.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/more-european-cities-v1.0-1.60-ets2-1.jpg",
+    "description": "More European Cities v1.0 1.60 ETS2\n\nABOUT THIS MODThis free mod enables 90 SCS Software scenery towns across the European base map to be playable by adding existing or brand-new delivery points. Spanning 2 countries — if you enjoy this mod, please consider supporting on Patreon to help bring more content to life!\n\nNEW DESTINATIONSTowns previously invisible onyour route become realdelivery stops with playablebusinesses.\n\nREVAMPED LOGISTICSDelivery points reassigned to their nearest logical town, with new loading points added.\n\nBASE GAME CONSISTENTFull consistency with the base game, guaranteeing renewed diversity during your missions.66",
+    "sourceUrl": "https://www.ets2world.com/more-european-cities-v1-0-1-60-ets2/",
+    "timestamp": "2026-07-09T15:20:35Z"
+  },
+  {
+    "id": "https___www_ets2world_com_brutal_traffic_v8_1_ets2_",
+    "name": "Brutal Traffic V8 1 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/rwkqx51iiw2w/Brutal_Traffic_V8.1.scs.html",
+    "modsfileUrl": "https://modsfile.com/rwkqx51iiw2w/Brutal_Traffic_V8.1.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/Brutal-Traffic-v8.1-ETS2.jpeg",
+    "description": "Brutal Traffic v8.1 ETS2\n\nCompatible with all maps and all dlc’sRealistic Traffic JamsEnhanced Traffic BehaviourCompatible with Any AI Traffic PacksLowered Ammount of Trucks and BusesImproved Traffic FlowRoad Traffic AccidentsCustom Road EventsRealistic Traffic Density Adjustments for Day and NightSmarter Traffic at Intersections and JunctionsAI Vehicles React to Weather Conditions\n\nReworked AI Traffic BehaviorIncreased Traffic DensityImproved Traffic FlowRefined AI Lane Changing & OvertakingGeneral Tweaks & Improvements",
+    "sourceUrl": "https://www.ets2world.com/brutal-traffic-v8-1-ets2/",
+    "timestamp": "2026-07-09T15:20:38Z"
+  },
+  {
+    "id": "https___www_ets2world_com_man_tg3_2020_by_gloover_v1_8_1_60_ets2_",
+    "name": "Man Tg3 2020 By Gloover V1 8 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/92sz796syg16/unzip_MAN_TG3_2020.zip.html",
+    "modsfileUrl": "https://modsfile.com/92sz796syg16/unzip_MAN_TG3_2020.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/MAN-TG3-2020-by-Gloover-v1.8-1.60-ETS2-2.jpeg",
+    "description": "MAN TG3 2020 by Gloover v1.8 1.60 ETS2\n\nThis Add-On adds a new standalone MAN TG3 2020-2024, this Add-On will transform the known MAN TG3 from SCS Software into the one how it should actually be without being restricted to limits.\n\nContent: There are a lot of customization options, too many to list them all.Game Version: 1.60\n\nChangelog 1.8Adaption to game version 1.60Added 6×2 midlift custom sideskirtsAdded 6×2 taglift custom sideskirtsAdded 6×4 custom sideskirts",
+    "sourceUrl": "https://www.ets2world.com/man-tg3-2020-by-gloover-v1-8-1-60-ets2/",
+    "timestamp": "2026-07-09T15:20:40Z"
+  },
+  {
     "id": "https___www_ets2world_com_busscar_vissta_buss_hi_o400rsd_1_60_ets2_",
     "name": "Busscar Vissta Buss Hi O400Rsd 1 60 Ets2",
     "category": "ETS2 Mod",
