@@ -1,5 +1,18 @@
 [
   {
+    "id": "https___www_ets2world_com_better_flares_v4_7_2_ets2_",
+    "name": "Better Flares V4 7 2 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/vmhei6h6aex9/UNZIP_Better_Flares.zip.html",
+    "modsfileUrl": "https://modsfile.com/vmhei6h6aex9/UNZIP_Better_Flares.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/better-flares-v4.7.2-ets2-1.jpg",
+    "description": "Better Flares v4.7.2 ETS2\n\nCompletely reworked flaresRealistic headlights patterns with 6 different colors (up to 140 modded trucks supported)Modified SCS AI traffic with 9 headlights color variants and 2 red/brake signals in Traffic AddonDimmed street lamps in City Lights Addon\n\nChanges:More improvements to flare texture and effectsLots of small adjustments to size and scale of the flaresSlightly increased saturation for all headlights except dot/ece 6500Improved compatibility with Sound Fixes Pack",
+    "sourceUrl": "https://www.ets2world.com/better-flares-v4-7-2-ets2/",
+    "timestamp": "2026-07-15T02:42:36Z"
+  },
+  {
     "id": "https___www_ets2world_com_realistic_weather_system_v2_9_1_60_ats_2_",
     "name": "Realistic Weather System V2 9 1 60 Ats 2",
     "category": "ETS2 Mod",
