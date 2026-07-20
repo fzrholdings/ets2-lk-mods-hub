@@ -1,5 +1,44 @@
 [
   {
+    "id": "https___www_ets2world_com_map_of_alaska_v0_8_8_1_60_ats_",
+    "name": "Map Of Alaska V0 8 8 1 60 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/23lgnkinnaol/Alaska_North_to_the_Future.scs.html",
+    "modsfileUrl": "https://modsfile.com/23lgnkinnaol/Alaska_North_to_the_Future.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/map-of-alaska-v0.8.8-1.60-ats-1.jpg",
+    "description": "Map of Alaska v0.8.8 1.60 ATS\n\nTravel through 15 cities across the largest US state, with over 1200 miles from north to south.\n\nIconic Highways:Dalton Hwy & Elliott HwySterling HwyParks Hwy\n\nFace the challenges of the Arctic Circle!Snow, ice, phase 3 storms are just a few obstacles you’ll have to overcome in order to deliver valuable loads of supplies to the most remote places in the world.Are you ready for the challenges of The Last Frontier?\n\nAlso a road connection to Promods Canada is included.",
+    "sourceUrl": "https://www.ets2world.com/map-of-alaska-v0-8-8-1-60-ats/",
+    "timestamp": "2026-07-20T14:16:11Z"
+  },
+  {
+    "id": "https___www_ets2world_com_sfx_f_max_500_1850t_euro6_v2_14_1_1_60_ets2_",
+    "name": "Sfx F Max 500 1850T Euro6 V2 14 1 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/4nxa7hl3wa4q/unzip_SFX_F-MAX_500_1850T_Euro6.zip.html",
+    "modsfileUrl": "https://modsfile.com/4nxa7hl3wa4q/unzip_SFX_F-MAX_500_1850T_Euro6.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/sfx-f-max-500-1850t-euro6-v2.14.1-1.60-ets2-1.jpg",
+    "description": "SFX F-MAX 500 1850T Euro6 v2.14.1 1.60 ETS2\n\nChangelogVersion 2.14.1Improved retarder sound: the retarder now engages and disengages smoothly.Fixed audio issues caused by the game developers changes to FMOD priority settingsResolved an error where cabin switch sounds, interior noises, road noise, etc., were cutting out or disappearing.\n\nInformation about the sound packageTrue positioning of sound sources. Just like a real truck.Realistic sounds of the 13 liter Eqotorq 12.7 engine. Very accurate, natural and detailed audio recorded in a variety of driving modes.The mechanics of the real truck sound have been recreated, and the feel of the accelerator pedal is exactly like in a real truck. Multiple engine, gearbox and turbo load levels allow you to experience this to the fullest.All inter...",
+    "sourceUrl": "https://www.ets2world.com/sfx-f-max-500-1850t-euro6-v2-14-1-1-60-ets2/",
+    "timestamp": "2026-07-20T14:16:12Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ksw_brockway_761_v1_60_ats_",
+    "name": "Ksw Brockway 761 V1 60 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/yr4u46zae51i/KSW_brockway_761_v1.60.scs.html",
+    "modsfileUrl": "https://modsfile.com/yr4u46zae51i/KSW_brockway_761_v1.60.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/ksw-brockway-761-v1.60-ats-1.jpg",
+    "description": "KSW Brockway 761 v1.60 ATS\n\nIncludes:3 Cabins: 30/60 Sleeper, Daycab3 Chassis: 4×2,6×4,8×6Lots of engines and transmission optionsOriginal interior with 8 color optionsSkins and paintjobsLots of tuning and accessoriesLightpack includedStandalone",
+    "sourceUrl": "https://www.ets2world.com/ksw-brockway-761-v1-60-ats/",
+    "timestamp": "2026-07-20T14:16:13Z"
+  },
+  {
     "id": "https___www_ets2world_com_luga_map_v1_2_1_60_ets2_",
     "name": "Luga Map V1 2 1 60 Ets2",
     "category": "ETS2 Mod",
