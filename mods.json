@@ -1,5 +1,44 @@
 [
   {
+    "id": "https___www_ets2world_com_kenworth_t908_v1_60_ets2_",
+    "name": "Kenworth T908 V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/3hl61h2fvjei/Kenworth_T_908.scs.html",
+    "modsfileUrl": "https://modsfile.com/3hl61h2fvjei/Kenworth_T_908.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/kenworth-t908-v1.60-ets2-1.jpg",
+    "description": "Kenworth T908 v1.60 ETS2\n\n– Fully standalone model– Buying in the showroom “MAN”– 4 cab variants– 4 chassis (4 for the right rudders)– Many tuning (external)– Its interior is 3 types (+ right hand drive)– Your wheels– Your own sound + new N14 v2.0 and N14c– Paint in metallic\n\nTested for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/kenworth-t908-v1-60-ets2/",
+    "timestamp": "2026-07-23T02:59:35Z"
+  },
+  {
+    "id": "https___www_ets2world_com_zil_130_131_133_trucks_trailers_v1_60_ets2_",
+    "name": "Zil 130 131 133 Trucks Trailers V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/msr9lkv9plid/ZiL_130-131-133_Trucks___Trailers_v1.60.rar.html",
+    "modsfileUrl": "https://modsfile.com/msr9lkv9plid/ZiL_130-131-133_Trucks___Trailers_v1.60.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/zil-130-131-133-trucks-2B-trailers-v1.60-ets2-1.jpg",
+    "description": "ZiL 130-131-133 Trucks + Trailers v1.60 ETS2\n\nIncluded in the Pack:– The ZIL-130 truck has 2 chassis – 4×2 and 4x2_bdf.– The ZIL-131 truck has 4 chassis – 4×4, 6×6, 6x6_bdf, 6x6_low.– The ZIL-133 truck has 4 chassis – 6×4, 6x4_1, 6x4_bdf, 6x6_bdf_1.– 4 Odaz Trailers– 2 GKB Platform BDF Trailers\n\nFeatures:– Autonomous, do not replace anything.– Can be purchased at a DAF dealer or as a modification from a ZIL dealer.– Original wheels + new ones added.– Spiral cables with physics.– Your own new camera.– Advanced coupling with standard trailers.– Working pack of original ODAZ and GKB trailers (separately).– There is animation of both windows and handles.– Working indication of turns and emergency lights.\n\nTested for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/zil-130-131-133-trucks-trailers-v1-60-ets2/",
+    "timestamp": "2026-07-23T02:59:37Z"
+  },
+  {
+    "id": "https___www_ets2world_com_benalu_c34_2005_tipper_trailer_v1_60_ets2_",
+    "name": "Benalu C34 2005 Tipper Trailer V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/v25hquy39dje/Benalu_C34_2005.scs.html",
+    "modsfileUrl": "https://modsfile.com/v25hquy39dje/Benalu_C34_2005.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/07/benalu-c34-2005-tipper-trailer-v1.60-ets2-1.jpg",
+    "description": "Benalu C34 2005 Tipper Trailer v1.60 ETS2\n\n– Standalone– For sale in the property– Advanced coupling– Cable simulation– Standard loads\n\nTested for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/benalu-c34-2005-tipper-trailer-v1-60-ets2/",
+    "timestamp": "2026-07-23T02:59:39Z"
+  },
+  {
     "id": "https___www_ets2world_com_maz_5440_6430_v1_60_ets2_",
     "name": "Maz 5440 6430 V1 60 Ets2",
     "category": "ETS2 Mod",
