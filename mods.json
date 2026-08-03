@@ -1,5 +1,31 @@
 [
   {
+    "id": "https___www_ets2world_com_d_tec_flexitrailer_collection_v11_0_1_60_1_61_x_ats_",
+    "name": "D Tec Flexitrailer Collection V11 0 1 60 1 61 X Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/i4pzxl7e82pp/ATS_1.61_TRAILER_D-TEC_FLEXITRAILER_v11.0_LITE_by_Cyrus.scs.html",
+    "modsfileUrl": "https://modsfile.com/i4pzxl7e82pp/ATS_1.61_TRAILER_D-TEC_FLEXITRAILER_v11.0_LITE_by_Cyrus.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/D-TEC-FLEXITRAILER-COLLECTION-v11.0-1.60-1.61.x-ATS-2.jpeg",
+    "description": "D-TEC FLEXITRAILER COLLECTION v11.0 1.60-1.61.x ATS\n\nv11.0 changes:Updated to ATS 1.60-1.61.xFixed warnings about ADR plates.Cargos adapted to latest DLC’S companies.\n\nv10.0 changes:Updated to ATS 1.58.xCargos adapted to new SCS cargo system (again).Cargos adapted to latest DLC’S companies.\n\nv9.0 changes:Updated to ATS 1.56.xShould work correctly from version 1.54 to 1.56.x.All chassis ownable & freight market (ALL CHASSIS & FREIGHT MARKET ONLY IN FULL VERSION).Cargos adapted to new SCS cargo system.New cargo icons.Totally reworked mod.Some corrections on 3D models.3D models lightened to improve FPS.Improved freight market (ONLY IN FULL VERSION).Added to traffic (all chassis, colours, configurations & cargos) (ONLY IN FULL VERSION).Improved license plate lights.Added reflective parts.Li...",
+    "sourceUrl": "https://www.ets2world.com/d-tec-flexitrailer-collection-v11-0-1-60-1-61-x-ats/",
+    "timestamp": "2026-08-03T03:02:32Z"
+  },
+  {
+    "id": "https___www_ets2world_com_realistic_rain_reflections_standalone_v1_2_ets2_",
+    "name": "Realistic Rain Reflections Standalone V1 2 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/dnk1jlneaf13/realistic_rain_reflections_standalone_v1_2.scs.html",
+    "modsfileUrl": "https://modsfile.com/dnk1jlneaf13/realistic_rain_reflections_standalone_v1_2.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/realistic-rain-reflections-standalone-v1.2-ets2-1.jpg",
+    "description": "Realistic Rain Reflections Standalone v1.2 ETS2\n\nThis is the standalone version of the Realistic Rain Reflections mod, which improves wet road textures, reflections, wet weather and rain for ETS2 and ATS.\n\nFor use on its own or with other weather mods.\n\nFeatures:Improved wet road texturesImproved wet road reflectionsPuddle effectsSidewalk reflectionsImproved rainy weatherImproved rainfall and windshield rain\n\nCompatibility: ETS2 and ATS 1.60",
+    "sourceUrl": "https://www.ets2world.com/realistic-rain-reflections-standalone-v1-2-ets2/",
+    "timestamp": "2026-08-03T03:02:34Z"
+  },
+  {
     "id": "https___www_ets2world_com_scania_rjl_interior_bundle_v1_0_ets2_",
     "name": "Scania Rjl Interior Bundle V1 0 Ets2",
     "category": "ETS2 Mod",
