@@ -1,5 +1,31 @@
 [
   {
+    "id": "https___www_ets2world_com_featherlite_car_trailer_v3_0_1_60_1_61_x_ats_",
+    "name": "Featherlite Car Trailer V3 0 1 60 1 61 X Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/k04tgomzbh1v/ATS_1.61_TRAILER_FEATHERLITE_CAR_TRAILER_v3.0_LITE.scs.html",
+    "modsfileUrl": "https://modsfile.com/k04tgomzbh1v/ATS_1.61_TRAILER_FEATHERLITE_CAR_TRAILER_v3.0_LITE.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/FEATHERLITE-CAR-TRAILER-v3.0-1-60-1.61.x-ATS-3.jpeg",
+    "description": "FEATHERLITE CAR TRAILER v3.0 1-60-1.61.x ATS\n\nFULL version includes:All skins (47).All cargos (25).Freight market (All cargos & skins).Trailers in traffic (LOW FREQUENCY. All cargos & skins).\n\nFEATHERLITE CAR TRAILERS v3.0 LITE.\n\nv3.0 changes:Updated to ATS 1.61.x.Now available from 0 level.Added 8 new skins (ONLY IN FULL VERSION).Added missing cargo icon.Added latest DLC’s companies to load/unload.Other minor changes.\n\nv2.0 changes:Updated to ATS 1.57.x.Should work O.K. from 1.54 to 1.57.xUpdated def files.Real cargos weight.Improved shadow.New mod dealer iconAdded latest DLC’s companies to load/unload (Louisiana included).",
+    "sourceUrl": "https://www.ets2world.com/featherlite-car-trailer-v3-0-1-60-1-61-x-ats/",
+    "timestamp": "2026-08-05T02:45:01Z"
+  },
+  {
+    "id": "https___www_ets2world_com_wbpd_promods_v1_8_ets2_",
+    "name": "Wbpd Promods V1 8 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/3lz8ogkxkvsr/wbpd_pm_rc.scs.html",
+    "modsfileUrl": "https://modsfile.com/3lz8ogkxkvsr/wbpd_pm_rc.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/wbpd-promods-v1.8-ets2-1.jpg",
+    "description": "WBPD – Promods v1.8 ETS2\n\nFixes issues between Promods and WBPD (West Balkans Path-Breaker’s Direction) Map by Septian_MR following the re-adding of Subotica in PMFixes a bug that was causing crashes with WBPD v5.7",
+    "sourceUrl": "https://www.ets2world.com/wbpd-promods-v1-8-ets2/",
+    "timestamp": "2026-08-05T02:45:03Z"
+  },
+  {
     "id": "https___www_ets2world_com_scania_next_gen_rs_interior_bundle_v1_0_ets2_",
     "name": "Scania Next Gen Rs Interior Bundle V1 0 Ets2",
     "category": "ETS2 Mod",
