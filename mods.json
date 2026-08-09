@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_sun_valley_car_carrier_trailer_v1_0_1_60_1_61_x_ats_",
+    "name": "Sun Valley Car Carrier Trailer V1 0 1 60 1 61 X Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/j9s4x28b1cf7/ATS_1.60_TRAILER_SUN_VALLEY_CAR_CARRIER_v1.0_LITE_bu_Cyrus.scs.html",
+    "modsfileUrl": "https://modsfile.com/j9s4x28b1cf7/ATS_1.60_TRAILER_SUN_VALLEY_CAR_CARRIER_v1.0_LITE_bu_Cyrus.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/sun-valley-car-carrier-trailer-v1.0-ats-1.60-1.61.x-ats-1.jpg",
+    "description": "SUN VALLEY CAR CARRIER TRAILER v1.0 1.60-1.61.x ATS\n\nSUN VALLEY CAR CARRIER TRAILER v1.0 LITE.\n\nFeatures v1.0:Updated to ATS 1.60-1.61.x.Cargos adapted to new SCS cargo system.Reworked lights, cargos & 3D models to improve FPS.9 cargos with real weight (ONLY IN FULL VERSION. 3 IN LITE VERSION).Ownable, freight market & traffic (FREIGHT MARKET & TRAFFIC ONLY IN FULL VERSION).Freight market & traffic with all chassis colours and cargos (FREIGHT MARKET & TRAFFIC ONLY IN FULL VERSION).Added chromed logo option (ONLY IN FULL VERSION).LOD model added (ONLY IN FULL VERSION).Added locale files.Own wheels on ownable trailerFixed “too many índices” warning.Added metallic paint option (ONLY IN FULL VERSION).Cargos updated to latest DLC’S.Other minor corrections.Gamelog clean.\n\nFULL version include...",
+    "sourceUrl": "https://www.ets2world.com/sun-valley-car-carrier-trailer-v1-0-1-60-1-61-x-ats/",
+    "timestamp": "2026-08-09T01:57:25Z"
+  },
+  {
+    "id": "https___www_ets2world_com_kamaz_6460_v1_60_ets2_",
+    "name": "Kamaz 6460 V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/6oxj4quubl9f/KamAZ_6460.scs.html",
+    "modsfileUrl": "https://modsfile.com/6oxj4quubl9f/KamAZ_6460.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/kamaz-6460-v1.60-ets2-1.jpg",
+    "description": "Kamaz 6460 v1.60 ETS2\n\n8 Chassis Options21 Engine Options30 Transmission Options12 Steering Wheel Options6 Paintjob OptionsCargo OptionsMany Tuning Options\n\nTested for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/kamaz-6460-v1-60-ets2/",
+    "timestamp": "2026-08-09T01:57:26Z"
+  },
+  {
+    "id": "https___www_ets2world_com_kamaz_4410_offroad_v1_60_ets2_",
+    "name": "Kamaz 4410 Offroad V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/6oxj4quubl9f/KamAZ_6460.scs.html",
+    "modsfileUrl": "https://modsfile.com/6oxj4quubl9f/KamAZ_6460.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/kamaz-4410-offroad-v1.60-ets2-1.jpg",
+    "description": "KamAZ 4410 OffRoad v1.60 ETS2\n\n6×6 chassis16 engine options16 transmission options24 steering wheel options2 interior optionsPaint job optionsTuning options\n\nTested for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/kamaz-4410-offroad-v1-60-ets2/",
+    "timestamp": "2026-08-09T01:57:28Z"
+  },
+  {
+    "id": "https___www_ets2world_com_oztreyler_dumper_trailer_hdr_670_v1_0_ets2_",
+    "name": "Oztreyler Dumper Trailer Hdr 670 V1 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/4yf5qezazcoo/Pay_Hafriyat.scs.html",
+    "modsfileUrl": "https://modsfile.com/4yf5qezazcoo/Pay_Hafriyat.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/oztreyler-dumper-trailer-hdr-670-v1.0-ets2-1.jpg",
+    "description": "Oztreyler Dumper Trailer HDR 670 v1.0 ETS2\n\nOztreyler Dumper Trailer HDR 670StandaloneHigh Quality TextureWork all versionsHave fun",
+    "sourceUrl": "https://www.ets2world.com/oztreyler-dumper-trailer-hdr-670-v1-0-ets2/",
+    "timestamp": "2026-08-09T01:57:30Z"
+  },
+  {
     "id": "https___www_ets2world_com_scania_r560_v8_v1_0_ets2_",
     "name": "Scania R560 V8 V1 0 Ets2",
     "category": "ETS2 Mod",
