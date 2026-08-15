@@ -1,5 +1,44 @@
 [
   {
+    "id": "https___www_ets2world_com_trafico_de_buses_r7mods_1_60_ets2_",
+    "name": "Trafico De Buses R7Mods 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/p9bukt5dojvn/Trafico_de_Buses_R7Mods.rar.html",
+    "modsfileUrl": "https://modsfile.com/p9bukt5dojvn/Trafico_de_Buses_R7Mods.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/trafico-de-buses-r7mods-1.60-ets2-1.jpg",
+    "description": "Trafico de Buses R7Mods 1.60 ETS2\n\nnew versionMore than 15 bus modelsEditable skins for each bus model\n\nOptional activatorsBusesTrucksSemi-trailersPolice vansToyota HiaceVansVariety of buses, trucks, and more.",
+    "sourceUrl": "https://www.ets2world.com/trafico-de-buses-r7mods-1-60-ets2/",
+    "timestamp": "2026-08-15T01:25:40Z"
+  },
+  {
+    "id": "https___www_ets2world_com_hong_kong_minibus_paintjobs_for_karsan_jest_v1_0_ets2_",
+    "name": "Hong Kong Minibus Paintjobs For Karsan Jest V1 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/pkihiyja4beu/UNZIP_hk_minibus_skins_4_karsan_jest.zip.html",
+    "modsfileUrl": "https://modsfile.com/pkihiyja4beu/UNZIP_hk_minibus_skins_4_karsan_jest.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/hong-kong-minibus-paintjobs-for-karsan-jest-v1.0-ets2-1.jpg",
+    "description": "Hong Kong Minibus Paintjobs for Karsan Jest v1.0 ETS2\n\nIncludes two paint jobs, red top and green top.Each paint job is in its own SCS file.After extracting, drag both SCS files into the mod folder, then open the game’s mod manager and activate one of them. (Do not activate both)\n\nKarsan Jest Mini Bus(by trzpro) is required to make these paintjobs work.",
+    "sourceUrl": "https://www.ets2world.com/hong-kong-minibus-paintjobs-for-karsan-jest-v1-0-ets2/",
+    "timestamp": "2026-08-15T01:25:42Z"
+  },
+  {
+    "id": "https___www_ets2world_com_daf_paccar_mx_13_stock_sound_v3_0_1_60_ets2_",
+    "name": "Daf Paccar Mx 13 Stock Sound V3 0 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/ecf6xtlepvk0/DAF_Paccar_MX-13_Stock_sound_V3.0.zip.html",
+    "modsfileUrl": "https://modsfile.com/ecf6xtlepvk0/DAF_Paccar_MX-13_Stock_sound_V3.0.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/daf-paccar-mx-13-stock-sound-v3.0-1.60-ets2-1.jpg",
+    "description": "DAF Paccar MX-13 Stock sound v3.0 1.60 ETS2\n\nVersion 3.0 Changelog:Total mod rebuildNow compatible with DAF XD\n\nDescription:This mod is Paccar MX-13 stock sound for SCS DAF 2021 XF, XG, XD and XF Euro 6(although the XD only has MX-11, I still feel like adding a support for it)\n\nLatest Version Feature:Paccar MX-13 410-530HP with stock soundPaccar MX-11 300-450HP with stock MX-13 soundFull directional sound, the engine will sound different whether you’re infront, beside, behind, or inside the truckZF Retarder soundAutomatically activated engine fan when the truck goes over 1500rpm over 5 secondsInterior insulation effectsSound attenuation effects for realistic sound fade off from the distanceSound distortions and directional effects for realistic distortions from different positions aroun...",
+    "sourceUrl": "https://www.ets2world.com/daf-paccar-mx-13-stock-sound-v3-0-1-60-ets2/",
+    "timestamp": "2026-08-15T01:25:44Z"
+  },
+  {
     "id": "https___www_ets2world_com_kassbohrer_tanker_trailer_1_60_ets2_",
     "name": "Kassbohrer Tanker Trailer 1 60 Ets2",
     "category": "ETS2 Mod",
