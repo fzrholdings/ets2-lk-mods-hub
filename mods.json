@@ -1,5 +1,44 @@
 [
   {
+    "id": "https___www_ets2world_com_mb_1620_juniorgamer_rua_mods_v1_0_ets2_2_",
+    "name": "Mb 1620 Juniorgamer Rua Mods V1 0 Ets2 2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/21hhcb4bdt0b/mb_1620_juniorgamer_ruanmods.scs.html",
+    "modsfileUrl": "https://modsfile.com/21hhcb4bdt0b/mb_1620_juniorgamer_ruanmods.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/mb-1620-juniorgamer-rua-mods-v1.0-ets2-1.jpg",
+    "description": "MB 1620 JuniorGamer Rua Mods v1.0 ETS2\n\nWorking window animationPersonal shadowsTuning slots and partsSkinsFull StandaloneFull LightmaskOwn Flarepack4×2 FT chassis (high and low)Transmission optionsPersonal interiors",
+    "sourceUrl": "https://www.ets2world.com/mb-1620-juniorgamer-rua-mods-v1-0-ets2-2/",
+    "timestamp": "2026-08-20T01:25:07Z"
+  },
+  {
+    "id": "https___www_ets2world_com_oldenburger_skin_v1_0_ets2_",
+    "name": "Oldenburger Skin V1 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/3r3uppzvu670/OLDENBURGER_Skin_for_Scania.scs.html",
+    "modsfileUrl": "https://modsfile.com/3r3uppzvu670/OLDENBURGER_Skin_for_Scania.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/oldenburger-skin-v1.0-ets2-1.jpg",
+    "description": "OLDENBURGER Skin v1.0 ETS2\n\nCompatible TrucksSCS Scania SEugene Scania PGRS S\n\nCompatible TrailersSCS Box TrailerKast NTM Trailer\n\nLightbox CompatibilityIncludes a custom Lightbox texture.",
+    "sourceUrl": "https://www.ets2world.com/oldenburger-skin-v1-0-ets2/",
+    "timestamp": "2026-08-20T01:25:08Z"
+  },
+  {
+    "id": "https___www_ets2world_com_dindix_map_v2_beta_ets2_",
+    "name": "Dindix Map V2 Beta Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/8g4jnfr9nwp7/DinDix_V2_beta.scs.html",
+    "modsfileUrl": "https://modsfile.com/8g4jnfr9nwp7/DinDix_V2_beta.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/dindix-map-v2-beta-ets2-1.jpg",
+    "description": "Dindix map v2 beta ETS2\n\nMap Expansion – New Routes & ActivitiesThe map has been expanded with a brand-new area connecting the **village, beach, resort, and farm**, bringing new routes and ways to explore the region.\n\nNew AreaA completely new section has been added to the map, extending the village and opening up new roads and destinations to explore.\n\nBeach–Resort FerryTake the ferry between the **beach and resort**, providing a new way to travel and adding an alternative route around the map.\n\nBeach Drift TrackLooking for something different? Head to the beach and test your truck control on the new **drift track**.",
+    "sourceUrl": "https://www.ets2world.com/dindix-map-v2-beta-ets2/",
+    "timestamp": "2026-08-20T01:25:10Z"
+  },
+  {
     "id": "https___www_ets2world_com_realistic_rain_reflections_standalone_v1_3_ets2_",
     "name": "Realistic Rain Reflections Standalone V1 3 Ets2",
     "category": "ETS2 Mod",
