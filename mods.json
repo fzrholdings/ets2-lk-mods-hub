@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_sweden_extended_vanern_project_v1_0_ets2_",
+    "name": "Sweden Extended Vanern Project V1 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/zp6e3or7hq0m/vanern160beta.scs.html",
+    "modsfileUrl": "https://modsfile.com/zp6e3or7hq0m/vanern160beta.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/sweden-extended-28vanern-project-29-v1.0-ets2-1.jpg",
+    "description": "Sweden Extended (Vänern Project) v1.0 ETS2\n\nSweden Extended includes a wide variety of cities and areas to explore.This mod is a SCS map addon. 1.60\n\nCities included:SäffleKöpmannebroGrästorpMariestadÅtorpTöcksforsTorsby(NEW)Svensby(NEW)Sunne (NEW)\n\nWhy:A lot of areas are pretty empty in Sweden. With this mod you will have more cities and roads around Vänern Lake.\n\nNew Name?Sweden Extended is the new name of Vänern Project. This is because its expanding to the north! I have shown some teasers. But in the next update (1.61) there will be 2 cities added wich names i cant reveal yet!",
+    "sourceUrl": "https://www.ets2world.com/sweden-extended-vanern-project-v1-0-ets2/",
+    "timestamp": "2026-08-22T01:24:27Z"
+  },
+  {
+    "id": "https___www_ets2world_com_immersive_traffic_ets2_v1_0_ets2_",
+    "name": "Immersive Traffic Ets2 V1 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/6vm4ah2htbbx/Immersive_Traffic_ETS2.scs.html",
+    "modsfileUrl": "https://modsfile.com/6vm4ah2htbbx/Immersive_Traffic_ETS2.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/immersive-traffic-ets2-v1.0-ets2-1.jpg",
+    "description": "Immersive Traffic ETS2 v1.0 ETS2\n\nFeatures:Compatible To Work With ETS2 Game Version 1.60.Improved spawn ratio of cars/trucks/buses.Varied traffic density – high at day, low at nighIncreased limit of traffic on roads.Increased number of traffic in cities.Improvements in AI behavior.",
+    "sourceUrl": "https://www.ets2world.com/immersive-traffic-ets2-v1-0-ets2/",
+    "timestamp": "2026-08-22T01:24:28Z"
+  },
+  {
+    "id": "https___www_ets2world_com_photograpfix_nvidia_presets_v1_60_ets2_",
+    "name": "Photograpfix Nvidia Presets V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/3v8imq5wjz0n/PhotoGrapfix_-_Nvidia_Presets_ETS2_ATS.zip.html",
+    "modsfileUrl": "https://modsfile.com/3v8imq5wjz0n/PhotoGrapfix_-_Nvidia_Presets_ETS2_ATS.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/photograpfix-n-nvidia-presets-v1.60-ets2-1.jpg",
+    "description": "PhotoGrapfix – Nvidia Presets v1.60 ETS2\n\nImproved lightingImproved HDRImproved shadowsImproved saturationImproved sharpen of the imageImproved visual detailsImproved clarityImproved skybox lightingMore readable dashboards",
+    "sourceUrl": "https://www.ets2world.com/photograpfix-nvidia-presets-v1-60-ets2/",
+    "timestamp": "2026-08-22T01:24:29Z"
+  },
+  {
+    "id": "https___www_ets2world_com_road_to_caucasus_v2_9_1_60_ets2_",
+    "name": "Road To Caucasus V2 9 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/ji0lt3k024rg/RTC_v.2.9.scs.html",
+    "modsfileUrl": "https://modsfile.com/ji0lt3k024rg/RTC_v.2.9.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/road-to-caucasus-v2.9-1.60-ets2-1.jpg",
+    "description": "Road to Caucasus v2.9 1.60 ETS2\n\nChanges v2.9The cities of Nalchik & Baksan has been redesigned.Many intersections and roads have been rebuiltMany bugs & rods have been fixed.\n\nA picturesque map that includes southern Russia, a small part of Azerbaijan, the Republic of Kalmykia, the Republic of Dagestan, the Republic of Chechnya, North Ossetia, the Republic of Ingushetia, and Kabardino-Balkaria. Roads, fields, forests, bodies of water. And, of course, roads. Which we suggest you drive.",
+    "sourceUrl": "https://www.ets2world.com/road-to-caucasus-v2-9-1-60-ets2/",
+    "timestamp": "2026-08-22T01:24:31Z"
+  },
+  {
     "id": "https___www_ets2world_com_setra_531_dt_v1_0_ets2_",
     "name": "Setra 531 Dt V1 0 Ets2",
     "category": "ETS2 Mod",
