@@ -1,5 +1,31 @@
 [
   {
+    "id": "https___www_ets2world_com_mercedes_benz_actros_mp1_v1_0_ets2_",
+    "name": "Mercedes Benz Actros Mp1 V1 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/v552cmkoyekf/Mercedes-Benz_Actros_MP1_v.1.rar.html",
+    "modsfileUrl": "https://modsfile.com/v552cmkoyekf/Mercedes-Benz_Actros_MP1_v.1.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/mercedes-benz-actros-mp1-v1.0-ets2-1.jpg",
+    "description": "Mercedes-Benz Actros MP1 v1.0 ETS2\n\nTemplate (For cab and license plate)Full baked AOPersonal tuning parts and slotsPersonal interior + tuningCustom animation on interiorPersonal shadowsAll original engines (1831-1857)2 chassis (4×2 Standard/4×2 Low Deck)More transmission optionsCustom EPS soundSkinsWorking window animationFull StandaloneFull LightmaskOwn FlarepackCabin accessories (SISL support etc)Truck Cables",
+    "sourceUrl": "https://www.ets2world.com/mercedes-benz-actros-mp1-v1-0-ets2/",
+    "timestamp": "2026-08-25T01:26:34Z"
+  },
+  {
+    "id": "https___www_ets2world_com_bc_talmu_pack_v1_60_ets2_",
+    "name": "Bc Talmu Pack V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/wskbloyes34y/BC-Talmu_pack.scs.html",
+    "modsfileUrl": "https://modsfile.com/wskbloyes34y/BC-Talmu_pack.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/bc-talmu-pack-v1.60-ets2-1.jpg",
+    "description": "BC-Talmu Pack v1.60 ETS2\n\nThe modification allows you to purchase the legendary Hella Talmu lanterns.Real lanterns for connoisseurs of “old school” and “Holland style”.When creating, high quality materials were used, which made it possible to achieve a more or less real look.For the correct installation of the lights, any modification is required that allows the lights to be installed under the bumper.\n\nFeatures:High quality model of the lantern in low poly (1350 polygons)Two body options (paint, plastic)Two installation options (with mount, without)Two front glass options (white; yellow)Three lighting optionsTwo options for the operation of the lights: DRL (daytime running lights), PRK (position lights)\n\nTested for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/bc-talmu-pack-v1-60-ets2/",
+    "timestamp": "2026-08-25T01:26:36Z"
+  },
+  {
     "id": "https___www_ets2world_com_cummins_kta_sound_engine_pack_v1_1_g5_1_60_ats_",
     "name": "Cummins Kta Sound Engine Pack V1 1 G5 1 60 Ats",
     "category": "ETS2 Mod",
