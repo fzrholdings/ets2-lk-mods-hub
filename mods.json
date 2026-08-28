@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_scania_next_gen_770s_interior_pack_v2_0_1_60_ets2_",
+    "name": "Scania Next Gen 770S Interior Pack V2 0 1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/j4dzf9qn8rcw/unzip_Scania_Next_Gen_770S_Interior_Pack.zip.html",
+    "modsfileUrl": "https://modsfile.com/j4dzf9qn8rcw/unzip_Scania_Next_Gen_770S_Interior_Pack.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/scania-next-gen-770s-interior-pack-v2.0-1.60-ets2-1.jpg",
+    "description": "Scania Next Gen 770S Interior Pack v2.0 1.60 ETS2\n\nFeatures:Custom Interior with 6 variants.Exterior/Interior view.Custom steering wheels for each variant.Non removable curtains.A variety of interior and ambient lights.High Quality AO Bake.For High Roof Only!*Beacon button “O” turns top lights on.Standalone.",
+    "sourceUrl": "https://www.ets2world.com/scania-next-gen-770s-interior-pack-v2-0-1-60-ets2/",
+    "timestamp": "2026-08-28T10:14:06Z"
+  },
+  {
+    "id": "https___www_ets2world_com_scania_ng_s_r_middle_toolbox_v1_5_ets2_",
+    "name": "Scania Ng S R Middle Toolbox V1 5 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/37nl9vy9pfz6/Scania_NG_SR_Middle_Toolbox_1.5.scs.html",
+    "modsfileUrl": "https://modsfile.com/37nl9vy9pfz6/Scania_NG_SR_Middle_Toolbox_1.5.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/scania-ng-s-r-middle-toolbox-v1.5-ets2-1.jpg",
+    "description": "Scania NG S/R Middle Toolbox v1.5 ETS2\n\nPainted & Chrome Variant includedAddon Slots included\n\nCompatibility with:Scania Next Gen R&S (SCS)Scania Next Generation Scania P G R S Series (Eugene)\n\nUpdate for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/scania-ng-s-r-middle-toolbox-v1-5-ets2/",
+    "timestamp": "2026-08-28T10:14:08Z"
+  },
+  {
+    "id": "https___www_ets2world_com_scania_ng_s_r_sunshield_pack_v1_60_ets2_",
+    "name": "Scania Ng S R Sunshield Pack V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/95b95u6ofcoo/Sunsheild_For_Scania_2016_S___R.scs.html",
+    "modsfileUrl": "https://modsfile.com/95b95u6ofcoo/Sunsheild_For_Scania_2016_S___R.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/scania-ng-s-r-sunshield-pack-v1.60-ets2-1.jpg",
+    "description": "Scania NG S/R Sunshield Pack v1.60 ETS2\n\nIncluded 8 SunshieldsWhite & Orange Lightmask included\n\nCompatibility with:Next Generation Scania 2016 (SCS)Next Generation Scania P G R S Series (Eugene)Other Reworks\n\nUpdate for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/scania-ng-s-r-sunshield-pack-v1-60-ets2/",
+    "timestamp": "2026-08-28T10:14:10Z"
+  },
+  {
+    "id": "https___www_ets2world_com_audi_rs6_c8_fix_ets2_",
+    "name": "Audi Rs6 C8 Fix Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/rsjcf9qu1wt2/2023_Audi_RS6_C8_Fix.zip.html",
+    "modsfileUrl": "https://modsfile.com/rsjcf9qu1wt2/2023_Audi_RS6_C8_Fix.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/audi-rs6-c8-fix-ets2-1.jpg",
+    "description": "Very high-quality exterior & interiorHQ UI Dashboard it have digital speedLights interior in the nightOpenable Front WindowsWipers work accuratelyTop Speed: 300 KH\n\nAdded licence plateFixed mirror",
+    "sourceUrl": "https://www.ets2world.com/audi-rs6-c8-fix-ets2/",
+    "timestamp": "2026-08-28T10:14:11Z"
+  },
+  {
     "id": "https___www_ets2world_com_scania_r_traile_fachine_1_60_ets2_",
     "name": "Scania R Traile Fachine 1 60 Ets2",
     "category": "ETS2 Mod",
