@@ -1,5 +1,44 @@
 [
   {
+    "id": "https___www_ets2world_com_interior_scania_s_r_next_gen_v1_1_ets2_",
+    "name": "Interior Scania S R Next Gen V1 1 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/1zzlyeojmfrv/Interior_Scania_S_R_Next_Gen.rar.html",
+    "modsfileUrl": "https://modsfile.com/1zzlyeojmfrv/Interior_Scania_S_R_Next_Gen.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/interior-scania-s-r-next-gen-v1.1-ets2-1-1.jpg",
+    "description": "Interior Scania S/R Next Gen v1.1 ETS2\n\nFull work interior for Scania S/R Next Gen by SCS and PGRS. Full view from exterior, interior light, DLC Addons, Own slots. INTERIOR must be on the FIRST place in mods list. Work with last game version.",
+    "sourceUrl": "https://www.ets2world.com/interior-scania-s-r-next-gen-v1-1-ets2/",
+    "timestamp": "2026-08-31T04:25:46Z"
+  },
+  {
+    "id": "https___www_ets2world_com_passenger_mod_v1_60_ets2_",
+    "name": "Passenger Mod V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/ux5vnuztbor3/passenger_mod.scs.html",
+    "modsfileUrl": "https://modsfile.com/ux5vnuztbor3/passenger_mod.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/passenger-mod-v1.60-ets2-1.jpg",
+    "description": "Passenger Mod v1.60 ETS2\n\nThis mod adds passengers at various ETS2 companies and on maps:EAA, EBR, Rotas Brasil, Eldorado, Bahia, Sul-Parana, RC Brasil, Brasilzao, Elite da Rodagem, Ceibo, Vanessa Pashmina, Grand Utopia and Promods\n\nWARNING:This mod is an adaptation of a trailer, there may be some bugsIf the passenger does not appear, advance the time, (sleep, F7 + enter, or quick travel). They will be available in quick jobs and the freight marketRecommended to use easy parking or automatic parkingIf a trailer appears in the same place as the passengers, use camera 0 + ctrl F9 or F7+enter for workshop\n\nTested for 1.60 game version",
+    "sourceUrl": "https://www.ets2world.com/passenger-mod-v1-60-ets2/",
+    "timestamp": "2026-08-31T04:25:47Z"
+  },
+  {
+    "id": "https___www_ets2world_com_realistic_train_lengths_v1_60_ets2_",
+    "name": "Realistic Train Lengths V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/40jw9bdv4e7k/realistic_train_lengths.scs.html",
+    "modsfileUrl": "https://modsfile.com/40jw9bdv4e7k/realistic_train_lengths.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/08/realistic-train-lengths-v1.60-ets2-1.jpg",
+    "description": "Realistic Train Lengths v1.60 ETS2\n\nThis mod aims to bring a bit more realism/immersion by making the AI trains at proper lengths according to each country/locomotive.\n\nVARIOUS BASE AND DLC COUNTRIESBombardier TRAXX (diesel and Electric):– Random unit train (10-20 cars)– mixed 1 (7-21 cars)– mixed 2 (11-33 cars)– passenger (6-10 cars)\n\nSiemens Vectron:– Random unit train (10-20 cars)– mixed 1 (7-21 cars)– mixed 2 (11-33 cars)\n\nGERMANYBombardier TRAXX (diesel and Electric):– Tank train (10-20 cars)– mixed 1 (5-15 cars)– mixed 2 (7-21 cars)– mixed 3 (8-24 cars)– mixed 4 (11-33 cars)",
+    "sourceUrl": "https://www.ets2world.com/realistic-train-lengths-v1-60-ets2/",
+    "timestamp": "2026-08-31T04:25:48Z"
+  },
+  {
     "id": "https___www_ets2world_com_sisu_r_c_series_v1_60_ets2_2_",
     "name": "Sisu R C Series V1 60 Ets2 2",
     "category": "ETS2 Mod",
