@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_realistic_light_effect_v2_4_9_14_1_61_ets2_",
+    "name": "Realistic Light Effect V2 4 9 14 1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/1i0rr2jclav1/_1.61__ETS2_Realistic_Light_Effect_-_V2.4.9.14.zip.html",
+    "modsfileUrl": "https://modsfile.com/1i0rr2jclav1/_1.61__ETS2_Realistic_Light_Effect_-_V2.4.9.14.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/realistic-light-effect-v2.4.9.14-5B1.61-5D-ets2-1.jpg",
+    "description": "Realistic Light Effect v2.4.9.14 [1.61] ETS2\n\nThe standard SCS truck lights can sometimes feel a little too dark, so I’ve reworked them to provide a brighter, more realistic and immersive lighting experience.You can try it right now and see the difference for yourself.\n\nThis modification improves the appearance and behaviour of truck lights, making them brighter, more realistic and visually immersive, especially during night driving.\n\nConnection OrderFor the best results, place this mod above any graphics mods in your Mod Manager.\n\nMod CompatibilityThe mod is designed to work with all default SCS trucks.",
+    "sourceUrl": "https://www.ets2world.com/realistic-light-effect-v2-4-9-14-1-61-ets2/",
+    "timestamp": "2026-09-09T03:44:16Z"
+  },
+  {
+    "id": "https___www_ets2world_com_realistic_steering_with_keyboard_v4_0_21_1_61_ets2_",
+    "name": "Realistic Steering With Keyboard V4 0 21 1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/76cs4v3da5i6/_1.61__ETS2_Realistic_Steering_with_Keyboard_-_V4.0.21.zip.html",
+    "modsfileUrl": "https://modsfile.com/76cs4v3da5i6/_1.61__ETS2_Realistic_Steering_with_Keyboard_-_V4.0.21.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/realistic-steering-with-keyboard-v4.0.21-5B1.61-5D-ets2-1.jpg",
+    "description": "Realistic Steering with Keyboard v4.0.21 [1.61] ETS2\n\nThis modification improves the steering behaviour when driving with a keyboard, providing a smoother, more natural and realistic driving experience.\n\nIt makes steering inputs feel more progressive and controlled, allowing you to take corners smoothly at higher speeds while significantly reducing sudden steering movements that could cause the truck to lose stability — especially when using realistic suspension settings.\n\nThe goal is simple: make keyboard driving feel smoother, more predictable and enjoyable without sacrificing the realistic feeling of the truck.Connection OrderFor the best experience, place this mod at high priority, above all other mods in your Mod Manager.\n\nMod CompatibilityThe mod is designed to work with all defau...",
+    "sourceUrl": "https://www.ets2world.com/realistic-steering-with-keyboard-v4-0-21-1-61-ets2/",
+    "timestamp": "2026-09-09T03:44:18Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ukrmap_reborn_map_v1_60_ets2_",
+    "name": "Ukrmap Reborn Map V1 60 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/iag9wze9faqa/UkrMap_Reborn_Map_v1.60__1.60.x_.zip.html",
+    "modsfileUrl": "https://modsfile.com/iag9wze9faqa/UkrMap_Reborn_Map_v1.60__1.60.x_.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/ukrmap-reborn-map-v1.60-ets2-1.jpg",
+    "description": "UkrMap Reborn Map v1.60 ETS2\n\nThis modification is a complete rebirth of the Ukraine map for Euro Truck Simulator 2, rebuilt from scratch in the default 1:19 scale and connected to Europe, currently featuring detailed western Ukrainian cities and roads with ongoing expansion.One of the main features of UkrMap Reborn is the high level of detail in the cities. Detailed buildings, recognizable locations, and diverse environments help convey the unique characteristics of Ukrainian cities, making every journey more engaging and atmospheric.\n\n– Completely new map of Ukraine built from scratch– Scale 1:19 (default SCS scale)– Current cities: Lviv, Ternopil, Lutsk, Rivne and surrounding areas– Detailed roads, infrastructure, and realistic Ukrainian atmosphere– Realistic local gas stations (OKKO...",
+    "sourceUrl": "https://www.ets2world.com/ukrmap-reborn-map-v1-60-ets2/",
+    "timestamp": "2026-09-09T03:44:19Z"
+  },
+  {
+    "id": "https___www_ets2world_com_mapa_brasil_sem_limites_v20_86_ets2_",
+    "name": "Mapa Brasil Sem Limites V20 86 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/95ukv3hxl5m4/Mapa_Brasil_Sem_Limites_-_v_20.86.rar.html",
+    "modsfileUrl": "https://modsfile.com/95ukv3hxl5m4/Mapa_Brasil_Sem_Limites_-_v_20.86.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/mapa-brasil-sem-limites-v20.86-ets2-1.jpg",
+    "description": "Mapa Brasil Sem Limites v20.86 ETS2\n\nThis map project was designed for the community whether playing multiplayer with friends or in solo career mode—offering challenges and the satisfaction of overcoming them along the journey.Development is progressing steadily; every new city added brings a fresh challenge to conquer. We are working behind the scenes on various improvements for fans who love driving buses and trucks, facing challenges on both paved and dirt roads.We have ambitious goals, but the dedication poured into every stretch of road and every detail, combined with our love for the community, keeps us going strong. Thank you all for your support and contributions.We now feature simulated bus terminals within the map—something that seemed impossible at the project’s inception but...",
+    "sourceUrl": "https://www.ets2world.com/mapa-brasil-sem-limites-v20-86-ets2/",
+    "timestamp": "2026-09-09T03:44:21Z"
+  },
+  {
     "id": "https___www_ets2world_com_tanju_akdogan_actros_l_maybach_v1_0_ets2_",
     "name": "Tanju Akdogan Actros L Maybach V1 0 Ets2",
     "category": "ETS2 Mod",
