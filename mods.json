@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_realistic_cargo_weight_1_5x_v1_0_ets2_",
+    "name": "Realistic Cargo Weight 1 5X V1 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/4ugqexk1havh/Realistic_Cargo_Weight_1.5x.zip.html",
+    "modsfileUrl": "https://modsfile.com/4ugqexk1havh/Realistic_Cargo_Weight_1.5x.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/realistic-cargo-weight-1.5x-v1.0-ets2-1.jpg",
+    "description": "Realistic Cargo Weight 1.5x v1.0 ETS2\n\nTired of powerful engines and capable gearboxes feeling unnecessary with most vanilla loads?Realistic Cargo Weight 1.5x increases the original cargo mass values by 50% while preserving the balance between light and heavy cargo. It does NOT set every load to the same weight: a light cargo remains relatively light, while an already-heavy cargo becomes a more demanding hauling challenge.World of Trucks CompatibilityDesigned for World of Trucks contracts in both configurations:\n\nExternal Contracts – without your own trailerExternal Market – with your own trailer100-tonne limit: Non-Special Transport loads are limited to a maximum of 100,000 kg for World of Trucks compatibility. In my ETS2 External Contracts test with the 2x version, the log stacker was...",
+    "sourceUrl": "https://www.ets2world.com/realistic-cargo-weight-1-5x-v1-0-ets2/",
+    "timestamp": "2026-09-24T03:46:19Z"
+  },
+  {
+    "id": "https___www_ets2world_com_collision_model_mod_v1_61_ets2_",
+    "name": "Collision Model Mod V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/6pueqvpgqeam/Model_kolizji.scs.html",
+    "modsfileUrl": "https://modsfile.com/6pueqvpgqeam/Model_kolizji.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/collision-model-mod-v1.61-ets2-1.jpg",
+    "description": "Collision Model Mod v1.61 ETS2\n\nThis mod brings realistic collision physics enhancements to various map objects to ETS2 players as a standalone physics improvement mod, perfect for immersive driving across European routes where subtle road features like bridge junctions, sewer manholes, and cracks now properly interact with your truck for authentic heavy duty logistics.\n\nFeatures:Standalone physics modCollision added to bridge junctionsCollision added to sewer manholesCollision added to road patchesCollision added to road cracksCollision added to bollards, traffic cones & advertising bannersCompatible with ProMods (place above map in Mod Manager)Compatible with Asphalt/Bumpy Road modsSubtle bumps for blended road objectsHigh quality detailed collision modelsOptimized for performance\n\nTe...",
+    "sourceUrl": "https://www.ets2world.com/collision-model-mod-v1-61-ets2/",
+    "timestamp": "2026-09-24T03:46:21Z"
+  },
+  {
+    "id": "https___www_ets2world_com_mastergrade_real_pov_reshade_shader_and_preset_v1_61_ets2_",
+    "name": "Mastergrade Real Pov Reshade Shader And Preset V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/ie3v7y06e11i/mastergrade-real-pov-reshade-shader-and-preset-1_61_x.zip.html",
+    "modsfileUrl": "https://modsfile.com/ie3v7y06e11i/mastergrade-real-pov-reshade-shader-and-preset-1_61_x.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/mastergrade-real-pov-reshade-shader-and-preset-v1.61-ets2-1.jpg",
+    "description": "MasterGrade Real POV Reshade Shader and Preset v1.61 ETS2\n\nThis mod brings a custom high realism ReShade preset and shader to ETS2 players as a free visual enhancement pack, perfect for achieving ultra realistic point of view (POV) graphics with natural lighting, depth, and cinematic atmosphere optimized for head tracking / TrackIR users during long haul drives.\n\nFeatures:Custom ReShade Shader FX (built on Snowymoon v2)3 Ready to use Presets: Ultra Cinematic, Balanced, Performance FriendlyOptimized for POV Driving with Head Tracker / TrackIREnhanced Natural Lighting, color grading, depth of field & atmospheric effectsSmart Shader Effects for realism without heavy performance lossHigh Quality Post Processing with optimized bloom, contrast & detailCustom Day/Night/Weather ShadersReal Life...",
+    "sourceUrl": "https://www.ets2world.com/mastergrade-real-pov-reshade-shader-and-preset-v1-61-ets2/",
+    "timestamp": "2026-09-24T03:46:22Z"
+  },
+  {
+    "id": "https___www_ets2world_com_paris_rebuild_v3_6_ets2_",
+    "name": "Paris Rebuild V3 6 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/qshvl7ho33vc/paris_rebuild_v3_6.scs.html",
+    "modsfileUrl": "https://modsfile.com/qshvl7ho33vc/paris_rebuild_v3_6.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/paris-rebuild-v3.6-ets2-1.jpg",
+    "description": "Paris Rebuild v3.6 ETS2\n\nThis mod rebuilds Paris.\n\nKey FeaturesNew roads builtClosed roads rebuilt and openedParis landmarks (Eiffel Tower, Notre Dame)Three additional companiesVegetation removed from Paris & Poissy revealing the buildings and skylinesDirectly connects Porte de Bagnolet, Poissy and GonesseRATP buses added to Paris city trafficProvides northern east/west corridor across France\n\nCompatibility Latest Version: 1.61France DLC requiredPlace above other maps in Mod ManagerThis mod is no longer compatible with Promods 2.71 and beyond as they did their own Paris Rebuild\n\nChanges in v3.6Crash issue fixedRain in tunnel fixedBus station issue fixedBlue road texture issue fixedMinor improvements",
+    "sourceUrl": "https://www.ets2world.com/paris-rebuild-v3-6-ets2/",
+    "timestamp": "2026-09-24T03:46:23Z"
+  },
+  {
     "id": "https___www_ets2world_com_man_tgx_dutch_style_interior_v1_0_ets2_",
     "name": "Man Tgx Dutch Style Interior V1 0 Ets2",
     "category": "ETS2 Mod",
