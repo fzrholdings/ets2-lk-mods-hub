@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_tuning_parts_for_man_tgx_2020_gx_cab_v1_61_ets2_",
+    "name": "Tuning Parts For Man Tgx 2020 Gx Cab V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/0if1vdeot5q2/MAN_TGX_2020_Tuning_Parts.scs.html",
+    "modsfileUrl": "https://modsfile.com/0if1vdeot5q2/MAN_TGX_2020_Tuning_Parts.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/Tuning-Parts-for-MAN-TGX-2020-GX-Cab-v1.61-ETS2-1.jpeg",
+    "description": "Tuning Parts for MAN TGX 2020 GX Cab v1.61 ETS2\n\nIncluded Parts:Roof Grills [03] [Painted]Bottom Grills [02 With Variants ] [Painted]Front Badge [Carbon]Front Bumper [Painted]Front Intake Bar [Painted]Front Intake Cab [Glossy / Mat / Painted / With Double Burner]Front Intake Chs [Painted]Front Light Cover [Painted]Front Logo [Painted / Carbon]Roof Horns L & R [02 Painted / Chrome]Full Painted Mirror [With 2 Variants Light ]Painted Door HandlePainted FilterRoof & Side Deflector With Red LightsSide Panel [Painted]Front Wind Frame [Painted]Middle Exhaust [ 4×2 , 6×2 , 6×4 ]Door Step [Painted]Sideskirt & Chassis Cover [4×2 , 6×2 , 6×4 ]\n\nCompatibility with MAN TGX 2020 (SCS) TruckTested for 1.61 game version",
+    "sourceUrl": "https://www.ets2world.com/tuning-parts-for-man-tgx-2020-gx-cab-v1-61-ets2/",
+    "timestamp": "2026-09-25T04:02:46Z"
+  },
+  {
+    "id": "https___www_ets2world_com_lighting_improvements_v1_61_ets2_",
+    "name": "Lighting Improvements V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/1hnwf3z81jjm/Lighting_Improvements.rar.html",
+    "modsfileUrl": "https://modsfile.com/1hnwf3z81jjm/Lighting_Improvements.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/lighting-improvements-v1.61-ets2-1.jpg",
+    "description": "Lighting Improvements v1.61 ETS2\n\nPlug-in for changing graphics and lightingLighting improvements;Temporary Anti-Aliasing;DLAA/DLSS 3.7;Motion blur.\n\nGo to the ETS2/ATS folderGo to the folder “bin/win_x64”Copy and paste “dxgi.dll ” and “nvngx_dlss.dll ” (for DLSS)Starting the game with DirectX 11Press the “END” or “CTRL+P” key to open the ingame menuDlss for Nvidia only",
+    "sourceUrl": "https://www.ets2world.com/lighting-improvements-v1-61-ets2/",
+    "timestamp": "2026-09-25T04:02:47Z"
+  },
+  {
+    "id": "https___www_ets2world_com_paradiso_g8_1800_dd_scania_k410_b6x2_euro_6_1_61_ets2_",
+    "name": "Paradiso G8 1800 Dd Scania K410 B6X2 Euro 6 1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/qx4fkwsgtl3q/Marcpolo_G8_1800_8x2.rar.html",
+    "modsfileUrl": "https://modsfile.com/qx4fkwsgtl3q/Marcpolo_G8_1800_8x2.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/paradiso-g8-1800-dd-28scania-k410-b6x2-euro-6-29-1.61-ets2-1.jpg",
+    "description": "Paradiso G8 1800 DD – (Scania K410 B6x2 Euro 6) 1.61 ETS2\n\nThe Marcopolo Paradiso 1800 DD G8 Scania K410C 6×2 NB Euro 6 arrives at B4D with a high level of detail and true-to-life accuracy. Developed to provide maximum immersion in Euro Truck Simulator 2, the mod combines quality craftsmanship, excellent performance, and a visual experience that enhances every journey—a release designed for those who seek realism and quality in every detail.",
+    "sourceUrl": "https://www.ets2world.com/paradiso-g8-1800-dd-scania-k410-b6x2-euro-6-1-61-ets2/",
+    "timestamp": "2026-09-25T04:02:49Z"
+  },
+  {
+    "id": "https___www_ets2world_com_police_overhaul_v1_61_ets2_",
+    "name": "Police Overhaul V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/sf1a4749pbec/Police_Overhaul.scs.html",
+    "modsfileUrl": "https://modsfile.com/sf1a4749pbec/Police_Overhaul.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/police-overhaul-v1.61-ets2-1.jpg",
+    "description": "Police Overhaul v1.61 ETS2\n\nThis mod transforms the standard law enforcement system to be more realistic and balanced.Improved Patrol Logic: More natural police presence in traffic.Dynamic Enforcement: Realistic detection ranges for violations.Balanced Fines: Fairer and more immersive economic penalties.\n\nTested for 1.61 game version.",
+    "sourceUrl": "https://www.ets2world.com/police-overhaul-v1-61-ets2/",
+    "timestamp": "2026-09-25T04:02:50Z"
+  },
+  {
     "id": "https___www_ets2world_com_frosty_winter_mod_v10_8_ets2_",
     "name": "Frosty Winter Mod V10 8 Ets2",
     "category": "ETS2 Mod",
