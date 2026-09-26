@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_new_summer_v4_5_ats_",
+    "name": "New Summer V4 5 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/hja8vob4f3dz/new_summer_ats_v4_5.scs.html",
+    "modsfileUrl": "https://modsfile.com/hja8vob4f3dz/new_summer_ats_v4_5.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/new-summer-v4.5-ats-1.jpg",
+    "description": "This mod makes improvements to the default summer weather and environment for American Truck Simulator.\n\nKey FeaturesImproved grass and treesRealistic lightingImproved rainfall and windshield rainRoad texture improvementsWet sidewalk and asphalt reflectionsIncreased road drying time after rainIncreased grass densityGrass rendered at a further distanceOut of sight vegetation LOD transitionsLess visible low LOD vegetationLess vegetation pop inSmoother looking graphicsMore flowery vegetation\n\nCompatible with all map DLC’sCompatibility latest version: ATS 1.61\n\nChanges in v4.5Updated for 1.61Nice weather improvementsBad weather overhauledImproved road texturesNew realistic road reflections addonIncreased road drying time after rainImproved rainfallWet sidewalk and asphalt reflections\n\nImpor...",
+    "sourceUrl": "https://www.ets2world.com/new-summer-v4-5-ats/",
+    "timestamp": "2026-09-26T04:07:51Z"
+  },
+  {
+    "id": "https___www_ets2world_com_eko_truck_parts_v1_61_ets2_",
+    "name": "Eko Truck Parts V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/y2acsrw10blv/EKO_Truck_Parts.zip.html",
+    "modsfileUrl": "https://modsfile.com/y2acsrw10blv/EKO_Truck_Parts.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/eko-truck-parts-v1.61-ets2-1.jpg",
+    "description": "EKO Truck Parts v1.61 ETS2\n\nAdds new parts for:VOLVO Series 6IVECO S-WAYDAF 2021SCANIA S/RSCANIA RJLFORD F-MAXMAN TGX 2020RENAULT T\n\nIncludes:9 parts for Volvo 20248 parts for Iveco S-Way18 parts for DAF 20212 parts for SCANIA S/R40 parts for MAN TGX 20206 parts for Renault T6 parts for Ford Fmax9 parts for RJL Scania\n\nTested for 1.61 game version",
+    "sourceUrl": "https://www.ets2world.com/eko-truck-parts-v1-61-ets2/",
+    "timestamp": "2026-09-26T04:07:52Z"
+  },
+  {
+    "id": "https___www_ets2world_com_mercedes_benz_sprinter_2021_v1_61_ets2_",
+    "name": "Mercedes Benz Sprinter 2021 V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/ojidt0i03u30/MercedesBenzSprinter2021_ETS_ATS__1_61_x_trzpro_com.scs.html",
+    "modsfileUrl": "https://modsfile.com/ojidt0i03u30/MercedesBenzSprinter2021_ETS_ATS__1_61_x_trzpro_com.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/mercedes-benz-sprinter-2021-v1.61-ets2-1.jpg",
+    "description": "Mercedes Benz Sprinter 2021 v1.61 ETS2\n\n2 engine options 160 hp, 170 hp6 speed transmissionpaintjob optionstuning options\n\nUpdate and tested for 1.61 game version",
+    "sourceUrl": "https://www.ets2world.com/mercedes-benz-sprinter-2021-v1-61-ets2/",
+    "timestamp": "2026-09-26T04:07:54Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ford_trucks_f_max_v1_61_ets2_",
+    "name": "Ford Trucks F Max V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/kfkj96p0dbav/Ford_Trucks_F-MAX.rar.html",
+    "modsfileUrl": "https://modsfile.com/kfkj96p0dbav/Ford_Trucks_F-MAX.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/09/Ford-Trucks-F-MAX-v1.61-ETS2.jpeg",
+    "description": "Ford Trucks F-MAX v1.61 ETS2\n\nOriginal F-MAX Interior and ExteriorOriginal DashboardOriginal Sounds (Ford Cargo 1842T from EngineVoiceRecords)Standalone ModdingAnimated Pedals & Handbrake4×2 Normal and LL Chassis500 PS engine, 2500 Nm torqZF 12TX2620 GearboxStandaloneSupport for Cabin Accessories and SiSL Pack\n\nUpdated and tested for 1.61 game version",
+    "sourceUrl": "https://www.ets2world.com/ford-trucks-f-max-v1-61-ets2/",
+    "timestamp": "2026-09-26T04:07:57Z"
+  },
+  {
     "id": "https___www_ets2world_com_bxp_georgia_russia_rc_161_0_ets2_",
     "name": "Bxp Georgia Russia Rc 161 0 Ets2",
     "category": "ETS2 Mod",
