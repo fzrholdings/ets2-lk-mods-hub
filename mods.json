@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_ford_ltl_9000_v4_0_1_60_1_61_x_ets2_",
+    "name": "Ford Ltl 9000 V4 0 1 60 1 61 X Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/owyymq99eafs/ETS2_1.61_TRUCK_FORD_LTL_9000_v4.0_LITE_by_Cyrus.scs.html",
+    "modsfileUrl": "https://modsfile.com/owyymq99eafs/ETS2_1.61_TRUCK_FORD_LTL_9000_v4.0_LITE_by_Cyrus.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/ford-ltl-9000-v4.0-ets2-1.60-1.61.x-ets2-1.jpg",
+    "description": "FORD LTL 9000 v4.0 1.60-1.61.x ETS2\n\nFULL version includes:Truck added to traffic.Truck in quick jobs (2 versions).Truck in trucks browser.More cabin accessories.CB radio as accessory.Ambient cabin light.Exhaust smoke.Stoneguard.More fenders models.Bugshields.More sunshield models.Cummins engines.Metallic paints.\n\nv4.0 Changes:Updated to ETS2 1.61.x.Updated DEF files.Fixed rear disc position (ETS2 version).Improved cabin accessories names.Improved locale files.Other minor changes & improvements.\n\nv3.0 Changes:Adaptation to ETS2 1.57.x.Updated DEF files.Improved locale files.Added exhaust smoke (ONLY IN FULL VERSION).Added ambient cabin lights (7 colours)(ONLY IN FULL VERSION).Improved lights.Adjusted some accessories position.Fixed missing license plate in quick jobs (ETS2 version).Fixe...",
+    "sourceUrl": "https://www.ets2world.com/ford-ltl-9000-v4-0-1-60-1-61-x-ets2/",
+    "timestamp": "2026-10-02T04:41:31Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ford_ltl_9000_sisl_megapack_add_on_v4_0_ets2_",
+    "name": "Ford Ltl 9000 Sisl Megapack Add On V4 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/s83kduq9nzae/ETS2_1.61_TRUCK_FORD_LTL_9000_v4.0_SiSL_MEGAPACK_ADD-ON_by_Cyrus.scs.html",
+    "modsfileUrl": "https://modsfile.com/s83kduq9nzae/ETS2_1.61_TRUCK_FORD_LTL_9000_v4.0_SiSL_MEGAPACK_ADD-ON_by_Cyrus.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/ford-ltl-9000-sis-l-megapack-add-on-v4.0-ets2-1.jpg",
+    "description": "FORD LTL 9000 SiS’L MEGAPACK ADD-ON v4.0 ETS2\n\nFORD LTL 9000 v4.0 SIS’L MEGAPACK ADD-ONThis mod allows you to install all cabin accessories from Sis’l MegaPack mod.Clean gamelog!!",
+    "sourceUrl": "https://www.ets2world.com/ford-ltl-9000-sisl-megapack-add-on-v4-0-ets2/",
+    "timestamp": "2026-10-02T04:41:32Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ford_ltl_9000_v4_0_1_60_1_61_x_ats_",
+    "name": "Ford Ltl 9000 V4 0 1 60 1 61 X Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.60",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/ztdirfm6nhze/ATS_1.61_TRUCK_FORD_LTL_9000_v4.0_LITE_by_Cyrus.scs.html",
+    "modsfileUrl": "https://modsfile.com/ztdirfm6nhze/ATS_1.61_TRUCK_FORD_LTL_9000_v4.0_LITE_by_Cyrus.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/ford-ltl-9000-v4.0-ats-1.60-1.61.x-ats-1.jpg",
+    "description": "FORD LTL 9000 v4.0 1.60-1.61.x ATS\n\nFORD LTL 9000 v4.0 LITE.\n\nv4.0 Changes:Updated to ATS 1.61.x.Updated DEF files.Fixed rear disc position (ETS2 version).Improved cabin accessories names.Improved locale files.Other minor changes & improvements.\n\nv3.0 Changes:Adaptation to ATS 1.57.x.Updated DEF files.Improved locale files.Added exhaust smoke (ONLY IN FULL VERSION).Added ambient cabin lights (7 colours)(ONLY IN FULL VERSION).Improved lights.Adjusted some accessories position.Fixed missing license plate in quick jobs (ETS2 version).Fixed log warning about model vertices (ETS2 version).Fixed missing aux lights (ETS2 version).Fixed missing rear disc icon (ETS2 version).Fixed missing decals (painted chassis).Sis’l megapack add-on now has separate mod.Other minor changes & improvements.\n\nv2....",
+    "sourceUrl": "https://www.ets2world.com/ford-ltl-9000-v4-0-1-60-1-61-x-ats/",
+    "timestamp": "2026-10-02T04:41:34Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ford_ltl_9000_sisl_megapack_add_on_v4_0_ats_",
+    "name": "Ford Ltl 9000 Sisl Megapack Add On V4 0 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/606jmpai1ni4/ATS_1.61_TRUCK_FORD_LTL_9000_v4.0_SiSL_MEGAPACK_ADD-ON_by_Cyrus.scs.html",
+    "modsfileUrl": "https://modsfile.com/606jmpai1ni4/ATS_1.61_TRUCK_FORD_LTL_9000_v4.0_SiSL_MEGAPACK_ADD-ON_by_Cyrus.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/ford-ltl-9000-ats-sis-l-megapack-add-on-v4.0-ats-1.jpg",
+    "description": "FORD LTL 9000 SiSL MEGAPACK ADD-ON v4.0 ATS\n\nFORD LTL 9000 v4.0 SIS’L MEGAPACK ADD-ONThis mod allows you to install all cabin accessories from SiS’l MegaPack mod.",
+    "sourceUrl": "https://www.ets2world.com/ford-ltl-9000-sisl-megapack-add-on-v4-0-ats/",
+    "timestamp": "2026-10-02T04:41:35Z"
+  },
+  {
     "id": "https___www_ets2world_com_abasstreppas_trailer_wheel_pack_v1_61_ets2_",
     "name": "Abasstreppas Trailer Wheel Pack V1 61 Ets2",
     "category": "ETS2 Mod",
