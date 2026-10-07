@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_expanded_fh_customisation_1_61_ets2_",
+    "name": "Expanded Fh Customisation 1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/wd4u15o30q7h/Expanded_FH_Customisation.zip.html",
+    "modsfileUrl": "https://modsfile.com/wd4u15o30q7h/Expanded_FH_Customisation.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/expanded-fh-customisation-for-ets2-1.61-ets2-1.jpg",
+    "description": "Expanded FH Customisation 1.61 ETS2\n\nThis mod mainly focuses on adding more tuning parts to the SCS Volvo FH6, but also adds some stuff to the FH5 and FH4.Added tuning stuff to FH6 Aero cabins.Added FH tuning pack stuff to FH6.Added HS Schoch stuff to FH6.Unlocked some HS Schoch stuff on the FH5.\n\nWork for 1.58/1.59/1.60/1.61 game versions",
+    "sourceUrl": "https://www.ets2world.com/expanded-fh-customisation-1-61-ets2/",
+    "timestamp": "2026-10-07T04:58:17Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ownable_all_old_trucks_dealer_unlock_1_61_ets2_",
+    "name": "Ownable All Old Trucks Dealer Unlock 1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/t5lya6lsnjca/Ownable_All_Old_Trucks_1.60.rar.html",
+    "modsfileUrl": "https://modsfile.com/t5lya6lsnjca/Ownable_All_Old_Trucks_1.60.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/ownable-all-old-trucks-n-dealer-unlock-281.61-2B-29-ets2-1.jpg",
+    "description": "Ownable All Old Trucks – Dealer Unlock (1.61+) ETS2\n\nBring the classics back to life.This mod makes all old and unavailable trucks fully ownable and buyable in Euro Truck Simulator 2.Perfect for players who miss the legendary models from the early ETS2 days\n\nAll old trucks are now available in Mod DealerFully ownable and customizableCompatible with ETS2 version 1.61+Clean log – no errors or crashes\n\nDrive the forgotten legends once again and relive the history of ETS2.",
+    "sourceUrl": "https://www.ets2world.com/ownable-all-old-trucks-dealer-unlock-1-61-ets2/",
+    "timestamp": "2026-10-07T04:58:19Z"
+  },
+  {
+    "id": "https___www_ets2world_com_snowymoon_1_61_1_1s_ets2_",
+    "name": "Snowymoon 1 61 1 1S Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61.1",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/kaldt9eahxp5/Snowymoon_for_ETS2.rar.html",
+    "modsfileUrl": "https://modsfile.com/kaldt9eahxp5/Snowymoon_for_ETS2.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/snowymoon-1.61.1.1s-ets2-1.jpg",
+    "description": "Snowymoon 1.61.1.1s ETS2\n\nExtract files to Euro Truck Simulator 2/bin/win_x64/Launch game with DirectX 11 and press FN+END or END key during quick jobTemporal Anti Aliasing/Anti Aliasing Clarity is working with HDR & to use DLAA and DLSS turn off HDR from windows display settings if you are getting black screen\n\nTested withETS 1.61.1.1s(64 bit)ProMods 2.83 Maps/Cabin Accessory Pack/Trailer and company packUltimate Graphics Mod ETS2Real Companies & gas stations\n\nWhat is working1. Temporal Anti Aliasing2. Tmporal Anti Aliasing Clarity3. DLAA4. DLSS Quality Rev.25. DLSS Balanced Rev.26. DLSS Performance Rev.27. DLSS Preset C(Less Ghosting)8. DLSS Preset D(Less aliasing)9. DLSS Preset F(smooth)10. Sharpness/Motion Blur/Color Preset/FXAA\n\nIssues:1. Pausing esc to menu sometimes crashing game...",
+    "sourceUrl": "https://www.ets2world.com/snowymoon-1-61-1-1s-ets2/",
+    "timestamp": "2026-10-07T04:58:20Z"
+  },
+  {
+    "id": "https___www_ets2world_com_1_1_time_scale_america_background_map_v1_0_ats_",
+    "name": "1 1 Time Scale America Background Map V1 0 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/84l86id6vgtr/1-1_Time_Scale_America_Background_Map.zip.html",
+    "modsfileUrl": "https://modsfile.com/84l86id6vgtr/1-1_Time_Scale_America_Background_Map.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/1-1-Time-Scale-America-Background-Map-v1.0-ATS.jpeg",
+    "description": "1-1 Time Scale America Background Map v1.0 ATS\n\nFormed from various different background maps.",
+    "sourceUrl": "https://www.ets2world.com/1-1-time-scale-america-background-map-v1-0-ats/",
+    "timestamp": "2026-10-07T04:58:22Z"
+  },
+  {
     "id": "https___www_ets2world_com_mercedes_benz_actros_mp5_2019_2023_1_61_fix_ets2_",
     "name": "Mercedes Benz Actros Mp5 2019 2023 1 61 Fix Ets2",
     "category": "ETS2 Mod",
