@@ -1,5 +1,57 @@
 [
   {
+    "id": "https___www_ets2world_com_hybrid_plus_1_2_road_connector_v1_61_ets2_",
+    "name": "Hybrid Plus 1 2 Road Connector V1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/4dcurvnglvzp/unzip_Hybrid_Plus_1-2.zip.html",
+    "modsfileUrl": "https://modsfile.com/4dcurvnglvzp/unzip_Hybrid_Plus_1-2.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/Hybrid-Plus-1-2-Road-Connector-v1.61-ETS2-1.jpeg",
+    "description": "Hybrid Plus 1-2 Road Connector v1.61 ETS2\n\nHybrid Plus 1- Roextended 5.3 – Rusmap 2.61 – Promods 2.84 – Poland Rebuilding 3.0.1Hybrid Plus 2- Roextended 5.3 – Rusmap 2.61 – Promods 2.84 – ME addon – Poland Rebuilding 3.0.1\n\nPlace this above all 4 map files in mod manager.Game version 1.61.x only",
+    "sourceUrl": "https://www.ets2world.com/hybrid-plus-1-2-road-connector-v1-61-ets2/",
+    "timestamp": "2026-10-09T05:12:04Z"
+  },
+  {
+    "id": "https___www_ets2world_com_mercedes_benz_eactros_mp6_diesel_electric_v2_0_11_1_611_ets2_",
+    "name": "Mercedes Benz Eactros Mp6 Diesel Electric V2 0 11 1 611 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.611",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/bzc13gp2z973/Mercedes_Benz_eActros_MP6_Diesel___Electric_ErikTrucksModel.zip.html",
+    "modsfileUrl": "https://modsfile.com/bzc13gp2z973/Mercedes_Benz_eActros_MP6_Diesel___Electric_ErikTrucksModel.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/Mercedes-Benz-eActros-MP6-Diesel-Electric-v2.0.11-1.611-ETS2-1.jpeg",
+    "description": "Mercedes Benz eActros MP6 Diesel & Electric v2.0.11 1.611 ETS2\n\nBring the Mercedes-Benz eActros MP6 to your fleet with diesel and electric configurations, a refreshed dark interior, functional digital instruments and an extensive selection of exterior customization options.\n\nDesigned for Euro Truck Simulator 2 – 1.61.x.Current mod version: 2.0.10.Created by ErikTrucksModel+.\n\nTruck configurationsDiesel 4×2 chassis.Electric 4×2 chassis with a dedicated electric powertrain.MP6 cab with instruments adapted to each powertrain.€50,000 base factory purchase configuration.Optional equipment and paint choices can increase the final price.\n\nDiesel engine optionsChoose from six DAF NGD engine configurations:MX-11 270: 367 hp / 270 kWMX-11 300: 408 hp / 300 kWMX-11 330: 449 hp / 330 kWMX-13 315: 4...",
+    "sourceUrl": "https://www.ets2world.com/mercedes-benz-eactros-mp6-diesel-electric-v2-0-11-1-611-ets2/",
+    "timestamp": "2026-10-09T05:12:06Z"
+  },
+  {
+    "id": "https___www_ets2world_com_trail_king_schnabel_v1_6_1_61_ets2_",
+    "name": "Trail King Schnabel V1 6 1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/mvqqo7nok17v/Trail_King_Schnabel_v1.6.zip.html",
+    "modsfileUrl": "https://modsfile.com/mvqqo7nok17v/Trail_King_Schnabel_v1.6.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/Trail-King-Schnabel-v1.6-1.61-ETS2-1.jpeg",
+    "description": "Trail King Schnabel v1.6 1.61 ETS2\n\nTrailer based on the trail king brand, model Schnable System, this type of trailer is not supported by the scs system, for this you need to add the invisible axle, if you select a chassis with an axle in the wrong place, just select the invisible axleCompatibility: 1.61",
+    "sourceUrl": "https://www.ets2world.com/trail-king-schnabel-v1-6-1-61-ets2/",
+    "timestamp": "2026-10-09T05:12:07Z"
+  },
+  {
+    "id": "https___www_ets2world_com_scania_torpedo_ng_1_61_ets2_",
+    "name": "Scania Torpedo Ng 1 61 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.61",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/rlcybdc1vcuj/unzip_Scania_Torpedo.zip.html",
+    "modsfileUrl": "https://modsfile.com/rlcybdc1vcuj/unzip_Scania_Torpedo.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/scania-torpedo-ng-1.61-ets2-1.jpg",
+    "description": "Scania torpedo NG 1.61 ETS2\n\nFeatures:High-quality model of exterior and interior3 Cabins7 Chassis (4х2/6×2/6×4/8×4/8×2 BDF/8×4 BDF)Different interior variantsDifferent accessoriesSkinpack and template for your skinsStandard and custom steering wheelsOwnable Container-trailerCompatible with container trailer from our “EU Trailer Pack”",
+    "sourceUrl": "https://www.ets2world.com/scania-torpedo-ng-1-61-ets2/",
+    "timestamp": "2026-10-09T05:12:09Z"
+  },
+  {
     "id": "https___www_ets2world_com_traffic_and_trailers_pack_v1_61_ets2_",
     "name": "Traffic And Trailers Pack V1 61 Ets2",
     "category": "ETS2 Mod",
