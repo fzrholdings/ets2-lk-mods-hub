@@ -1,5 +1,18 @@
 [
   {
+    "id": "https___www_ets2world_com_realtraffic_v2_0_19_ets2_",
+    "name": "Realtraffic V2 0 19 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/db5iub72pyhc/RealTraffic2.scs.html",
+    "modsfileUrl": "https://modsfile.com/db5iub72pyhc/RealTraffic2.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/10/realtraffic-v2.0.19-ets2-1.jpg",
+    "description": "RealTraffic v2.0.19 ETS2\n\nAI traffic for the all maps, built from real traffic counts and national statistics.Working-day traffic with real rush hours and quiet nightsTraffic volume and the mix of cars, vans, trucks and buses per country (36 countries)Real car, truck and trailer brands per country, all DLC trucks and brand trailersCaravans, taxis, regional and city buses, tractors on country roads, sweepers at night, refuse trucks, longer freight trainsRoad works, accidents and debris on every map, real traffic-light timingsAI headlights by lamp type, reflective signs, road markings and trailer tapeBusier truck stops, company yards and residential streets\n\nNeeds all map DLCs and the trailer and truck DLCs listed in the readme.Put it at the top of your mod list. Do not use it together wi...",
+    "sourceUrl": "https://www.ets2world.com/realtraffic-v2-0-19-ets2/",
+    "timestamp": "2026-10-25T03:47:04Z"
+  },
+  {
     "id": "https___www_ets2world_com_ford_l_series_1_61_ats_",
     "name": "Ford L Series 1 61 Ats",
     "category": "ETS2 Mod",
