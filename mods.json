@@ -1,5 +1,44 @@
 [
   {
+    "id": "https___www_ets2world_com_ultra_realistic_truck_physics_cabin_motion_v3_1_ats_",
+    "name": "Ultra Realistic Truck Physics Cabin Motion V3 1 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.62",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/tjmfsu3ned44/ATS_Ultra_Realistic_Truck_Physics___Cabin_Motion_V3.1.scs.html",
+    "modsfileUrl": "https://modsfile.com/tjmfsu3ned44/ATS_Ultra_Realistic_Truck_Physics___Cabin_Motion_V3.1.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/ats-ultra-realistic-truck-physics-a-cabin-motion-v3.1-ats-1.jpg",
+    "description": "Ultra Realistic Truck Physics & Cabin Motion v3.1 ATS\n\nFully supports all trucksSupports truck modsRealistic suspension stiffness and dampingSuspension tuned around realistic air-spring behaviorNatural chassis sway and body rollRealistic braking torque and weight transferTrailer flex through fifth-wheel resistance and joint-angle tuningEnhanced cabin pitch, roll and bounce behaviorRealistic wet-road grip loss and braking responseAdaptive steering behavior for different control devicesAccurate wheel and cabin mass valuesRefined clutch torque and drivetrain inertiaSmooth and stable behavior at highway speedsMore nuanced truck control during low-speed turnsImproved handling in cities, tight corners and truck stopsDesigned for immersive everyday driving\n\nImproved steering and handlingRefine...",
+    "sourceUrl": "https://www.ets2world.com/ultra-realistic-truck-physics-cabin-motion-v3-1-ats/",
+    "timestamp": "2026-11-10T06:30:04Z"
+  },
+  {
+    "id": "https___www_ets2world_com_man_tgx_e6_by_gloover_v2_2_3_1_62_ets2_",
+    "name": "Man Tgx E6 By Gloover V2 2 3 1 62 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.62",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/asaaz0u5ld1k/unzip_MAN_TGX_E6_by_Gloover.zip.html",
+    "modsfileUrl": "https://modsfile.com/asaaz0u5ld1k/unzip_MAN_TGX_E6_by_Gloover.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/man-tgx-e6-by-gloover-v2.2.3-1.62-ets2-1.jpg",
+    "description": "MAN TGX E6 by Gloover v2.2.3 1.62 ETS2\n\nBase model: SCS SoftwareCabins: XL / XLX / XXLInterior: Standard, XLX 2019, Beige16 Engines8 TransmissionsChassis: 4×2 BLS / 4×2 LLS-U / 6×2-2 Midlift BLS / 6×2-4 Midlift BLS / 6×2-2 Taglift BLS / 6×4-4 BLS / 8×4-4 BLSPrograms used: Blender / Inkscape / paint.netMany Tuning parts, accessories ETC.",
+    "sourceUrl": "https://www.ets2world.com/man-tgx-e6-by-gloover-v2-2-3-1-62-ets2/",
+    "timestamp": "2026-11-10T06:30:06Z"
+  },
+  {
+    "id": "https___www_ets2world_com_ford_mustang_2025_1_6_ets2_",
+    "name": "Ford Mustang 2025 1 6 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.59",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/o2bpghafph5b/2025_Ford_Mustang_1.62x.zip.html",
+    "modsfileUrl": "https://modsfile.com/o2bpghafph5b/2025_Ford_Mustang_1.62x.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/ford-mustang-2025-1.6-ets2-1.jpg",
+    "description": "Ford Mustang 2025 1.6 ETS2\n\nHigh-quality exterior and interior.High-quality dashboard UI with a digital speedometer and RPM gauge.Improved engine and physics for excellent driveability.Openable front windows.Accurately functioning wipers.Added Engine Sound V6.Top speed: 250 km/h.6-speed gearbox.\n\nAdded a new dashboard UI.Added a new engine sound.Changed some materials.Edited the engine sound.",
+    "sourceUrl": "https://www.ets2world.com/ford-mustang-2025-1-6-ets2/",
+    "timestamp": "2026-11-10T06:30:07Z"
+  },
+  {
     "id": "https___www_ets2world_com_volkswagen_crafter_mk2_v1_1_1_62_ets2_",
     "name": "Volkswagen Crafter Mk2 V1 1 1 62 Ets2",
     "category": "ETS2 Mod",
