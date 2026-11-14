@@ -1,5 +1,44 @@
 [
   {
+    "id": "https___www_ets2world_com_satellite_background_map_v2_0_ets2_",
+    "name": "Satellite Background Map V2 0 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.62",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/xw35apv1g54e/Satellite_Background_Map.scs.html",
+    "modsfileUrl": "https://modsfile.com/xw35apv1g54e/Satellite_Background_Map.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/Satellite-Background-Map-v2.0-ETS2-1.jpeg",
+    "description": "Satellite Background Map v2.0 ETS2\n\nReal Sentinel-2 satellite imagery covering from Iceland to TurkeyOcean areas rebuilt from GEBCO bathymetry with realistic seabed reliefCountry flags + English name + local language nameSolid borders for countries, dashed lines for disputed borders5 high-resolution textures (full map + 4 quadrants) – stays sharp when zoomed inBackground only – no changes to map layout, economy or gameplayEnable only one map background mod at a timeNot compatible with ProMods or other map mods that change the map layout\n\nNote:The game renders the map UI semi-transparently, so roads may appear slightly dimmer on a darker satellite basemap.Tested on ETS2 1.62.x",
+    "sourceUrl": "https://www.ets2world.com/satellite-background-map-v2-0-ets2/",
+    "timestamp": "2026-11-14T05:32:24Z"
+  },
+  {
+    "id": "https___www_ets2world_com_chevrolet_tahoe_2007_v4_2_ets2_",
+    "name": "Chevrolet Tahoe 2007 V4 2 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.62",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/hnd3pa0ybfln/Chevrolet_Tahoe_2007_V4.2_1.62.scs.html",
+    "modsfileUrl": "https://modsfile.com/hnd3pa0ybfln/Chevrolet_Tahoe_2007_V4.2_1.62.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/Chevrolet-Tahoe-2007-v4.2-ETS2-1.jpeg",
+    "description": "Chevrolet Tahoe 2007 v4.2 ETS2\n\nRealistic 5.3 L V8 engineRealistic 4-speed automatic transmissionLED Strobes & Beacon accessoryInterior accessories6 rims2 chassis (Rear-Wheel-Drive & All-Wheel-Drive)High-quality interior and exteriorEndless colors in paintjobs along with some custom skinsCan be attached with a trailer (Caravan)Excellent driveability and highway cruising\n\nUpdated to game version 1.62Now adapted for the Road Trip DLCSignificantly improved physics and engine configurationFixed mirrors",
+    "sourceUrl": "https://www.ets2world.com/chevrolet-tahoe-2007-v4-2-ets2/",
+    "timestamp": "2026-11-14T05:32:26Z"
+  },
+  {
+    "id": "https___www_ets2world_com_skin_pack_scania_s_highline_scs_box_trailer_1_62_x_ets2_",
+    "name": "Skin Pack Scania S Highline Scs Box Trailer 1 62 X Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.62",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/u1gowzx1mzyi/soloturk_skin_pack_v17.scs.html",
+    "modsfileUrl": "https://modsfile.com/u1gowzx1mzyi/soloturk_skin_pack_v17.scs.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/skin-pack-n-scania-s-highline-2B-scs-box-trailer-1.62.x-ets2-1.jpg",
+    "description": "Skin Pack – Scania S Highline + SCS Box Trailer 1.62.x ETS2\n\nBlack-gold skin pack inspired by the real ST-STORE truck of SOLOTÜRK, the Turkish Air Force F-16 demo team.\n\nIncludes:– “SOLOTÜRK” paintjob for Scania S (new generation), Highline cabin (side logos, golden eagle emblem, door texts and badges, front logo, big badge on the cabin rear, 4K texture)– “SOLOTÜRK” paintjob for the SCS box trailer (13.6 m) (F-16 photo, logo and stripe band on the sides, badge on the rear doors, logo on the roof)\n\nNote: the truck paintjob is available only for the Scania S Highline cabin.\n\nInstallation:1. Copy the soloturk_skin_pack.scs fileto the Documents/Euro Truck Simulator 2/mod folder.(Copy the file to Documents/Euro Truck Simulator 2/mod)2. Launch the game and enable the mod in the Mod Manager.(E...",
+    "sourceUrl": "https://www.ets2world.com/skin-pack-scania-s-highline-scs-box-trailer-1-62-x-ets2/",
+    "timestamp": "2026-11-14T05:32:27Z"
+  },
+  {
     "id": "https___www_ets2world_com_real_turkish_companies_trailers_bim_a101_migros_vestel_opet_v1_0_ets2_",
     "name": "Real Turkish Companies Trailers Bim A101 Migros Vestel Opet V1 0 Ets2",
     "category": "ETS2 Mod",
