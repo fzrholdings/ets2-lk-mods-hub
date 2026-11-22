@@ -1,5 +1,31 @@
 [
   {
+    "id": "https___www_ets2world_com_map_100_discovered_21_11_2026_1_0_1_62_ats_",
+    "name": "Map 100 Discovered 21 11 2026 1 0 1 62 Ats",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.62",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/1s0xpv0ba5m8/ATS_MAP_100_DISCOVERED_BY_RODONITCHO_MODS_1.62_21_11_2026.rar.html",
+    "modsfileUrl": "https://modsfile.com/1s0xpv0ba5m8/ATS_MAP_100_DISCOVERED_BY_RODONITCHO_MODS_1.62_21_11_2026.rar.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/MAP-100-DISCOVERED-21-11-2026-1.0-1.62-ATS-1.jpeg",
+    "description": "MAP 100% DISCOVERED 21 11 2026 1.0 1.62 ATS\n\nUSE IT TO MAKE CHANGES TO ANY PROFILE OF THE ORIGINAL GAME MAP IT WILL LEAVE YOUR SAVE WITH THE MAP 100% UNCOVERED\n\nWHAT’S IN THIS FILENOTEPAD++SII_DECRYPTDISCOVERED ITEMS\n\nSTEP BY STEPOPEN THE GAMESAVE YOUR GAMEOPEN THE PROFILES DOCUMENTS\\AMERICAN TRUCK SIMULATOR\\PROFILESLOCATE THE SAVED PROFILE IF YOU HAVE MORE THAN ONE PROFILE RIGHT-CLICK SORT BY DATE MODIFIEDOPEN THE PROFILE YOU WANT TO MODIFY, OPEN THE SAVE FOLDER AND LOCATE THE MOST RECENT SAVE FILECOPY THE SII_DECRYPT PROGRAM INTO THE FOLDER NOW DRAG THE GAME DOCUMENT ON TOP OF THE SII_DECRYPT PROGRAM TO UNLOCK FOR YOU TO MAKE THE MODIFICATION INSIDE THE FILEINSTALL NOTEPAD++ PROGRAM OPEN THE GAME DOCUMENT WITH NOTEPAD++TO LOCATE THE FILE USE THE CONTROL + F KEYSNOW SEARCH FOR DISCOVER...",
+    "sourceUrl": "https://www.ets2world.com/map-100-discovered-21-11-2026-1-0-1-62-ats/",
+    "timestamp": "2026-11-22T05:44:14Z"
+  },
+  {
+    "id": "https___www_ets2world_com_fiat_fiorino_1_62_ets2_",
+    "name": "Fiat Fiorino 1 62 Ets2",
+    "category": "ETS2 Mod",
+    "gameVersion": "1.62",
+    "author": "ETS2World",
+    "downloadUrl": "https://modsfile.com/6bmshdr20zyz/FIORINO_2017_VOLTZ.zip.html",
+    "modsfileUrl": "https://modsfile.com/6bmshdr20zyz/FIORINO_2017_VOLTZ.zip.html",
+    "imageUrl": "https://www.ets2world.com/wp-content/uploads/2026/11/Fiat-Fiorino-1.62-ETS2.jpeg",
+    "description": "Fiat Fiorino 1.62 ETS2\n\nWheel PackSkin template, decals, flags, phrases, and reflective stripsDecals“Dolphin” Radio (Exclusive New Feature)Custom PhrasesGroup/Affiliation FlagsOriginal and Raised (Arched) ChassisCB (PX) AntennasClean Bumper/BarDecorative Lights (“Foguinhos”)Integrated Turn SignalsCustom AccessoriesEditable Elements (Decals, Flags, Phrases)",
+    "sourceUrl": "https://www.ets2world.com/fiat-fiorino-1-62-ets2/",
+    "timestamp": "2026-11-22T05:44:15Z"
+  },
+  {
     "id": "https___www_ets2world_com_job_screen_v2_0_1_62_x_ets2_",
     "name": "Job Screen V2 0 1 62 X Ets2",
     "category": "ETS2 Mod",
